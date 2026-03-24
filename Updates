@@ -1,15 +1,49 @@
-Glossary:
-            <div class="card"><h4>📖 Botanical Glossary</h4>
-                <p><span class="glossary-term">Orthodox seed<span class="tooltip">Can be dried to 5-8% moisture and stored frozen for extended periods (e.g., Eucalyptus, Acacia)</span></span><br>
-                <span class="glossary-term">Recalcitrant seed<span class="tooltip">Cannot be dried below 20-30% moisture; must be sown fresh (e.g., Nothofagus, Atherosperma, many rainforest species)</span></span><br>
-                <span class="glossary-term">Stratification<span class="tooltip">Cold/moist treatment to break physiological dormancy (2-5°C for 4-12 weeks)</span></span><br>
-                <span class="glossary-term">Scarification<span class="tooltip">Mechanical or thermal treatment to break physical seed coat dormancy</span></span><br>
-                <span class="glossary-term">Provenance<span class="tooltip">Geographic origin of propagation material - critical for restoration success and local adaptation</span></span><br>
-                <span class="glossary-term">IBA<span class="tooltip">Indole-3-butyric acid - synthetic rooting hormone, stimulates adventitious root formation</span></span><br>
-                <span class="glossary-term">Lignotuber<span class="tooltip">Woody swelling at base containing dormant buds (eucalypts, banksias) - enables regeneration after fire</span></span><br>
-                <span class="glossary-term">Damping-off<span class="tooltip">Fungal disease (Pythium, Rhizoctonia) killing seedlings at soil line, favoured by wet conditions</span></span><br>
-                <span class="glossary-term">Hardening off<span class="tooltip">Gradual acclimatisation to outdoor conditions over 2-4 weeks</span></span><br>
-                <span class="glossary-term">Ex-situ conservation<span class="tooltip">Conservation of species outside their natural habitat (e.g., seed banks, botanic gardens)</span></span><br>
-                <span class="glossary-term">Endemic<span class="tooltip">Species native to and restricted to a particular region (Tasmania has ~580 endemic vascular plants)</span></span><br>
-                <span class="glossary-term">Smoke water<span class="tooltip">Aqueous solution of smoke compounds used to break dormancy in many Australian natives</span></span></p>
-            </div>
+<div class="card"><h4>📖 Botanical Glossary</h4>
+    <p style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.5rem;">
+        <span class="glossary-term">Orthodox seed<span class="tooltip">Can be dried to 5-8% moisture and stored frozen for extended periods (e.g., Eucalyptus, Acacia)</span></span>
+        <span class="glossary-term">Recalcitrant seed<span class="tooltip">Cannot be dried below 20-30% moisture; must be sown fresh (e.g., Nothofagus, Atherosperma, many rainforest species)</span></span>
+        <span class="glossary-term">Stratification<span class="tooltip">Cold/moist treatment to break physiological dormancy (2-5°C for 4-12 weeks)</span></span>
+        <span class="glossary-term">Scarification<span class="tooltip">Mechanical or thermal treatment to break physical seed coat dormancy</span></span>
+        <span class="glossary-term">Provenance<span class="tooltip">Geographic origin of propagation material - critical for restoration success and local adaptation</span></span>
+        <span class="glossary-term">IBA (Indole-3-butyric acid)<span class="tooltip">Synthetic rooting hormone, stimulates adventitious root formation; available as powder, gel, or liquid</span></span>
+        <span class="glossary-term">Lignotuber<span class="tooltip">Woody swelling at base containing dormant buds (eucalypts, banksias) - enables regeneration after fire</span></span>
+        <span class="glossary-term">Damping-off<span class="tooltip">Fungal disease (Pythium, Rhizoctonia) killing seedlings at soil line, favoured by wet conditions</span></span>
+        <span class="glossary-term">Hardening off<span class="tooltip">Gradual acclimatisation to outdoor conditions over 2-4 weeks before planting out</span></span>
+        <span class="glossary-term">Ex-situ conservation<span class="tooltip">Conservation of species outside their natural habitat (e.g., seed banks, botanic gardens)</span></span>
+        <span class="glossary-term">Endemic<span class="tooltip">Species native to and restricted to a particular region (Tasmania has ~580 endemic vascular plants)</span></span>
+        <span class="glossary-term">Smoke water<span class="tooltip">Aqueous solution of smoke compounds used to break dormancy in many Australian natives</span></span>
+        <span class="glossary-term">Adventitious roots<span class="tooltip">Roots that form from non-root tissue (stems, leaves) - essential for cutting propagation</span></span>
+        <span class="glossary-term">Callus<span class="tooltip">Undifferentiated plant tissue that forms at wound sites; precursor to adventitious root formation</span></span>
+        <span class="glossary-term">Mycorrhiza<span class="tooltip">Beneficial fungal association with plant roots; critical for many native species (especially Proteaceae, Orchidaceae)</span></span>
+        <span class="glossary-term">Epicormic growth<span class="tooltip">New shoots emerging from dormant buds under bark; used for coppicing and after fire recovery</span></span>
+        <span class="glossary-term">Node<span class="tooltip">Point on stem where leaves attach; cutting should include at least one node for root initiation</span></span>
+        <span class="glossary-term">Internode<span class="tooltip">Section of stem between nodes; length varies by species and growth conditions</span></span>
+        <span class="glossary-term">Etiolation<span class="tooltip">Pale, elongated growth caused by insufficient light; cuttings from etiolated stems often root poorly</span></span>
+        <span class="glossary-term">Photoperiod<span class="tooltip">Day length; influences flowering, seed set, and cutting success in many species</span></span>
+        <span class="glossary-term">Vernalization<span class="tooltip">Exposure to cold temperatures to induce flowering; relevant for seed production from biennials</span></span>
+        <span class="glossary-term">Chlorosis<span class="tooltip">Yellowing of leaves due to nutrient deficiency (often iron, nitrogen) or poor root function</span></span>
+        <span class="glossary-term">Wilt<span class="tooltip">Loss of turgor pressure causing drooping; can indicate water stress or vascular disease (e.g., Phytophthora)</span></span>
+        <span class="glossary-term">Hybrid<span class="tooltip">Offspring from cross between different species; may have hybrid vigour but requires vegetative propagation</span></span>
+        <span class="glossary-term">Micropropagation<span class="tooltip">Tissue culture technique for mass propagation of disease-free plants in sterile conditions</span></span>
+        <span class="glossary-term">Perlite<span class="tooltip">Volcanic glass expanded by heating; used in propagation media for aeration and drainage</span></span>
+        <span class="glossary-term">Vermiculite<span class="tooltip">Hydrated mineral that absorbs water; used in seed raising mixes for moisture retention</span></span>
+        <span class="glossary-term">pH<span class="tooltip">Measure of acidity/alkalinity; native plants generally prefer pH 5.5-6.5; Proteaceae need 5.0-5.5</span></span>
+        <span class="glossary-term">EC (Electrical Conductivity)<span class="tooltip">Measures soluble salts in media; high EC indicates over-fertilisation causing root burn</span></span>
+        <span class="glossary-term">PGR (Plant Growth Regulator)<span class="tooltip">Hormones (auxins, cytokinins, gibberellins) used to manipulate growth, rooting, and flowering</span></span>
+        <span class="glossary-term">Cambium<span class="tooltip">Layer of actively dividing cells between xylem and phloem; must be aligned in grafting</span></span>
+        <span class="glossary-term">Scion<span class="tooltip">Upper part of graft that provides desired variety/cultivar characteristics</span></span>
+        <span class="glossary-term">Rootstock<span class="tooltip">Lower part of graft that provides root system; chosen for vigour, disease resistance, or size control</span></span>
+        <span class="glossary-term">Potting up<span class="tooltip">Transplanting seedlings or rooted cuttings into larger containers for further growth</span></span>
+        <span class="glossary-term">Punnets<span class="tooltip">Multi-cell trays used for seed germination and early seedling development</span></span>
+        <span class="glossary-term">Understorey<span class="tooltip">Layer of vegetation beneath forest canopy; many Tasmanian understorey species are important for restoration</span></span>
+        <span class="glossary-term">Riparian zone<span class="tooltip">Area adjacent to waterways; critical for restoration with species like Melaleuca, Leptospermum, Carex</span></span>
+        <span class="glossary-term">Phytophthora<span class="tooltip">Soil-borne pathogen (Phytophthora cinnamomi) causing root rot in many native species; strict hygiene required</span></span>
+        <span class="glossary-term">Myrtle rust<span class="tooltip">Fungal disease (Austropuccinia psidii) affecting Myrtaceae family; biosecurity concern for propagation</span></span>
+        <span class="glossary-term">Provenance zoning<span class="tooltip">Defined geographic zones for sourcing propagation material to maintain local genetic adaptation</span></span>
+        <span class="glossary-term">Seed orchard<span class="tooltip">Managed plantation for producing genetically improved or locally-provenanced seed</span></span>
+        <span class="glossary-term">Clone<span class="tooltip">Genetically identical plants produced through vegetative propagation (cuttings, division, tissue culture)</span></span>
+        <span class="glossary-term">Phenology<span class="tooltip">Timing of life cycle events (flowering, seed set, dormancy); critical for collection timing</span></span>
+        <span class="glossary-term">Sphagnum moss<span class="tooltip">Water-holding moss used in air layering and as media additive; sustainably sourced preferred</span></span>
+        <span class="glossary-term">Capillary matting<span class="tooltip">Wicking material that provides consistent moisture to pots from below; reduces foliar disease</span></span>
+    </p>
+</div>
