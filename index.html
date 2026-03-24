@@ -860,6 +860,8 @@ footer {
         </div>
         <button class="btn" onclick="exportData()"><i class="fas fa-download"></i> Export All Data (CSV)</button>
         <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> Print This Page</button>
+<button class="btn btn-outline" onclick="showStorageInfo()" style="background: #2c7a4a; color: white;"><i class="fas fa-database"></i> Storage Info</button>
+<button class="btn btn-danger" onclick="clearAllStorage()" style="background: #b34343;"><i class="fas fa-trash-alt"></i> Clear All Records</button>
     </div>
 
     <!-- TAB 9: GLOSSARY & RESOURCES - EXPANDED -->
@@ -937,8 +939,8 @@ footer {
     </div>
 
     <footer>
-        <p><i class="fas fa-seedling"></i> AHCNSY207 · Undertake Propagation Activities · Conservation & Ecosystem Management Context · Developed by Jay Rowley © 2026</p>
-        <p>Industry-endorsed content · Information sourced from NRE Tas, Understorey Network, Florabank, and ANPC guidelines · Fully interactive record keeping · Updated for climate resilience and threatened species recovery</p>
+        <p><i class="fas fa-seedling"></i> AHCNSY207 · Undertake Propagation Activities · Conservation & Ecosystem Management Context</p>
+        <p>Developed by Jay Rowley © 2026 · Information sourced from NRE Tas, Understorey Network, Florabank, and ANPC guidelines</p>
     </footer>
 </div>
 
@@ -1179,6 +1181,147 @@ const speciesDB = [
         a.click();
         URL.revokeObjectURL(a.href);
     }
+
+// LOCAL STORAGE FUNCTIONS - Add to existing script
+
+// Load propagation data from localStorage on page load
+function loadPropagationData() {
+    const savedData = localStorage.getItem('propagationRecords');
+    if (savedData) {
+        const tbody = document.getElementById('propagationTableBody');
+        tbody.innerHTML = savedData;
+        // Re-attach delete handlers to new rows
+        document.querySelectorAll('#propagationTableBody .btn-outline').forEach(btn => {
+            btn.onclick = function() { deleteRow(this); savePropagationData(); };
+        });
+    }
+}
+
+// Save propagation data to localStorage
+function savePropagationData() {
+    const tbody = document.getElementById('propagationTableBody');
+    localStorage.setItem('propagationRecords', tbody.innerHTML);
+}
+
+// Load environmental data from localStorage on page load
+function loadEnvData() {
+    const savedData = localStorage.getItem('envRecords');
+    if (savedData) {
+        const tbody = document.getElementById('envTableBody');
+        tbody.innerHTML = savedData;
+        // Re-attach delete handlers to new rows
+        document.querySelectorAll('#envTableBody .btn-outline').forEach(btn => {
+            btn.onclick = function() { deleteEnvRow(this); saveEnvData(); };
+        });
+    }
+}
+
+// Save environmental data to localStorage
+function saveEnvData() {
+    const tbody = document.getElementById('envTableBody');
+    localStorage.setItem('envRecords', tbody.innerHTML);
+}
+
+// Clear all stored data (optional utility)
+function clearAllStorage() {
+    if (confirm('⚠️ WARNING: This will permanently delete ALL your saved propagation and environmental records. Are you sure?')) {
+        localStorage.removeItem('propagationRecords');
+        localStorage.removeItem('envRecords');
+        // Reset tables to default example data
+        document.getElementById('propagationTableBody').innerHTML = `
+            <tr><td>2026-03-15</td><td><em>Eucalyptus globulus</em></td><td>Seed</td><td>Local provenance, Huon Valley</td><td>500</td><td>Seed raising mix</td><td>85%</td><td>Germinated in 14 days</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-10</td><td><em>Leptospermum scoparium</em></td><td>Semi-hardwood cutting</td><td>Healthy parent, Bruny Island</td><td>200</td><td>50:50 perlite:peat</td><td>92%</td><td>Rooted in 4 weeks, IBA 3000ppm</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-05</td><td><em>Acacia melanoxylon</em></td><td>Seed (scarified)</td><td>Hot water treatment</td><td>300</td><td>Seed mix</td><td>78%</td><td>90°C soak 24hrs</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+        `;
+        document.getElementById('envTableBody').innerHTML = `
+            <tr><td>2026-03-15</td><td>08:30</td><td>22.5</td><td>23.0</td><td>88</td><td>10</td><td>4500</td><td>None</td><td>Misting timer adjusted</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-14</td><td>09:00</td><td>21.0</td><td>22.5</td><td>85</td><td>10</td><td>4200</td><td>Fungus gnats</td><td>Yellow sticky traps placed</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+        `;
+        savePropagationData();
+        saveEnvData();
+        alert('All records have been reset to defaults.');
+    }
+}
+
+// Show storage usage info (optional utility)
+function showStorageInfo() {
+    let propSize = localStorage.getItem('propagationRecords')?.length || 0;
+    let envSize = localStorage.getItem('envRecords')?.length || 0;
+    let totalSize = (propSize + envSize) / 1024;
+    alert(`📊 Local Storage Usage:\nPropagation Records: ${propSize} characters\nEnvironmental Records: ${envSize} characters\nTotal: ~${totalSize.toFixed(1)} KB\n\nLocalStorage limit is typically 5-10 MB per domain.`);
+}
+
+// MODIFIED addPropagationRow function with save
+function addPropagationRow() {
+    const tbody = document.getElementById('propagationTableBody');
+    const date = document.getElementById('newDate').value || new Date().toISOString().slice(0,10);
+    const species = document.getElementById('newSpecies').value || 'Unknown';
+    const method = document.getElementById('newMethod').value;
+    const source = document.getElementById('newSource').value || '-';
+    const units = document.getElementById('newUnits').value || '0';
+    const media = document.getElementById('newMedia').value || '-';
+    const rooting = document.getElementById('newRooting').value || '-';
+    const notes = document.getElementById('newNotes').value || '-';
+    const row = `<tr><td>${date}</td><td><em>${species}</em></td><td>${method}</td><td>${source}</td><td>${units}</td><td>${media}</td><td>${rooting}%</td><td>${notes}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    tbody.insertAdjacentHTML('beforeend', row);
+    savePropagationData();
+    // Clear inputs
+    document.getElementById('newSpecies').value = '';
+    document.getElementById('newSource').value = '';
+    document.getElementById('newUnits').value = '';
+    document.getElementById('newMedia').value = '';
+    document.getElementById('newRooting').value = '';
+    document.getElementById('newNotes').value = '';
+}
+
+// MODIFIED addEnvRow function with save
+function addEnvRow() {
+    const tbody = document.getElementById('envTableBody');
+    const date = document.getElementById('envDate').value || new Date().toISOString().slice(0,10);
+    const time = document.getElementById('envTime').value || '09:00';
+    const airTemp = document.getElementById('envAirTemp').value || '-';
+    const mediaTemp = document.getElementById('envMediaTemp').value || '-';
+    const rh = document.getElementById('envRH').value || '-';
+    const mist = document.getElementById('envMist').value || '-';
+    const light = document.getElementById('envLight').value || '-';
+    const pests = document.getElementById('envPests').value || '-';
+    const action = document.getElementById('envAction').value || '-';
+    const row = `<tr><td>${date}</td><td>${time}</td><td>${airTemp}</td><td>${mediaTemp}</td><td>${rh}</td><td>${mist}</td><td>${light}</td><td>${pests}</td><td>${action}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    tbody.insertAdjacentHTML('beforeend', row);
+    saveEnvData();
+    // Clear inputs
+    document.getElementById('envDate').value = '';
+    document.getElementById('envTime').value = '';
+    document.getElementById('envAirTemp').value = '';
+    document.getElementById('envMediaTemp').value = '';
+    document.getElementById('envRH').value = '';
+    document.getElementById('envMist').value = '';
+    document.getElementById('envLight').value = '';
+    document.getElementById('envPests').value = '';
+    document.getElementById('envAction').value = '';
+}
+
+// MODIFIED deleteRow function with save
+function deleteRow(btn) {
+    btn.closest('tr').remove();
+    savePropagationData();
+}
+
+// MODIFIED deleteEnvRow function with save
+function deleteEnvRow(btn) {
+    btn.closest('tr').remove();
+    saveEnvData();
+}
+
+// Update DOMContentLoaded to load saved data
+document.addEventListener('DOMContentLoaded', () => {
+    renderSpecies();
+    if(document.getElementById('speciesSearch')) document.getElementById('speciesSearch').addEventListener('input', renderSpecies);
+    
+    // Load saved data from localStorage
+    loadPropagationData();
+    loadEnvData();
+});
 
     document.addEventListener('DOMContentLoaded', () => {
         renderSpecies();
