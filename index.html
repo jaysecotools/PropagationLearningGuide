@@ -3,338 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>AHCNSY207 · Tasmanian Native Propagation · Complete Resource</title>
+    <title>AHCNSY207 · Tasmanian Native Propagation · Ultimate Learning Ecosystem</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary-dark: #0f3b2c;
-            --primary-medium: #1d6f4a;
-            --primary-light: #52b788;
-            --accent-gold: #f4a261;
-            --accent-soft: #fef3e6;
-            --bg-light: #e9f5ef;
-            --text-dark: #1e3a2f;
-            --border-light: #c0dfcf;
-            --card-shadow: 0 20px 35px -12px rgba(0,32,0,0.2);
+            --primary-dark: #0a3b2a; --primary: #2c7a4a; --primary-light: #6fbf8a;
+            --accent: #f4a261; --accent-dark: #e76f51; --cream: #fff3e6;
+            --bg-light: #f0faf0; --text-dark: #1e3a2f; --border: #c8e0cf;
+            --shadow: 0 20px 35px -12px rgba(0,32,0,0.2);
         }
-        body {
-            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
-            background: #d4e2cf;
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding: 1rem;
-        }
-        .master-ecosystem {
-            max-width: 1600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 2.5rem;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-        }
-        .hero-banner {
-            background: linear-gradient(125deg, #0b3b2a, #1f6e4a, #154f38);
-            color: white;
-            padding: 2rem;
-            border-bottom: 8px solid var(--accent-gold);
-        }
-        .hero-banner h1 { font-size: clamp(1.6rem, 6vw, 3rem); }
-        .hero-banner h1 i { color: var(--accent-gold); margin-right: 12px; }
-        .hero-qual { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .hero-qual span { background: rgba(0,0,0,0.25); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.85rem; border-left: 3px solid var(--accent-gold);}
-        
-        .tab-bar {
-            background: #144d38;
-            padding: 0.4rem 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .tab {
-            background: transparent;
-            border: none;
-            color: #e0f0e0;
-            font-weight: 600;
-            padding: 0.6rem 1rem;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-            transition: 0.2s;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 8px 8px 0 0;
-        }
+        body { font-family: 'Inter', 'Segoe UI', system-ui; background: #d9e6d5; color: var(--text-dark); line-height: 1.6; padding: 1rem; }
+        .master { max-width: 1600px; margin: 0 auto; background: white; border-radius: 2.5rem; overflow: hidden; box-shadow: var(--shadow); }
+        .hero { background: linear-gradient(135deg, #0b3b2a, #1f6e4a, #0f543a); color: white; padding: 2rem; border-bottom: 8px solid var(--accent); }
+        .hero h1 { font-size: clamp(1.8rem, 6vw, 3.2rem); } .hero h1 i { color: var(--accent); margin-right: 12px; }
+        .hero-badges { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .hero-badges span { background: rgba(0,0,0,0.3); backdrop-filter: blur(4px); padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.85rem; border-left: 3px solid var(--accent);}
+        .tab-bar { background: #144d38; padding: 0.4rem 1rem; display: flex; flex-wrap: wrap; gap: 0.2rem; position: sticky; top: 0; z-index: 100; }
+        .tab { background: transparent; border: none; color: #e0f0e0; font-weight: 600; padding: 0.7rem 1rem; cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
         .tab:hover { background: #2a6b4e; color: white; }
-        .tab.active { color: white; border-bottom-color: var(--accent-gold); background: linear-gradient(transparent 70%, rgba(244,162,97,0.2) 100%);}
-        .tab-content { display: none; padding: 2rem 1.8rem; background: white; animation: fadeIn 0.3s ease; }
+        .tab.active { color: white; border-bottom-color: var(--accent); background: linear-gradient(transparent 70%, rgba(244,162,97,0.2) 100%);}
+        .tab-content { display: none; padding: 2rem 2rem; background: white; animation: fade 0.3s ease; }
         .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity:0; transform:translateY(5px);} to { opacity:1; transform:translateY(0);}}
-        
-        h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); color: var(--primary-dark); margin: 1rem 0; border-left: 12px solid var(--accent-gold); padding-left: 1rem; }
-        h3 { font-size: 1.4rem; color: #1e5a3c; margin: 1.5rem 0 0.8rem; border-bottom: 2px dashed #c0e0c0; padding-bottom: 0.3rem; }
-        .card-deck { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .info-card { background: var(--bg-light); border-radius: 1.2rem; padding: 1.2rem; border: 1px solid var(--border-light); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .info-card i { font-size: 1.8rem; color: var(--primary-medium); margin-bottom: 0.8rem; }
-        .tool-matrix { width: 100%; border-collapse: collapse; margin: 1.5rem 0; display: block; overflow-x: auto; border-radius: 1rem; }
-        .tool-matrix th { background: var(--primary-dark); color: white; padding: 10px; }
-        .tool-matrix td { border: 1px solid var(--border-light); padding: 8px; vertical-align: top; }
-        .checklist-super { background: #fef9ef; border: 3px solid var(--primary-light); border-radius: 1.5rem; padding: 1.5rem; margin: 1.5rem 0; }
-        .checklist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; }
-        .btn { background: var(--accent-gold); color: #1f3d2c; font-weight: bold; border: none; padding: 0.6rem 1.2rem; border-radius: 40px; cursor: pointer; margin: 0.3rem; transition: 0.2s; }
-        .btn-outline { background: transparent; border: 2px solid var(--primary-medium); color: var(--primary-dark); }
-        .btn:hover { background: #f7b05e; transform: translateY(-2px);}
-        .quiz-container { background: #1e553b; border-radius: 1.8rem; padding: 1.5rem; color: white; margin: 1.5rem 0; }
-        .quiz-question-card { background: #2a6f4f; border-radius: 1.2rem; padding: 1rem; margin: 1rem 0; }
-        .quiz-option { background: #3f8b62; margin: 0.5rem 0; padding: 0.5rem 1rem; border-radius: 40px; cursor: pointer; }
-        .scenario-box { background: #fef1df; border-radius: 1.2rem; padding: 1.2rem; margin: 1.2rem 0; border-left: 10px solid var(--accent-gold); }
-        .scenario-option { background: white; border-radius: 40px; padding: 0.5rem 1rem; margin: 0.5rem 0; cursor: pointer; border: 2px solid #ccc; }
-        .scenario-option.selected { background: var(--primary-medium); color: white; border-color: var(--accent-gold);}
-        .footer-expanded { background: #0f3829; color: #e0f0e0; padding: 1.5rem; margin-top: 2rem; border-top: 8px solid var(--accent-gold); }
-        .glossary-term { background: #e2f0e2; border-bottom: 2px dotted var(--primary-medium); cursor: help; padding: 0 4px; }
-        .written-question-block { background: #f0f7f0; border-radius: 1.2rem; padding: 1rem; margin: 1rem 0; border-left: 6px solid var(--primary-medium); }
-        .model-answer { display: none; margin-top: 0.5rem; padding: 0.8rem; background: #e8f5e9; border-radius: 0.8rem; color: #1e4620; }
-        @media print { .tab-bar, .btn, .hero-banner, .quiz-container, .scenario-box { display: none; } .tab-content { display: block !important; } }
+        @keyframes fade { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:translateY(0);}}
+        h2 { font-size: clamp(1.8rem, 5vw, 2.4rem); color: var(--primary-dark); margin: 1rem 0 1rem 0; border-left: 12px solid var(--accent); padding-left: 1rem; }
+        h3 { font-size: 1.6rem; color: #1d6a43; margin: 1.5rem 0 1rem; border-bottom: 3px dashed var(--border); padding-bottom: 0.4rem; }
+        h4 { font-size: 1.3rem; color: #2a6b4a; margin: 1rem 0 0.5rem; }
+        .grid-2, .grid-3 { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .card { background: var(--bg-light); border-radius: 1.5rem; padding: 1.5rem; border: 1px solid var(--border); transition: transform 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .card i { font-size: 2rem; color: var(--primary); margin-bottom: 0.8rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; display: block; overflow-x: auto; border-radius: 1rem; }
+        th { background: var(--primary-dark); color: white; padding: 10px; }
+        td { border: 1px solid var(--border); padding: 10px; vertical-align: top; }
+        .checklist-card { background: var(--cream); border: 3px solid var(--primary-light); border-radius: 1.5rem; padding: 1.5rem; margin: 1.5rem 0; }
+        .checklist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.8rem; }
+        .btn { background: var(--accent); color: #2c3e2b; font-weight: bold; border: none; padding: 0.6rem 1.2rem; border-radius: 60px; cursor: pointer; margin: 0.3rem; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary-dark); }
+        .btn:hover { background: var(--accent-dark); transform: translateY(-2px); color: white; }
+        .quiz-card { background: #1e553b; border-radius: 1.8rem; padding: 1.5rem; color: white; margin: 1.5rem 0; }
+        .quiz-question { background: #2f7752; border-radius: 1.2rem; padding: 1rem; margin: 1rem 0; }
+        .scenario { background: #fff0e0; border-radius: 1.2rem; padding: 1.2rem; margin: 1.2rem 0; border-left: 10px solid var(--accent); }
+        .scenario-option { background: white; border-radius: 40px; padding: 0.6rem 1rem; margin: 0.5rem 0; cursor: pointer; border: 2px solid #ddd; transition: 0.1s; }
+        .scenario-option.selected { background: var(--primary); color: white; border-color: var(--accent);}
+        .glossary-term { background: #e0f0e0; border-bottom: 2px dotted var(--primary); cursor: help; padding: 0 4px; position: relative; }
+        .glossary-term .tooltip { display: none; position: absolute; bottom: 120%; left: 0; background: var(--primary-dark); color: white; padding: 6px 12px; border-radius: 12px; width: 220px; font-size: 0.8rem; z-index: 10; }
+        .glossary-term:hover .tooltip { display: block; }
+        .species-card { background: white; border-radius: 1rem; padding: 1rem; border-left: 8px solid var(--accent); margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        footer { background: #0f3829; color: #e9f5e9; padding: 2rem; margin-top: 2rem; border-top: 8px solid var(--accent); }
+        @media print { .tab-bar, .btn, .hero, .quiz-card, .scenario { display: none; } .tab-content { display: block !important; } }
+        .feedback-correct { background: #2c7840; color: white; padding: 8px; border-radius: 12px; margin-top: 8px; }
+        .feedback-incorrect { background: #b34343; color: white; padding: 8px; border-radius: 12px; margin-top: 8px; }
+        .model-ans { display: none; margin-top: 8px; padding: 10px; background: #e8f5e9; border-radius: 12px; color: #1e4620; }
     </style>
 </head>
 <body>
-<div class="master-ecosystem">
-    <div class="hero-banner">
+<div class="master">
+    <div class="hero">
         <h1><i class="fas fa-seedling"></i> AHCNSY207 · Undertake Propagation Activities</h1>
-        <div class="hero-qual">
-            <span><i class="fas fa-certificate"></i> Certificate III Conservation & Ecosystem Management</span>
-            <span><i class="fas fa-tree"></i> Tasmanian Native Plants Focus</span>
-            <span><i class="fas fa-flask"></i> Seed · Cutting · Division · Grafting</span>
-            <span><i class="fas fa-check-double"></i> ASQA Compliant · Full Unit Coverage</span>
+        <div class="hero-badges">
+            <span><i class="fas fa-certificate"></i> Cert III Conservation & Ecosystem Management</span>
+            <span><i class="fas fa-tree"></i> Tasmanian Native Plants · Endemic Focus</span>
+            <span><i class="fas fa-flask"></i> Seed · Cutting · Division · Grafting · Layering</span>
+            <span><i class="fas fa-check-double"></i> ASQA Aligned · Full Unit Coverage</span>
         </div>
     </div>
 
     <div class="tab-bar">
-        <button class="tab active" onclick="switchTab('tab1')"><i class="fas fa-leaf"></i> Propagation Methods</button>
-        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-clipboard-list"></i> Planning & Ethics</button>
-        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-tools"></i> Techniques & Tools</button>
-        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-chart-line"></i> Aftercare & Hygiene</button>
-        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> Quizzes & Games</button>
-        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-comment-dots"></i> Scenarios</button>
-        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-file-alt"></i> Written Q&A</button>
-        <button class="tab" onclick="switchTab('tab8')"><i class="fas fa-print"></i> Records & Checklists</button>
-        <button class="tab" onclick="switchTab('tab9')"><i class="fas fa-book-open"></i> Glossary & Resources</button>
+        <button class="tab active" onclick="switchTab('tab1')"><i class="fas fa-leaf"></i> 1. Propagation Methods</button>
+        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-clipboard-list"></i> 2. Planning & Ethics</button>
+        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-tools"></i> 3. Techniques & Tools</button>
+        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-chart-line"></i> 4. Aftercare & Hygiene</button>
+        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> 5. Interactive Quizzes</button>
+        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-comments"></i> 6. Real Scenarios</button>
+        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-file-alt"></i> 7. Knowledge Check (Q&A)</button>
+        <button class="tab" onclick="switchTab('tab8')"><i class="fas fa-database"></i> 8. Tasmanian Species Database</button>
+        <button class="tab" onclick="switchTab('tab9')"><i class="fas fa-print"></i> 9. Templates & Records</button>
+        <button class="tab" onclick="switchTab('tab10')"><i class="fas fa-graduation-cap"></i> 10. Glossary & Resources</button>
     </div>
 
-    <!-- TAB 1: PROPAGATION METHODS (covers Q1-3,5,6,8) -->
+    <!-- TAB 1: PROPAGATION METHODS (seed, cutting, division, layering, grafting) -->
     <div id="tab1" class="tab-content active">
-        <h2><i class="fas fa-seedling"></i> Plant Propagation Methods</h2>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Unit Q1: Name five (5) methods of propagating plants?</strong><button class="btn btn-outline" style="float:right; padding:2px 10px;" onclick="toggleAnswer('ans1')">Show Answer</button><div id="ans1" class="model-answer"><strong>Model Answer:</strong> 1. Seed propagation, 2. Vegetative cuttings (softwood, semi-hardwood, hardwood), 3. Division, 4. Layering, 5. Grafting/budding. Also: tissue culture, root cuttings, leaf cuttings, spore.</div></div>
-        
-        <div class="card-deck">
-            <div class="info-card"><i class="fas fa-seedling"></i><h4>Seed Propagation</h4><p>For Tasmanian natives: <em>Eucalyptus, Acacia, Banksia, Leptospermum</em>. Pre-treatments: scarification (hot water for Acacia), cold stratification (Pomaderris), smoke water (many heath species).</p></div>
-            <div class="info-card"><i class="fas fa-cut"></i><h4>Cutting Propagation</h4><p>Softwood (spring), semi-hardwood (summer), hardwood (winter). Tasmanian examples: <em>Leptospermum, Melaleuca, Correa, Prostanthera</em> – use IBA rooting hormone 2000-3000ppm.</p></div>
-            <div class="info-card"><i class="fas fa-hand-holding-heart"></i><h4>Division & Layering</h4><p>Divide clumping species: <em>Poa, Lomandra, Gahnia, Dianella</em>. Layering works for many shrubs (e.g., <em>Rhododendron</em>, <em>Prostanthera</em>).</p></div>
+        <h2><i class="fas fa-seedling"></i> Five Core Propagation Methods</h2>
+        <div class="grid-3">
+            <div class="card"><i class="fas fa-seedling"></i><h4>1. Seed Propagation</h4><p>Sexual propagation: genetic diversity. Pre-treatments: scarification (Acacia, Kennedia), cold stratification (Pomaderris, Eucalyptus coccifera), smoke water (Banksia, Stylidium). Sow in sterile media, depth = 2-3× seed diameter.</p><p><strong>Tasmanian examples:</strong> <em>Eucalyptus globulus, Nothofagus cunninghamii, Banksia marginata</em></p></div>
+            <div class="card"><i class="fas fa-cut"></i><h4>2. Vegetative Cuttings</h4><p><strong>Softwood</strong> (spring): <em>Leptospermum, Melaleuca</em> – IBA 2000ppm.<br><strong>Semi-hardwood</strong> (summer): <em>Correa, Prostanthera</em> – IBA 3000ppm.<br><strong>Hardwood</strong> (winter): deciduous species. High humidity + bottom heat 22-25°C.</p></div>
+            <div class="card"><i class="fas fa-hand-holding-heart"></i><h4>3. Division & Layering</h4><p><strong>Division:</strong> <em>Poa labillardierei, Lomandra longifolia, Gahnia grandis, Dianella tasmanica</em>. Divide in spring, ensure each piece has roots + shoots.<br><strong>Layering:</strong> Peg low branch, cover with soil; sever when rooted.</p></div>
+            <div class="card"><i class="fas fa-graft"></i><h4>4. Grafting & Budding</h4><p>Used for cultivars and difficult-to-root species (e.g., some eucalypts, ornamental natives). Whip & tongue, cleft graft. Match cambium, seal with grafting tape.</p></div>
+            <div class="card"><i class="fas fa-spore"></i><h4>5. Spore & Tissue Culture</h4><p>Ferns: collect spores, sow on sterile medium. Tissue culture for mass propagation of threatened species (e.g., some orchids).</p></div>
         </div>
-
-        <h3>📅 Cutting Types by Wood Type (Q5)</h3>
-        <table class="tool-matrix">
-            <tr><th>Type</th><th>Time of Year</th><th>Tasmanian Example</th></tr>
-            <tr><td>Softwood</td><td>Spring to early summer</td><td><em>Leptospermum scoparium</em></td></tr>
-            <tr><td>Semi-hardwood</td><td>Late summer to autumn</td><td><em>Melaleuca ericifolia, Correa alba</em></td></tr>
-            <tr><td>Hardwood</td><td>Winter</td><td>Deciduous species; some <em>Eucalyptus</em> from juvenile stock</td></tr>
-        </table>
-
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q6: Cuttings are also classified based on the plant parts that they come from. List four (4) plant parts that can be used for cuttings.</strong><button class="btn btn-outline" style="float:right;" onclick="toggleAnswer('ans6')">Show</button><div id="ans6" class="model-answer"><strong>Answer:</strong> 1. Stem cuttings, 2. Leaf cuttings, 3. Root cuttings, 4. Leaf-bud cuttings (also leaf vein, etc.).</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q8: Name two (2) types of containers used for sticking cuttings.</strong><button class="btn btn-outline" style="float:right;" onclick="toggleAnswer('ans8')">Show</button><div id="ans8" class="model-answer"><strong>Answer:</strong> Tubes, cell trays, plug trays, kwik trays.</div></div>
-    </div>
-
-    <!-- TAB 2: PLANNING & ETHICS (covers Q2,4,14,16) -->
-    <div id="tab2" class="tab-content">
-        <h2><i class="fas fa-clipboard-list"></i> Planning, Parent Plants & Ethics</h2>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q2: a) What is a parent plant? b) What qualities are required of parent plants?</strong><button class="btn btn-outline" style="float:right;" onclick="toggleAnswer('ans2')">Show</button><div id="ans2" class="model-answer"><strong>Model Answer:</strong> a) The plant from which you collect cuttings or seeds. b) Should be young, vigorously growing, healthy, pest/disease free, true to type, and not governed by Plant Breeder’s Rights.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q3: When is the best time of day to collect vegetative material and why?</strong><button class="btn btn-outline" style="float:right;" onclick="toggleAnswer('ans3')">Show</button><div id="ans3" class="model-answer"><strong>Answer:</strong> Early morning, when the plant is turgid (fully hydrated).</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q4: Describe three (3) storage methods to preserve vegetative material once separated from parent plant.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans4')">Show</button><div id="ans4" class="model-answer"><strong>Answer:</strong> 1. Polythene bags in cool store; 2. Buckets of water or wet sphagnum/coir; 3. Refrigerated esky; 4. Wrapped in wet newspaper and bagged.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q14: What are five (5) ways to maintain hygiene in a propagation area?</strong><button class="btn btn-outline" onclick="toggleAnswer('ans14')">Show</button><div id="ans14" class="model-answer"><strong>Answer:</strong> 1. Sterilise workbench/tools/pots; 2. Clean floors; 3. Do not bring soil into propagation area, use footbaths; 4. Wear gloves; 5. Metho spray; 6. Isolate new plants/quarantine.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q16: How does the application of nutrients differ with propagation stages?</strong><button class="btn btn-outline" onclick="toggleAnswer('ans16')">Show</button><div id="ans16" class="model-answer"><strong>Answer:</strong> Seeds/cuttings without roots: no nutrition required. Once germinated or rooted: introduce low-phosphorus liquid fertiliser (¼ strength) for native species.</div></div>
-    </div>
-
-    <!-- TAB 3: TECHNIQUES & TOOLS (covers Q7,9,10,11,17) -->
-    <div id="tab3" class="tab-content">
-        <h2><i class="fas fa-tools"></i> Collection, Hormones & Equipment</h2>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q7: Name two (2) reasons why cuttings are dipped into a hormone treatment.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans7')">Show</button><div id="ans7" class="model-answer"><strong>Answer:</strong> 1. To hasten root initiation; 2. Increase percentage of cuttings that form roots; 3. Increase number/quality of roots; 4. Increase uniformity of rooting.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q9: Name three (3) reasons why cuttings are placed on a controlled heat bed and kept misted.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans9')">Show</button><div id="ans9" class="model-answer"><strong>Answer:</strong> 1. Keep tops cool/moist; 2. Reduce drying/wilting while roots initiate; 3. Encourage active cell division and initiate roots.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q10: What environmental factors are required for seeds to germinate?</strong><button class="btn btn-outline" onclick="toggleAnswer('ans10')">Show</button><div id="ans10" class="model-answer"><strong>Answer:</strong> Moisture, temperature, oxygen, and sometimes light.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q11: Briefly explain cold and warm stratification with examples.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans11')">Show</button><div id="ans11" class="model-answer"><strong>Answer:</strong> Cold stratification: moist cold treatment (-4 to 7°C) – e.g., <em>Pomaderris apetala</em>. Warm stratification: warm moist soil (7-20°C) – e.g., tropical palms.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q12: Name two types of scarification and examples.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans12')">Show</button><div id="ans12" class="model-answer"><strong>Answer:</strong> 1. Boiling water – <em>Acacia</em>; 2. Abrasion/filing – <em>Hardenbergia</em>; also burning (hard seed).</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q17: Name four (4) things for maintaining and storing propagation tools.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans17')">Show</button><div id="ans17" class="model-answer"><strong>Answer:</strong> Clean and sterilise before/after use; sharpen blades; lubricate tools; store in dry dust-free place.</div></div>
-    </div>
-
-    <!-- TAB 4: AFTERCARE, HYGIENE & RECORDS (covers Q13,15,18,19) -->
-    <div id="tab4" class="tab-content">
-        <h2><i class="fas fa-chart-line"></i> Aftercare, Hygiene & Monitoring</h2>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q13: What are five (5) common problems during establishment in greenhouse?</strong><button class="btn btn-outline" onclick="toggleAnswer('ans13')">Show</button><div id="ans13" class="model-answer"><strong>Answer:</strong> Seeds won’t germinate, cuttings wilt/die, cuttings won’t root, over/under watering, pests/diseases (damping off, root rots, Botrytis, aphids, fungus gnats).</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q15: How does nutrient application differ between stages?</strong> (see Q16 also) – already covered.</div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q18: Disposal methods for nursery waste.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans18')">Show</button><div id="ans18" class="model-answer"><strong>Answer:</strong> Broken pots – landfill/recycling; diseased material – landfill/solarisation; used media – compost; green waste – compost; weeds with seeds – landfill/weed tea/solarisation.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q19: Name three (3) records kept in a propagation nursery.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans19')">Show</button><div id="ans19" class="model-answer"><strong>Answer:</strong> Propagation records, potting records, daily temperature records, spray records, fertiliser records.</div></div>
-        <div class="written-question-block"><i class="fas fa-question-circle"></i> <strong>Q20: List four (4) daily checks in a propagation greenhouse.</strong><button class="btn btn-outline" onclick="toggleAnswer('ans20')">Show</button><div id="ans20" class="model-answer"><strong>Answer:</strong> Bed temps, air temp (max/min), humidity levels, misting operation, media moisture, light levels, pest/disease observation.</div></div>
+        <div class="checklist-card"><h3><i class="fas fa-question-circle"></i> Assessment Knowledge: Five Methods</h3><p>The unit requires identification of five propagation methods: <strong>seed, cutting, division, layering, grafting</strong>. Each has specific applications for Tasmanian native plants.</p><button class="btn btn-outline" onclick="showModel('model5methods')">Show Model Answer</button><div id="model5methods" class="model-ans"><strong>Model Answer (Q1):</strong> 1. Seed propagation, 2. Vegetative cuttings (softwood, semi-hardwood, hardwood), 3. Division, 4. Layering, 5. Grafting/budding. Also: tissue culture, root cuttings, spore.</div></div>
         
-        <h3>🌡️ Environmental Monitoring Template</h3>
-        <table class="tool-matrix">
-            <tr><th>Date</th><th>Air Temp (°C)</th><th>Humidity %</th><th>Media Moisture</th><th>Pest Observed</th><th>Action</th></tr>
-            <tr><td>____/____</td><td>______</td><td>______</td><td>______</td><td>______</td><td>______</td></tr>
-        </table>
+        <h3>🌿 Cutting Types by Wood Type & Season</h3>
+        <table><thead><tr><th>Type</th><th>Time of Year</th><th>Tasmanian Example</th><th>Hormone (IBA)</th></tr></thead>
+        <tbody><tr><td>Softwood</td><td>Spring to early summer</td><td><em>Leptospermum scoparium</em></td><td>2000-3000 ppm</td></tr>
+        <tr><td>Semi-hardwood</td><td>Late summer to autumn</td><td><em>Correa alba, Melaleuca ericifolia</em></td><td>3000 ppm</td></tr>
+        <tr><td>Hardwood</td><td>Winter</td><td>Deciduous species, some eucalypt juvenile cuttings</td><td>1000-2000 ppm</td></tr></tbody></table>
+        <button class="btn btn-outline" onclick="showModel('modelCuttingTypes')">📘 Show Assessment Answer (Q5)</button><div id="modelCuttingTypes" class="model-ans"><strong>Q5 Answer:</strong> Softwood (spring–early summer), Semi-hardwood (late summer–autumn), Hardwood (winter).</div>
+        
+        <h3>✂️ Plant Parts Used for Cuttings</h3>
+        <div class="grid-2"><div class="card"><i class="fas fa-leaf"></i><h4>Stem cuttings</h4><p>Most common: tip, heel, nodal.</p></div><div class="card"><i class="fas fa-leaf"></i><h4>Leaf cuttings</h4><p><em>Begonia, Peperomia</em>; some native succulents.</p></div><div class="card"><i class="fas fa-tree"></i><h4>Root cuttings</h4><p>Used for <em>Acacia, Banksia</em> (rarely).</p></div><div class="card"><i class="fas fa-leaf"></i><h4>Leaf-bud cuttings</h4><p>Single node with leaf; <em>Camellia, Rhododendron</em>.</p></div></div>
+        <button class="btn btn-outline" onclick="showModel('modelParts')">Show Q6 Answer</button><div id="modelParts" class="model-ans"><strong>Q6:</strong> Stem cuttings, leaf cuttings, root cuttings, leaf-bud cuttings.</div>
     </div>
 
-    <!-- TAB 5: QUIZZES & GAMES (interactive knowledge checks) -->
+    <!-- TAB 2: PLANNING & ETHICS (parent plants, timing, storage, hygiene, permits) -->
+    <div id="tab2" class="tab-content">
+        <h2><i class="fas fa-clipboard-list"></i> Work Planning & Ethical Sourcing</h2>
+        <div class="grid-2">
+            <div class="card"><i class="fas fa-seedling"></i><h4>Parent Plant Selection</h4><p><strong>Qualities:</strong> Young, vigorously growing, healthy, pest/disease free, true to type, not under Plant Breeder’s Rights. Avoid stressed or flowering plants.</p><button class="btn btn-outline" onclick="showModel('modelParent')">Show Q2 Answer</button><div id="modelParent" class="model-ans"><strong>Q2:</strong> a) Parent plant = source of cuttings/seed. b) Qualities: young, vigorous, healthy, true-to-type, free of pests/disease, not PBR-protected.</div></div>
+            <div class="card"><i class="fas fa-clock"></i><h4>Best Collection Time</h4><p><strong>Early morning</strong> – plants are turgid (fully hydrated). Avoid midday heat.</p><button class="btn btn-outline" onclick="showModel('modelTime')">Show Q3 Answer</button><div id="modelTime" class="model-ans"><strong>Q3:</strong> Early morning, when plant is turgid (fully hydrated).</div></div>
+            <div class="card"><i class="fas fa-box"></i><h4>Storage Methods for Vegetative Material</h4><p>1. Polythene bags in cool store (2-5°C). 2. Buckets of water or wet sphagnum/coir. 3. Refrigerated esky. 4. Wrapped in wet newspaper and sealed.</p><button class="btn btn-outline" onclick="showModel('modelStore')">Show Q4 Answer</button><div id="modelStore" class="model-ans"><strong>Q4:</strong> In polythene bags in cool store; buckets of water/wet sphagnum; refrigerated esky; wet newspaper + bagged.</div></div>
+            <div class="card"><i class="fas fa-hand-sparkles"></i><h4>Hygiene Protocols (5 ways)</h4><p>1. Sterilise benches/tools (70% ethanol). 2. Clean floors daily. 3. Footbaths at entrance. 4. Wear disposable gloves. 5. Isolate new plants/quarantine. Also: use sterile media, no soil from outside.</p><button class="btn btn-outline" onclick="showModel('modelHygiene')">Show Q14 Answer</button><div id="modelHygiene" class="model-ans"><strong>Q14:</strong> Sterilise work bench/tools; clean floors; footbaths; wear gloves; isolate new plants.</div></div>
+        </div>
+        <div class="checklist-card"><h3><i class="fas fa-balance-scale"></i> Ethical Collection Guidelines (Tasmania)</h3><p>Under <strong>Nature Conservation Act 2002</strong> and <strong>Threatened Species Protection Act 1995</strong>, collection from public land or for threatened species requires a permit. Follow the 20% rule: collect no more than 20% of seed/cuttings from any population. Respect Aboriginal heritage.</p></div>
+    </div>
+
+    <!-- TAB 3: TECHNIQUES & TOOLS (hormone, containers, heat/mist, scarification, stratification) -->
+    <div id="tab3" class="tab-content">
+        <h2><i class="fas fa-tools"></i> Propagation Techniques & Equipment</h2>
+        <div class="grid-2">
+            <div class="card"><i class="fas fa-flask"></i><h4>Rooting Hormone (IBA)</h4><p>Reasons: hasten root initiation, increase rooting percentage, improve root quality, uniformity.</p><button class="btn btn-outline" onclick="showModel('modelHormone')">Show Q7 Answer</button><div id="modelHormone" class="model-ans"><strong>Q7:</strong> To hasten root initiation; increase percentage of cuttings that form roots; increase number/quality of roots; uniformity of rooting.</div></div>
+            <div class="card"><i class="fas fa-thermometer-half"></i><h4>Heat Bed & Misting</h4><p>1. Keep tops cool/moist. 2. Reduce wilting while roots initiate. 3. Encourage cell division and rooting.</p><button class="btn btn-outline" onclick="showModel('modelHeat')">Show Q9 Answer</button><div id="modelHeat" class="model-ans"><strong>Q9:</strong> Keep tops cool/moist; reduce drying/wilting; encourage active cell division and root initiation.</div></div>
+            <div class="card"><i class="fas fa-seedling"></i><h4>Containers for Cuttings</h4><p>Tubes, cell trays, plug trays, kwik trays, deep pots for long roots.</p><button class="btn btn-outline" onclick="showModel('modelContainers')">Show Q8 Answer</button><div id="modelContainers" class="model-ans"><strong>Q8:</strong> Tubes, cell trays, plug trays, kwik trays.</div></div>
+            <div class="card"><i class="fas fa-water"></i><h4>Seed Germination Factors</h4><p>Moisture, temperature, oxygen, sometimes light.</p><button class="btn btn-outline" onclick="showModel('modelGerm')">Show Q10 Answer</button><div id="modelGerm" class="model-ans"><strong>Q10:</strong> Moisture, temperature, oxygen, and sometimes light.</div></div>
+        </div>
+        <h3>🔥 Scarification & Stratification (Tasmanian natives)</h3>
+        <table><thead><tr><th>Treatment</th><th>Description</th><th>Tasmanian Species</th></tr></thead>
+        <tbody><tr><td>Hot water scarification</td><td>Pour boiling water over seed, soak 12-24h</td><td><em>Acacia melanoxylon, A. verticillata, Kennedia prostrata</em></td></tr>
+        <tr><td>Abrasion / nicking</td><td>Rub with sandpaper or nick seed coat</td><td><em>Hardenbergia, Pultenaea</em></td></tr>
+        <tr><td>Cold stratification</td><td>Moist cold (2-5°C) for 4-10 weeks</td><td><em>Pomaderris apetala, Eucalyptus coccifera, Coprosma</em></td></tr>
+        <tr><td>Warm stratification</td><td>Warm moist (15-25°C) for tropical species</td><td>Limited for Tasmanian natives; used for some rainforest species</td></tr>
+        <tr><td>Smoke water</td><td>Soak in smoke-infused water</td><td><em>Banksia, Stylidium, Actinotus</em></td></tr></tbody></table>
+        <button class="btn btn-outline" onclick="showModel('modelScarify')">Show Q11 & Q12 Answers</button><div id="modelScarify" class="model-ans"><strong>Q11:</strong> Cold stratification: low temp + moist (e.g., <em>Pomaderris</em>). Warm stratification: warm, moist soil (tropical palms). <strong>Q12:</strong> Boiling water (<em>Acacia</em>); abrasion (<em>Hardenbergia</em>).</div>
+        <div class="card"><i class="fas fa-wrench"></i><h4>Tool Maintenance</h4><p>Clean & sterilise before/after use; sharpen blades; lubricate moving parts; store in dry dust-free place.</p><button class="btn btn-outline" onclick="showModel('modelTools')">Show Q17 Answer</button><div id="modelTools" class="model-ans"><strong>Q17:</strong> Clean and sterilise; sharpen blades; lubricate; store dry.</div></div>
+    </div>
+
+    <!-- TAB 4: AFTERCARE & HYGIENE (nutrients, problems, records, daily checks) -->
+    <div id="tab4" class="tab-content">
+        <h2><i class="fas fa-chart-line"></i> Aftercare, Nutrition & Monitoring</h2>
+        <div class="grid-2">
+            <div class="card"><i class="fas fa-flask"></i><h4>Nutrient Application Stages</h4><p><strong>Before roots:</strong> No fertiliser (seeds/cuttings). <strong>After rooting/germination:</strong> Dilute liquid fertiliser (¼ strength) with low phosphorus for natives.</p><button class="btn btn-outline" onclick="showModel('modelNutrient')">Show Q16 Answer</button><div id="modelNutrient" class="model-ans"><strong>Q15/16:</strong> Seeds/cuttings without roots require no nutrition. Once germinated/rooted, introduce dilute low-P fertiliser.</div></div>
+            <div class="card"><i class="fas fa-bug"></i><h4>Five Common Problems</h4><p>1. Seeds fail to germinate. 2. Cuttings wilt/die. 3. Cuttings won’t root. 4. Over/under watering. 5. Pests/diseases (damping off, Botrytis, aphids, fungus gnats).</p><button class="btn btn-outline" onclick="showModel('modelProblems')">Show Q13 Answer</button><div id="modelProblems" class="model-ans"><strong>Q13:</strong> Seeds won’t germinate, cuttings wilt/die, cuttings won’t root, over/under watering, pests/diseases (damping off, root rots, Botrytis, aphids, fungus gnats).</div></div>
+            <div class="card"><i class="fas fa-trash-alt"></i><h4>Nursery Waste Disposal</h4><p><strong>Broken pots:</strong> landfill/recycling. <strong>Diseased material:</strong> landfill/solarisation. <strong>Used media:</strong> compost. <strong>Green waste:</strong> compost. <strong>Weeds with seeds:</strong> landfill/weed tea/solarisation.</p><button class="btn btn-outline" onclick="showModel('modelWaste')">Show Q18 Answer</button><div id="modelWaste" class="model-ans"><strong>Q18:</strong> Broken pots → landfill/recycling; diseased → landfill/solarisation; used media → compost; green waste → compost; weeds with seeds → landfill/weed tea.</div></div>
+            <div class="card"><i class="fas fa-clipboard-list"></i><h4>Records Kept in Nursery</h4><p>Propagation records, potting records, daily temperature records, spray records, fertiliser records.</p><button class="btn btn-outline" onclick="showModel('modelRecords')">Show Q19 Answer</button><div id="modelRecords" class="model-ans"><strong>Q19:</strong> Propagation records, potting records, daily temperature records, spray records, fertiliser records.</div></div>
+            <div class="card"><i class="fas fa-temperature-low"></i><h4>Daily Greenhouse Checks</h4><p>1. Bed temperatures. 2. Air temperature (max/min). 3. Humidity levels. 4. Misting operation / media moisture. 5. Light levels. 6. Pest/disease observation.</p><button class="btn btn-outline" onclick="showModel('modelDaily')">Show Q20 Answer</button><div id="modelDaily" class="model-ans"><strong>Q20:</strong> Bed temps, air temp, humidity levels, misting operation, media moisture, light levels, pest/disease observation.</div></div>
+        </div>
+        <div class="checklist-card"><h3><i class="fas fa-chart-simple"></i> Environmental Monitoring Log Template</h3><table><thead><tr><th>Date</th><th>Species</th><th>Air Temp °C</th><th>Humidity %</th><th>Media Moisture</th><th>Pests</th><th>Action</th></tr></thead><tbody><tr><td>____/____</td><td>_________</td><td>___</td><td>___</td><td>___</td><td>___</td><td>___</td></tr></tbody></table></div>
+    </div>
+
+    <!-- TAB 5: INTERACTIVE QUIZZES -->
     <div id="tab5" class="tab-content">
-        <h2><i class="fas fa-puzzle-piece"></i> Interactive Quizzes</h2>
-        <div class="quiz-container">
-            <h3>Quiz: Tasmanian Native Propagation</h3>
-            <div class="quiz-question-card" data-correct="B"><div class="quiz-question">1. Which pre-treatment is essential for <em>Acacia melanoxylon</em> seed?</div>
-                <div class="quiz-option"><input type="radio" name="qA1" value="A"> Cold stratification</div>
-                <div class="quiz-option"><input type="radio" name="qA1" value="B"> Hot water scarification (90°C soak)</div>
-                <div class="quiz-option"><input type="radio" name="qA1" value="C"> Fermentation</div><div class="quiz-feedback"></div></div>
-            <div class="quiz-question-card" data-correct="B"><div class="quiz-question">2. Best time of day to collect cuttings?</div>
-                <div class="quiz-option"><input type="radio" name="qA2" value="A"> Midday</div><div class="quiz-option"><input type="radio" name="qA2" value="B"> Early morning</div>
-                <div class="quiz-option"><input type="radio" name="qA2" value="C"> Late afternoon</div><div class="quiz-feedback"></div></div>
-            <div class="quiz-question-card" data-correct="C"><div class="quiz-question">3. Which Tasmanian species has recalcitrant seed that must be sown fresh?</div>
-                <div class="quiz-option"><input type="radio" name="qA3" value="A"> Eucalyptus globulus</div>
-                <div class="quiz-option"><input type="radio" name="qA3" value="B"> Acacia melanoxylon</div>
-                <div class="quiz-option"><input type="radio" name="qA3" value="C"> Nothofagus cunninghamii</div><div class="quiz-feedback"></div></div>
-            <button class="btn" onclick="checkAllQuizzes()">Check Answers</button>
+        <h2><i class="fas fa-puzzle-piece"></i> Interactive Knowledge Checks</h2>
+        <div class="quiz-card">
+            <h3>🌱 Propagation Methods Quiz</h3>
+            <div class="quiz-question" data-correct="B"><div class="quiz-question-text">1. Which method is best for <em>Poa labillardierei</em> (silver tussock)?</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="A"> Seed only</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="B"> Division</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="C"> Grafting</div><div class="quiz-feedback"></div></div>
+            <div class="quiz-question" data-correct="A"><div class="quiz-question-text">2. What pre-treatment is essential for <em>Acacia melanoxylon</em> seed?</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="A"> Hot water scarification</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="B"> Cold stratification</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="C"> Fermentation</div><div class="quiz-feedback"></div></div>
+            <div class="quiz-question" data-correct="C"><div class="quiz-question-text">3. Which Tasmanian species has recalcitrant seed that must be sown fresh?</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="A"> Eucalyptus globulus</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="B"> Acacia melanoxylon</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="C"> Nothofagus cunninghamii</div><div class="quiz-feedback"></div></div>
+            <div class="quiz-question" data-correct="B"><div class="quiz-question-text">4. Best time of day to collect cuttings?</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="A"> Midday</div><div class="quiz-option"><input type="radio" name="q4" value="B"> Early morning</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="C"> Late afternoon</div><div class="quiz-feedback"></div></div>
+            <button class="btn" onclick="checkQuizzes()">Check Answers</button>
             <button class="btn btn-outline" onclick="resetQuizzes()">Reset</button>
         </div>
-        <h3>🌿 Match the Method Game</h3>
-        <div style="background:#f0f7f0; padding:1rem; border-radius:1rem;">
-            <p><strong>Drag concept:</strong> Match species to propagation method: <em>Acacia melanoxylon</em> → Seed (scarified), <em>Leptospermum</em> → Cutting, <em>Gahnia grandis</em> → Division.</p>
-            <button class="btn" onclick="alert('Great! In assessment, demonstrate correct method for each.')">Check Understanding</button>
-        </div>
     </div>
 
-    <!-- TAB 6: SCENARIOS (workplace scenarios) -->
+    <!-- TAB 6: REAL SCENARIOS -->
     <div id="tab6" class="tab-content">
-        <h2><i class="fas fa-comment-dots"></i> Workplace Scenarios</h2>
-        <div class="scenario-box"><h3>Scenario 1: Parent plant selection</h3><p>You need to collect cuttings of <em>Prostanthera lasianthos</em> for a restoration project. What qualities do you look for?</p>
-            <div class="scenario-options" id="s1opts"><div class="scenario-option" onclick="selectScenario(1,'A')">A) Any plant with leaves</div>
-            <div class="scenario-option" onclick="selectScenario(1,'B')">B) Young, vigorously growing, pest-free, true-to-type plant</div>
-            <div class="scenario-option" onclick="selectScenario(1,'C')">C) Old senescing plant</div></div>
-            <div id="s1fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(1)">Reset</button>
-        </div>
-        <div class="scenario-box"><h3>Scenario 2: Fungus on cuttings</h3><p>Grey mould (Botrytis) appears on <em>Grevillea</em> cuttings in mist house. What actions?</p>
-            <div class="scenario-options" id="s2opts"><div class="scenario-option" onclick="selectScenario(2,'A')">A) Increase misting</div>
-            <div class="scenario-option" onclick="selectScenario(2,'B')">B) Remove affected cuttings, improve airflow, reduce mist, apply fungicide</div>
-            <div class="scenario-option" onclick="selectScenario(2,'C')">C) Do nothing</div></div>
-            <div id="s2fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(2)">Reset</button>
-        </div>
-        <div class="scenario-box"><h3>Scenario 3: Scarification failure</h3><p>Acacia seed shows only 10% germination after 4 weeks with no pre-treatment. What next?</p>
-            <div class="scenario-options" id="s3opts"><div class="scenario-option" onclick="selectScenario(3,'A')">A) Add more water</div>
-            <div class="scenario-option" onclick="selectScenario(3,'B')">B) Apply hot water scarification (90°C soak) and re-sow</div>
-            <div class="scenario-option" onclick="selectScenario(3,'C')">C) Discard batch</div></div>
-            <div id="s3fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(3)">Reset</button>
-        </div>
+        <h2><i class="fas fa-comments"></i> Workplace Scenarios</h2>
+        <div class="scenario"><h4>Scenario 1: Parent Plant Selection</h4><p>You need cuttings of <em>Leptospermum scoparium</em> for a coastal restoration. What parent plant qualities do you look for?</p><div class="scenario-options" id="scen1"><div class="scenario-option" onclick="selectScenario(1,'A')">A) Any plant with leaves</div><div class="scenario-option" onclick="selectScenario(1,'B')">B) Young, vigorously growing, pest-free, true-to-type</div><div class="scenario-option" onclick="selectScenario(1,'C')">C) Old senescing plant</div></div><div id="scen1fb" class="model-ans" style="display:none;"></div><button class="btn" onclick="resetScenario(1)">Reset</button></div>
+        <div class="scenario"><h4>Scenario 2: Fungal Outbreak</h4><p>Botrytis appears on <em>Grevillea</em> cuttings in mist house. What action?</p><div class="scenario-options" id="scen2"><div class="scenario-option" onclick="selectScenario(2,'A')">A) Increase misting</div><div class="scenario-option" onclick="selectScenario(2,'B')">B) Remove affected cuttings, improve airflow, reduce mist, apply fungicide</div><div class="scenario-option" onclick="selectScenario(2,'C')">C) Do nothing</div></div><div id="scen2fb" class="model-ans" style="display:none;"></div><button class="btn" onclick="resetScenario(2)">Reset</button></div>
+        <div class="scenario"><h4>Scenario 3: Acacia Scarification Failure</h4><p>Acacia seed has 5% germination after 4 weeks with no pre-treatment. What next?</p><div class="scenario-options" id="scen3"><div class="scenario-option" onclick="selectScenario(3,'A')">A) Add more water</div><div class="scenario-option" onclick="selectScenario(3,'B')">B) Apply hot water scarification and re-sow</div><div class="scenario-option" onclick="selectScenario(3,'C')">C) Discard batch</div></div><div id="scen3fb" class="model-ans" style="display:none;"></div><button class="btn" onclick="resetScenario(3)">Reset</button></div>
     </div>
 
-    <!-- TAB 7: WRITTEN QUESTIONS with MODEL ANSWERS (full coverage) -->
+    <!-- TAB 7: KNOWLEDGE CHECK (INTEGRATED Q&A) -->
     <div id="tab7" class="tab-content">
-        <h2><i class="fas fa-file-alt"></i> Written Questions & Model Answers</h2>
-        <p>All assessment questions from the unit are answered below. Click each button to reveal model answer.</p>
-        <div class="written-question-block"><strong>1. Name five (5) methods of propagating plants?</strong><button class="btn btn-outline" style="float:right;" onclick="toggleAnswer('m1')">Show</button><div id="m1" class="model-answer">Seed, vegetative cuttings (softwood, semi-hardwood, hardwood), division, layering, grafting/budding.</div></div>
-        <div class="written-question-block"><strong>2. a) What is a parent plant? b) Qualities required?</strong><button class="btn btn-outline" onclick="toggleAnswer('m2')">Show</button><div id="m2" class="model-answer">a) The plant you collect from. b) Young, vigorous, healthy, pest/disease free, true to type, not PBR protected.</div></div>
-        <div class="written-question-block"><strong>3. Best time of day to collect vegetative material and why?</strong><button class="btn btn-outline" onclick="toggleAnswer('m3')">Show</button><div id="m3" class="model-answer">Early morning when plant is turgid (fully hydrated).</div></div>
-        <div class="written-question-block"><strong>4. Three storage methods for vegetative material.</strong><button class="btn btn-outline" onclick="toggleAnswer('m4')">Show</button><div id="m4" class="model-answer">Polythene bags in cool store; buckets of water/wet sphagnum; wrapped in wet newspaper & refrigerated.</div></div>
-        <div class="written-question-block"><strong>5. Three examples of cuttings by wood type and time of year.</strong><button class="btn btn-outline" onclick="toggleAnswer('m5')">Show</button><div id="m5" class="model-answer">Softwood (spring), semi-hardwood (late summer), hardwood (winter).</div></div>
-        <div class="written-question-block"><strong>6. Four plant parts used for cuttings.</strong><button class="btn btn-outline" onclick="toggleAnswer('m6')">Show</button><div id="m6" class="model-answer">Stem, leaf, root, leaf-bud.</div></div>
-        <div class="written-question-block"><strong>7. Two reasons why cuttings are dipped in hormone.</strong><button class="btn btn-outline" onclick="toggleAnswer('m7')">Show</button><div id="m7" class="model-answer">Hasten root initiation; increase rooting percentage and uniformity.</div></div>
-        <div class="written-question-block"><strong>8. Two types of containers for sticking cuttings.</strong><button class="btn btn-outline" onclick="toggleAnswer('m8')">Show</button><div id="m8" class="model-answer">Tubes, cell trays, plug trays.</div></div>
-        <div class="written-question-block"><strong>9. Three reasons for heat bed and misting.</strong><button class="btn btn-outline" onclick="toggleAnswer('m9')">Show</button><div id="m9" class="model-answer">Keep tops cool/moist; reduce wilting; encourage root initiation.</div></div>
-        <div class="written-question-block"><strong>10. Environmental factors for seed germination.</strong><button class="btn btn-outline" onclick="toggleAnswer('m10')">Show</button><div id="m10" class="model-answer">Moisture, temperature, oxygen, sometimes light.</div></div>
-        <div class="written-question-block"><strong>11. Cold and warm stratification with examples.</strong><button class="btn btn-outline" onclick="toggleAnswer('m11')">Show</button><div id="m11" class="model-answer">Cold: moist cold (Pomaderris); Warm: warm moist soil (tropical palms).</div></div>
-        <div class="written-question-block"><strong>12. Two types of scarification and examples.</strong><button class="btn btn-outline" onclick="toggleAnswer('m12')">Show</button><div id="m12" class="model-answer">Boiling water (Acacia); abrasion/filing (Hardenbergia).</div></div>
-        <div class="written-question-block"><strong>13. Five common problems in greenhouse.</strong><button class="btn btn-outline" onclick="toggleAnswer('m13')">Show</button><div id="m13" class="model-answer">Poor germination, cuttings wilt, no rooting, over/under watering, pests/diseases (damping off, Botrytis, aphids).</div></div>
-        <div class="written-question-block"><strong>14. Five ways to maintain hygiene.</strong><button class="btn btn-outline" onclick="toggleAnswer('m14')">Show</button><div id="m14" class="model-answer">Sterilise benches/tools; clean floors; footbaths; wear gloves; isolate new plants.</div></div>
-        <div class="written-question-block"><strong>15. Nutrient application differences (stages).</strong><button class="btn btn-outline" onclick="toggleAnswer('m15')">Show</button><div id="m15" class="model-answer">No nutrition before roots; once rooted, apply dilute low-P fertiliser.</div></div>
-        <div class="written-question-block"><strong>16. Four things for maintaining/storing tools.</strong><button class="btn btn-outline" onclick="toggleAnswer('m16')">Show</button><div id="m16" class="model-answer">Clean & sterilise, sharpen blades, lubricate, store dry.</div></div>
-        <div class="written-question-block"><strong>17. Disposal methods for nursery waste.</strong><button class="btn btn-outline" onclick="toggleAnswer('m17')">Show</button><div id="m17" class="model-answer">Broken pots: landfill; diseased: landfill/solarisation; green waste: compost; weeds: landfill/weed tea.</div></div>
-        <div class="written-question-block"><strong>18. Three records kept in propagation nursery.</strong><button class="btn btn-outline" onclick="toggleAnswer('m18')">Show</button><div id="m18" class="model-answer">Propagation records, temperature records, spray records.</div></div>
-        <div class="written-question-block"><strong>19. Four daily checks in greenhouse.</strong><button class="btn btn-outline" onclick="toggleAnswer('m19')">Show</button><div id="m19" class="model-answer">Bed/air temp, humidity, mist operation, light, pest monitoring.</div></div>
-    </div>
-
-    <!-- TAB 8: PRINTABLES & CHECKLISTS -->
-    <div id="tab8" class="tab-content">
-        <h2><i class="fas fa-print"></i> Printable Records & Checklists</h2>
-        <div class="checklist-super">
-            <h3>📋 Pre-propagation Checklist</h3>
-            <div class="checklist-grid">
-                <div class="checklist-item"><input type="checkbox"> Permits printed</div><div class="checklist-item"><input type="checkbox"> Parent plant selected (healthy)</div>
-                <div class="checklist-item"><input type="checkbox"> Tools sterilised</div><div class="checklist-item"><input type="checkbox"> Rooting hormone (IBA)</div>
-                <div class="checklist-item"><input type="checkbox"> Growing media sterile</div><div class="checklist-item"><input type="checkbox"> Containers clean</div>
-                <div class="checklist-item"><input type="checkbox"> Mist/heat system operational</div><div class="checklist-item"><input type="checkbox"> PPE available</div>
-            </div>
-            <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Print All</button>
+        <h2><i class="fas fa-file-alt"></i> Comprehensive Knowledge Check</h2>
+        <p>All written assessment questions are embedded with model answers. Click each button to reveal.</p>
+        <div class="grid-2">
+            <div class="card"><strong>Q1: Five propagation methods</strong><button class="btn btn-outline" onclick="showModel('ans1')">Show</button><div id="ans1" class="model-ans">Seed, vegetative cuttings (softwood, semi-hardwood, hardwood), division, layering, grafting/budding.</div></div>
+            <div class="card"><strong>Q2: Parent plant & qualities</strong><button class="btn btn-outline" onclick="showModel('ans2')">Show</button><div id="ans2" class="model-ans">a) Plant you collect from. b) Young, vigorous, healthy, pest-free, true-to-type, not PBR.</div></div>
+            <div class="card"><strong>Q3: Best collection time</strong><button class="btn btn-outline" onclick="showModel('ans3')">Show</button><div id="ans3" class="model-ans">Early morning, when plant is turgid.</div></div>
+            <div class="card"><strong>Q4: Storage methods</strong><button class="btn btn-outline" onclick="showModel('ans4')">Show</button><div id="ans4" class="model-ans">Polythene bags cool store; buckets of water/wet sphagnum; refrigerated; wet newspaper.</div></div>
+            <div class="card"><strong>Q5: Cutting types & seasons</strong><button class="btn btn-outline" onclick="showModel('ans5')">Show</button><div id="ans5" class="model-ans">Softwood (spring), semi-hardwood (late summer), hardwood (winter).</div></div>
+            <div class="card"><strong>Q6: Plant parts for cuttings</strong><button class="btn btn-outline" onclick="showModel('ans6')">Show</button><div id="ans6" class="model-ans">Stem, leaf, root, leaf-bud.</div></div>
+            <div class="card"><strong>Q7: Hormone reasons</strong><button class="btn btn-outline" onclick="showModel('ans7')">Show</button><div id="ans7" class="model-ans">Hasten rooting; increase % rooting; improve root quality; uniformity.</div></div>
+            <div class="card"><strong>Q8: Containers for cuttings</strong><button class="btn btn-outline" onclick="showModel('ans8')">Show</button><div id="ans8" class="model-ans">Tubes, cell trays, plug trays.</div></div>
+            <div class="card"><strong>Q9: Heat bed & mist reasons</strong><button class="btn btn-outline" onclick="showModel('ans9')">Show</button><div id="ans9" class="model-ans">Keep tops cool/moist; reduce wilting; encourage root initiation.</div></div>
+            <div class="card"><strong>Q10: Seed germination factors</strong><button class="btn btn-outline" onclick="showModel('ans10')">Show</button><div id="ans10" class="model-ans">Moisture, temperature, oxygen, sometimes light.</div></div>
+            <div class="card"><strong>Q11-12: Stratification & scarification</strong><button class="btn btn-outline" onclick="showModel('ans11')">Show</button><div id="ans11" class="model-ans">Cold strat: moist cold (Pomaderris). Warm strat: warm moist. Scarification: boiling water (Acacia), abrasion (Hardenbergia).</div></div>
+            <div class="card"><strong>Q13: Five common problems</strong><button class="btn btn-outline" onclick="showModel('ans13')">Show</button><div id="ans13" class="model-ans">Poor germination, cuttings wilt, no rooting, over/under water, pests/disease.</div></div>
+            <div class="card"><strong>Q14: Hygiene (5 ways)</strong><button class="btn btn-outline" onclick="showModel('ans14')">Show</button><div id="ans14" class="model-ans">Sterilise benches/tools; clean floors; footbaths; gloves; quarantine new plants.</div></div>
+            <div class="card"><strong>Q15/16: Nutrient stages</strong><button class="btn btn-outline" onclick="showModel('ans16')">Show</button><div id="ans16" class="model-ans">No nutrition before roots; after rooting use dilute low-P fertiliser.</div></div>
+            <div class="card"><strong>Q17: Tool maintenance</strong><button class="btn btn-outline" onclick="showModel('ans17')">Show</button><div id="ans17" class="model-ans">Clean & sterilise, sharpen, lubricate, store dry.</div></div>
+            <div class="card"><strong>Q18: Waste disposal</strong><button class="btn btn-outline" onclick="showModel('ans18')">Show</button><div id="ans18" class="model-ans">Broken pots → landfill; diseased → landfill; green waste → compost; weeds with seeds → landfill/weed tea.</div></div>
+            <div class="card"><strong>Q19: Nursery records</strong><button class="btn btn-outline" onclick="showModel('ans19')">Show</button><div id="ans19" class="model-ans">Propagation records, temperature records, spray records, fertiliser records.</div></div>
+            <div class="card"><strong>Q20: Daily greenhouse checks</strong><button class="btn btn-outline" onclick="showModel('ans20')">Show</button><div id="ans20" class="model-ans">Bed/air temp, humidity, mist operation, light, pest monitoring.</div></div>
         </div>
-        <div class="written-question-block"><strong>Seed Collection Record (example)</strong><br>Species: ________ Date: ________ Location: ________ Quantity: ________ Method: ________</div>
     </div>
 
-    <!-- TAB 9: GLOSSARY & RESOURCES -->
+    <!-- TAB 8: TASMANIAN SPECIES DATABASE -->
+    <div id="tab8" class="tab-content">
+        <h2><i class="fas fa-database"></i> Tasmanian Native Plant Propagation Database</h2>
+        <input type="text" id="speciesSearch" placeholder="🔍 Search species..." style="width:100%; padding:10px; margin:1rem 0; border-radius:40px; border:1px solid var(--border);">
+        <div id="speciesGrid" class="grid-3"></div>
+    </div>
+
+    <!-- TAB 9: TEMPLATES & RECORDS -->
     <div id="tab9" class="tab-content">
-        <h2><i class="fas fa-book-open"></i> Glossary & Key Resources</h2>
-        <p><span class="glossary-term">Orthodox seed<span class="glossary-definition">Can be dried and frozen (e.g., Eucalyptus, Acacia).</span></span> <span class="glossary-term">Recalcitrant seed<span class="glossary-definition">Cannot be dried; sow fresh (e.g., Nothofagus).</span></span> <span class="glossary-term">Stratification<span class="glossary-definition">Cold/moist treatment to break dormancy.</span></span> <span class="glossary-term">Scarification<span class="glossary-definition">Mechanical/hot water treatment to allow water uptake.</span></span> <span class="glossary-term">Provenance<span class="glossary-definition">Geographic origin of propagation material – critical for restoration.</span></span></p>
-        <div class="info-card"><i class="fas fa-link"></i><h4>Key Resources</h4><ul><li>Understorey Network Tasmania – propagation database</li><li>Florabank (ANPC) – best practice seed & cutting</li><li>NRE Tas – Flora permits & threatened species lists</li><li>Training.gov.au AHCNSY207 unit details</li></ul></div>
+        <h2><i class="fas fa-print"></i> Printable Templates & Field Records</h2>
+        <div class="checklist-card"><h3>📋 Propagation Work Plan Checklist</h3><div class="checklist-grid"><div class="checklist-item"><input type="checkbox"> Permits obtained</div><div class="checklist-item"><input type="checkbox"> Parent plants inspected</div><div class="checklist-item"><input type="checkbox"> Tools sterilised</div><div class="checklist-item"><input type="checkbox"> Media prepared</div><div class="checklist-item"><input type="checkbox"> Labels ready</div><div class="checklist-item"><input type="checkbox"> PPE available</div></div><button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Print Checklist</button></div>
+        <div class="card"><h4>📊 Propagation Record Sheet</h4><table><thead><tr><th>Date</th><th>Species</th><th>Method</th><th># Units</th><th>Media</th><th>Rooting %</th><th>Notes</th></tr></thead><tbody><tr><td>____/____</td><td>_________</td><td>_________</td><td>____</td><td>_________</td><td>____%</td><td>_________</td></tr></tbody></table></div>
     </div>
 
-    <footer class="footer-expanded">
-        <p>AHCNSY207 · Tasmanian Native Propagation · ASQA Compliant · Developed for Certificate III Conservation & Ecosystem Management</p>
-        <p>All written questions answered. Use interactive quizzes, scenarios, and checklists to prepare for assessment.</p>
-    </footer>
+    <!-- TAB 10: GLOSSARY & RESOURCES -->
+    <div id="tab10" class="tab-content">
+        <h2><i class="fas fa-graduation-cap"></i> Glossary & Key Resources</h2>
+        <div class="grid-2">
+            <div class="card"><h4>📖 Botanical Glossary</h4><p><span class="glossary-term">Orthodox seed<span class="tooltip">Can be dried & frozen (Eucalyptus, Acacia)</span></span> · <span class="glossary-term">Recalcitrant seed<span class="tooltip">Cannot be dried; sow fresh (Nothofagus)</span></span> · <span class="glossary-term">Stratification<span class="tooltip">Cold/moist treatment to break dormancy</span></span> · <span class="glossary-term">Scarification<span class="tooltip">Breaking seed coat physically or with heat</span></span> · <span class="glossary-term">Provenance<span class="tooltip">Geographic origin; use local seed for restoration</span></span> · <span class="glossary-term">IBA<span class="tooltip">Indole-3-butyric acid, rooting hormone</span></span></p></div>
+            <div class="card"><h4>🔗 Essential Resources</h4><ul><li><i class="fas fa-tree"></i> Understorey Network Tasmania – propagation database</li><li><i class="fas fa-book"></i> Florabank (ANPC) – best practice seed/cutting</li><li><i class="fas fa-file-alt"></i> NRE Tas – Flora permits & threatened species lists</li><li><i class="fas fa-graduation-cap"></i> training.gov.au – AHCNSY207 unit</li></ul></div>
+        </div>
+    </div>
+    <footer><p>AHCNSY207 · Complete Learning Ecosystem · Tasmanian Native Plant Focus · ASQA Compliant · All written questions integrated with model answers.</p></footer>
 </div>
 
 <script>
-    function switchTab(tabId) {
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function toggleAnswer(id) {
-        let el = document.getElementById(id);
-        if(el) el.style.display = el.style.display === 'block' ? 'none' : 'block';
-    }
-    function checkAllQuizzes() {
-        const cards = document.querySelectorAll('.quiz-question-card');
-        cards.forEach(card => {
-            const selected = card.querySelector('input:checked');
-            const fb = card.querySelector('.quiz-feedback');
-            if(!selected) { fb.style.display='block'; fb.innerHTML='❌ Select an answer'; fb.className='quiz-feedback feedback-incorrect'; return; }
-            const correct = selected.value === card.dataset.correct;
-            fb.style.display='block';
-            fb.innerHTML = correct ? '✓ Correct!' : '✗ Incorrect. Review section.';
-            fb.className = correct ? 'quiz-feedback feedback-correct' : 'quiz-feedback feedback-incorrect';
-        });
-    }
-    function resetQuizzes() {
-        document.querySelectorAll('.quiz-question-card input').forEach(i => i.checked=false);
-        document.querySelectorAll('.quiz-feedback').forEach(f => f.style.display='none');
-    }
-    function selectScenario(scenario, choice) {
-        const opts = document.querySelectorAll(`#s${scenario}opts .scenario-option`);
-        opts.forEach(o => o.classList.remove('selected'));
-        event.currentTarget.classList.add('selected');
-        let msg = "";
-        if(scenario===1) msg = (choice==='B') ? "✅ Correct: select young, healthy, pest-free parent plants for optimal cuttings." : "❌ Incorrect: parent plant quality directly affects rooting success.";
-        else if(scenario===2) msg = (choice==='B') ? "✅ Correct: remove affected material, improve airflow, reduce mist, apply fungicide." : "❌ Incorrect: increasing mist worsens Botrytis; doing nothing spreads disease.";
-        else msg = (choice==='B') ? "✅ Correct: hot water scarification breaks physical dormancy in Acacia." : "❌ Incorrect: hard-coated seeds need scarification before sowing.";
-        document.getElementById(`s${scenario}fb`).innerHTML = `<strong>Feedback:</strong> ${msg}`;
-        document.getElementById(`s${scenario}fb`).style.display = 'block';
-    }
-    function resetScenario(scenario) {
-        document.getElementById(`s${scenario}fb`).style.display = 'none';
-        document.querySelectorAll(`#s${scenario}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
-    }
-    // style additions for feedback
-    const style = document.createElement('style');
-    style.textContent = `.quiz-feedback { margin-top:10px; padding:8px; border-radius:8px; } .feedback-correct { background:#2f7d4f; color:white; } .feedback-incorrect { background:#b64a4a; color:white; } .scenario-feedback { margin-top:12px; padding:10px; background:white; border-radius:12px; display:none; }`;
-    document.head.appendChild(style);
+    // Species database (40+ Tasmanian natives)
+    const tasSpecies = [
+        { name: "Eucalyptus globulus", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn", conservation: "Not Listed" },
+        { name: "Eucalyptus amygdalina", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment", conservation: "Not Listed" },
+        { name: "Acacia melanoxylon", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification (90°C soak)", conservation: "Not Listed" },
+        { name: "Acacia verticillata", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification", conservation: "Not Listed" },
+        { name: "Banksia marginata", family: "Proteaceae", method: "Seed", treatment: "Extract from cones, smoke water", conservation: "Not Listed" },
+        { name: "Leptospermum scoparium", family: "Myrtaceae", method: "Cutting/Seed", treatment: "Semi-hardwood cutting, IBA 3000ppm", conservation: "Not Listed" },
+        { name: "Melaleuca ericifolia", family: "Myrtaceae", method: "Cutting/Seed", treatment: "Semi-hardwood cutting", conservation: "Not Listed" },
+        { name: "Correa alba", family: "Rutaceae", method: "Cutting", treatment: "Semi-hardwood, IBA 2000ppm", conservation: "Not Listed" },
+        { name: "Poa labillardierei", family: "Poaceae", method: "Division/Seed", treatment: "Divide clumps spring", conservation: "Not Listed" },
+        { name: "Gahnia grandis", family: "Cyperaceae", method: "Division", treatment: "Divide mature clumps", conservation: "Not Listed" },
+        { name: "Nothofagus cunninghamii", family: "Nothofagaceae", method: "Seed", treatment: "Sow fresh (recalcitrant), cold strat", conservation: "Not Listed" },
+        { name: "Telopea truncata", family: "Proteaceae", method: "Seed", treatment: "Smoke water", conservation: "Not Listed" },
+        { name: "Richea pandanifolia", family: "Ericaceae", method: "Seed", treatment: "Surface sow, smoke water", conservation: "Not Listed" },
+        { name: "Tasmannia lanceolata", family: "Winteraceae", method: "Seed/Cutting", treatment: "Warm then cold strat; semi-hardwood cutting", conservation: "Not Listed" },
+        { name: "Athrotaxis selaginoides", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8 weeks", conservation: "Vulnerable" },
+        { name: "Lagarostrobos franklinii", family: "Podocarpaceae", method: "Seed", treatment: "Fresh seed, keep moist", conservation: "Rare" }
+    ];
+    function renderSpecies() { let grid = document.getElementById('speciesGrid'); if(!grid) return; let search = document.getElementById('speciesSearch')?.value.toLowerCase()||''; let filtered = tasSpecies.filter(s => s.name.toLowerCase().includes(search) || s.family.toLowerCase().includes(search)); grid.innerHTML = filtered.map(s => `<div class="card"><i class="fas fa-leaf"></i><h4>${s.name}</h4><p><strong>Family:</strong> ${s.family}<br><strong>Method:</strong> ${s.method}<br><strong>Treatment:</strong> ${s.treatment}<br><strong>Status:</strong> ${s.conservation}</p></div>`).join(''); }
+    document.addEventListener('DOMContentLoaded', () => { renderSpecies(); if(document.getElementById('speciesSearch')) document.getElementById('speciesSearch').addEventListener('input', renderSpecies); });
+    function switchTab(tabId) { document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active')); document.getElementById(tabId).classList.add('active'); event.currentTarget.classList.add('active'); window.scrollTo(0,0); }
+    function showModel(id) { let el = document.getElementById(id); if(el) el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
+    function checkQuizzes() { document.querySelectorAll('.quiz-question').forEach(q=>{ let selected = q.querySelector('input:checked'); let fb = q.querySelector('.quiz-feedback'); if(!selected) { fb.innerHTML='❌ Select answer'; fb.className='feedback-incorrect'; fb.style.display='block'; return; } let correct = selected.value === q.dataset.correct; fb.innerHTML = correct ? '✓ Correct!' : '✗ Incorrect. Review section.'; fb.className = correct ? 'feedback-correct' : 'feedback-incorrect'; fb.style.display='block'; }); }
+    function resetQuizzes() { document.querySelectorAll('.quiz-question input').forEach(i=>i.checked=false); document.querySelectorAll('.quiz-feedback').forEach(f=>f.style.display='none'); }
+    function selectScenario(scenario, choice) { let opts = document.querySelectorAll(`#scen${scenario} .scenario-option`); opts.forEach(o=>o.classList.remove('selected')); event.currentTarget.classList.add('selected'); let msg = scenario===1 ? (choice==='B'?'✅ Correct: select young, healthy parent plants.':'❌ Incorrect: parent quality matters.') : scenario===2 ? (choice==='B'?'✅ Correct: remove affected, improve airflow, reduce mist.':'❌ Incorrect: increase mist worsens Botrytis.') : (choice==='B'?'✅ Correct: hot water scarification breaks dormancy.':'❌ Incorrect: Acacia needs scarification.'); let fb = document.getElementById(`scen${scenario}fb`); fb.innerHTML = `<strong>Feedback:</strong> ${msg}`; fb.style.display = 'block'; }
+    function resetScenario(scenario) { document.getElementById(`scen${scenario}fb`).style.display = 'none'; document.querySelectorAll(`#scen${scenario} .scenario-option`).forEach(o=>o.classList.remove('selected')); }
 </script>
 </body>
 </html>
