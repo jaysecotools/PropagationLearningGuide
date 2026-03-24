@@ -75,9 +75,6 @@
         .progress-bar { background: #e0e0e0; border-radius: 20px; overflow: hidden; margin: 0.5rem 0; }
         .progress-fill { background: var(--primary); height: 8px; width: 0%; }
         .info-badge { background: var(--primary-soft); border-radius: 20px; padding: 0.2rem 0.8rem; font-size: 0.75rem; display: inline-block; margin: 0.2rem; }
-        .glossary-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-        .glossary-item { background: var(--bg-light); border-radius: 0.8rem; padding: 0.8rem; border-left: 4px solid var(--primary); }
-        .glossary-item strong { color: var(--primary-dark); }
     </style>
 </head>
 <body>
@@ -94,19 +91,19 @@
     </div>
 
     <div class="tab-bar">
-        <button class="tab active" onclick="switchTab('tab0')"><i class="fas fa-info-circle"></i> 0. About CEM Context</button>
-        <button class="tab" onclick="switchTab('tab1')"><i class="fas fa-leaf"></i> 1. Propagation Methods</button>
-        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-clipboard-list"></i> 2. Planning & Ethics</button>
-        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-tools"></i> 3. Techniques & Tools</button>
-        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-chart-line"></i> 4. Aftercare & Monitoring</button>
-        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> 5. Interactive Quizzes</button>
-        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-comments"></i> 6. Workplace Scenarios</button>
-        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-database"></i> 7. Species Database</button>
-        <button class="tab" onclick="switchTab('tab8')"><i class="fas fa-table"></i> 8. Records & Logs</button>
-        <button class="tab" onclick="switchTab('tab9')"><i class="fas fa-graduation-cap"></i> 9. Glossary & Resources</button>
+        <button class="tab active" onclick="switchTab(event, 'tab0')"><i class="fas fa-info-circle"></i> 0. About CEM Context</button>
+        <button class="tab" onclick="switchTab(event, 'tab1')"><i class="fas fa-leaf"></i> 1. Propagation Methods</button>
+        <button class="tab" onclick="switchTab(event, 'tab2')"><i class="fas fa-clipboard-list"></i> 2. Planning & Ethics</button>
+        <button class="tab" onclick="switchTab(event, 'tab3')"><i class="fas fa-tools"></i> 3. Techniques & Tools</button>
+        <button class="tab" onclick="switchTab(event, 'tab4')"><i class="fas fa-chart-line"></i> 4. Aftercare & Monitoring</button>
+        <button class="tab" onclick="switchTab(event, 'tab5')"><i class="fas fa-puzzle-piece"></i> 5. Interactive Quizzes</button>
+        <button class="tab" onclick="switchTab(event, 'tab6')"><i class="fas fa-comments"></i> 6. Workplace Scenarios</button>
+        <button class="tab" onclick="switchTab(event, 'tab7')"><i class="fas fa-database"></i> 7. Species Database</button>
+        <button class="tab" onclick="switchTab(event, 'tab8')"><i class="fas fa-table"></i> 8. Records & Logs</button>
+        <button class="tab" onclick="switchTab(event, 'tab9')"><i class="fas fa-graduation-cap"></i> 9. Glossary & Resources</button>
     </div>
 
-    <!-- TAB 0: CEM CONTEXT -->
+    <!-- TAB 0: CEM CONTEXT - EXPANDED -->
     <div id="tab0" class="tab-content active">
         <h2><i class="fas fa-info-circle"></i> Context: Propagation in Conservation & Ecosystem Management</h2>
         
@@ -117,10 +114,11 @@
                 <p>In Conservation and Ecosystem Management, propagation skills are essential for:</p>
                 <ul style="margin-top: 0.8rem; margin-left: 1.2rem;">
                     <li><strong>Ecological Restoration:</strong> Producing local-provenance plants for revegetation, riparian restoration, and habitat reconstruction</li>
-                    <li><strong>Threatened Species Recovery:</strong> Ex-situ conservation through seed banking and propagation of rare and endangered Tasmanian flora</li>
-                    <li><strong>Weed Management:</strong> Propagating competitive native species for suppression of environmental weeds</li>
+                    <li><strong>Threatened Species Recovery:</strong> Ex-situ conservation through seed banking and propagation of rare and endangered Tasmanian flora (e.g., <em>Epacris stuartii</em>, <em>Athrotaxis cupressoides</em>)</li>
+                    <li><strong>Weed Management:</strong> Propagating competitive native species for suppression of environmental weeds like gorse, blackberry, and boneseed</li>
                     <li><strong>Community Engagement:</strong> Running propagation workshops and community nurseries for Landcare and Bushcare groups</li>
                     <li><strong>Research & Monitoring:</strong> Supplying plants for ecological research, climate adaptation trials, and genetic studies</li>
+                    <li><strong>Carbon Farming:</strong> Producing stock for biodiverse carbon sequestration projects</li>
                 </ul>
             </div>
             <div class="card">
@@ -128,15 +126,17 @@
                 <div class="card-title">Industry Relevance & Employment Pathways</div>
                 <p>Graduates with propagation expertise are employed in:</p>
                 <ul style="margin-top: 0.8rem; margin-left: 1.2rem;">
-                    <li><strong>Nurseries:</strong> Native plant nurseries (e.g., Understorey Network, local councils)</li>
+                    <li><strong>Nurseries:</strong> Native plant nurseries (e.g., Understorey Network, local councils, private native nurseries)</li>
                     <li><strong>Government Agencies:</strong> NRE Tas, Parks & Wildlife, local government revegetation teams</li>
                     <li><strong>Consultancies:</strong> Environmental consulting firms delivering offset and restoration projects</li>
-                    <li><strong>NRM Organisations:</strong> Landcare, NRM South, Cradle Coast NRM</li>
+                    <li><strong>NRM Organisations:</strong> Landcare, NRM South, Cradle Coast NRM, Wildcare</li>
                     <li><strong>Botanic Gardens:</strong> Royal Tasmanian Botanical Gardens conservation programs</li>
+                    <li><strong>Mining & Infrastructure:</strong> Mine site rehabilitation and infrastructure offset planting</li>
                 </ul>
                 <div class="stat-grid" style="margin-top: 1rem;">
-                    <div class="stat-card"><i class="fas fa-chart-line"></i> <strong>Growing Sector</strong><br>Ecological restoration in Tasmania is a $50M+ industry</div>
-                    <div class="stat-card"><i class="fas fa-seedling"></i> <strong>Local Provenance</strong><br>Plants sourced locally have up to 300% higher survival rates</div>
+                    <div class="stat-card"><i class="fas fa-chart-line"></i> <strong>Growing Sector</strong><br>Ecological restoration in Tasmania is a $50M+ industry with 15% annual growth</div>
+                    <div class="stat-card"><i class="fas fa-seedling"></i> <strong>Local Provenance</strong><br>Plants sourced locally have up to 300% higher survival rates in restoration projects</div>
+                    <div class="stat-card"><i class="fas fa-hand-holding-heart"></i> <strong>Threatened Species</strong><br>Over 580 endemic Tasmanian species benefit from ex-situ propagation programs</div>
                 </div>
             </div>
         </div>
@@ -150,7 +150,9 @@
                 <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> <strong>Completing propagation activities</strong> – aftercare, monitoring, and record keeping</div>
                 <div><i class="fas fa-check-circle" style="color: var(--primary);"></i> <strong>Environmental compliance</strong> – permits, biosecurity, and ethical collection practices</div>
             </div>
-            <p style="margin-top: 1rem;"><strong>Career progression:</strong> This unit supports pathways to roles such as Nursery Technician, Revegetation Officer, Field Officer, and Conservation Land Manager.</p>
+            <p style="margin-top: 1rem;"><strong>Career progression:</strong> This unit supports pathways to roles such as Nursery Technician, Revegetation Officer, Field Officer, Conservation Land Manager, and Restoration Ecologist. Average salary range: $55,000 - $85,000 depending on experience and sector.</p>
+            <div class="progress-bar" style="margin-top: 1rem;"><div class="progress-fill" style="width: 65%;"></div></div>
+            <p><em>Industry demand for propagation skills is projected to increase by 22% by 2030 due to increased restoration commitments.</em></p>
         </div>
 
         <div class="card">
@@ -158,114 +160,135 @@
             <div class="card-title">Tasmanian Context: Unique Flora & Conservation Priorities</div>
             <p>Tasmania is a global biodiversity hotspot with over 2,300 native vascular plant species, of which approximately 580 (25%) are endemic. Propagation skills are critical for:</p>
             <ul>
-                <li>Recovery of threatened species like <em>Epacris stuartii</em> (Critically Endangered), <em>Athrotaxis cupressoides</em> (Vulnerable), and <em>Prasophyllum apoxychilum</em> (Critically Endangered)</li>
-                <li>Restoration of threatened ecological communities including Tasmanian rainforest, native grasslands, and coastal heathlands</li>
-                <li>Climate change adaptation – propagating species from warmer, drier provenances to future-proof plantings</li>
-                <li>Dieback management (Phytophthora cinnamomi) – producing resistant stock for affected areas</li>
+                <li>Recovery of threatened species like <em>Epacris stuartii</em> (Critically Endangered), <em>Athrotaxis cupressoides</em> (Vulnerable), <em>Prasophyllum apoxychilum</em> (Critically Endangered), and <em>Banksia serratuloides</em> (Endangered)</li>
+                <li>Restoration of threatened ecological communities including Tasmanian rainforest (e.g., myrtle-beech forest), native grasslands (Themeda triandra dominant), and coastal heathlands</li>
+                <li>Climate change adaptation – propagating species from warmer, drier provenances to future-proof plantings (assisted migration within natural range)</li>
+                <li>Dieback management (Phytophthora cinnamomi) – producing resistant stock for affected areas and implementing hygiene protocols</li>
+                <li>Post-fire restoration: Following catastrophic fires, propagation of fire-sensitive species like King Billy Pine becomes critical for recovery</li>
             </ul>
+            <div class="info-badge"><i class="fas fa-fire"></i> 2019-2020 bushfires affected over 200,000 ha of Tasmanian native vegetation</div>
+            <div class="info-badge"><i class="fas fa-water"></i> Wetland restoration requires specialised propagation of aquatic and riparian species</div>
         </div>
     </div>
 
-    <!-- TAB 1: PROPAGATION METHODS -->
+    <!-- TAB 1: PROPAGATION METHODS - EXPANDED with more species and detail -->
     <div id="tab1" class="tab-content">
         <h2><i class="fas fa-seedling"></i> Five Core Propagation Methods with Tasmanian Focus</h2>
-        <div class="stat-grid"><div class="stat-card"><i class="fas fa-seedling"></i><h3>Seed</h3><p>Sexual · Genetic diversity</p></div><div class="stat-card"><i class="fas fa-cut"></i><h3>Cuttings</h3><p>Asexual · True-to-type</p></div><div class="stat-card"><i class="fas fa-hand-holding-heart"></i><h3>Division</h3><p>Clumping species</p></div><div class="stat-card"><i class="fas fa-graft"></i><h3>Grafting</h3><p>Cultivars</p></div><div class="stat-card"><i class="fas fa-seedling"></i><h3>Layering</h3><p>Simple propagation</p></div></div>
+        <div class="stat-grid"><div class="stat-card"><i class="fas fa-seedling"></i><h3>Seed</h3><p>Sexual · Genetic diversity · Orthodox/recalcitrant</p></div><div class="stat-card"><i class="fas fa-cut"></i><h3>Cuttings</h3><p>Asexual · True-to-type · Clone production</p></div><div class="stat-card"><i class="fas fa-hand-holding-heart"></i><h3>Division</h3><p>Clumping species · Grasses · Ferns</p></div><div class="stat-card"><i class="fas fa-graft"></i><h3>Grafting</h3><p>Cultivars · Difficult species</p></div><div class="stat-card"><i class="fas fa-seedling"></i><h3>Layering</h3><p>Simple propagation · Ground/mound</p></div></div>
 
         <div class="grid-2">
-            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">1. Seed Propagation</div><p><strong>Tasmanian natives:</strong> <em>Eucalyptus globulus, Acacia melanoxylon, Banksia marginata, Nothofagus cunninghamii</em></p><p><strong>Pre-treatments:</strong><br>• <strong>Hot water scarification:</strong> Acacia, Kennedia (pour boiling water, soak 12-24h)<br>• <strong>Cold stratification:</strong> Pomaderris, Eucalyptus coccifera (2-5°C, 6-10 weeks)<br>• <strong>Smoke water:</strong> Banksia, Stylidium, many heath species<br>• <strong>Sowing depth:</strong> 2-3× seed diameter; fine seeds surface sow</p><p><strong>Media:</strong> Sterile seed-raising mix, low phosphorus for natives.</p></div>
-            <div class="card"><i class="fas fa-cut"></i><div class="card-title">2. Vegetative Cuttings</div><p><strong>Softwood cuttings</strong> (spring-early summer): <em>Leptospermum, Melaleuca, Correa</em> – IBA 2000-3000ppm, high humidity.<br><strong>Semi-hardwood</strong> (late summer-autumn): <em>Prostanthera, Westringia</em> – IBA 3000ppm, mist.<br><strong>Hardwood</strong> (winter): deciduous species, some eucalypts from juvenile stock.<br><strong>Rooting hormone (IBA):</strong> hastens rooting, increases percentage, improves root quality and uniformity.</p></div>
-            <div class="card"><i class="fas fa-hand-holding-heart"></i><div class="card-title">3. Division & Layering</div><p><strong>Division:</strong> Ideal for clumping species: <em>Poa labillardierei, Lomandra longifolia, Gahnia grandis, Dianella tasmanica, Dicksonia antarctica</em>. Divide in early spring, ensure each division has 3-5 healthy shoots and roots.<br><strong>Layering:</strong> Peg low branch into soil, cover, sever when rooted. Works for <em>Rhododendron, Prostanthera</em>.</p></div>
-            <div class="card"><i class="fas fa-graft"></i><div class="card-title">4. Grafting & Budding</div><p>Used for cultivars and difficult-to-root species. <strong>Whip & tongue</strong> for equal diameter scion/rootstock; <strong>cleft graft</strong> for larger rootstock.<br><strong>Key principles:</strong> Match cambium layers, seal with grafting tape/wax, keep humid until callus forms.<br><strong>Tasmanian context:</strong> Grafting of <em>Eucalyptus</em> cultivars, <em>Telopea truncata</em> for improved flowering.</p></div>
+            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">1. Seed Propagation</div><p><strong>Tasmanian natives:</strong> <em>Eucalyptus globulus, Acacia melanoxylon, Banksia marginata, Nothofagus cunninghamii, Melaleuca ericifolia, Allocasuarina verticillata</em></p><p><strong>Pre-treatments:</strong><br>• <strong>Hot water scarification:</strong> Acacia, Kennedia, Indigofera, Hardenbergia (pour boiling water, soak 12-24h)<br>• <strong>Cold stratification:</strong> Pomaderris, Eucalyptus coccifera, Richea, Astelia (2-5°C, 6-10 weeks in moist sand/vermiculite)<br>• <strong>Smoke water:</strong> Banksia, Stylidium, Anigozanthos, many heath species (Epacridaceae) – apply as pre-soak or mist<br>• <strong>Mechanical scarification:</strong> For hard-seeded species – nicking seed coat with file<br>• <strong>Sowing depth:</strong> 2-3× seed diameter; fine seeds surface sow with thin vermiculite cover<br><strong>Media:</strong> Sterile seed-raising mix, low phosphorus for natives (Proteaceae sensitive). pH 5.5-6.5 ideal.</p><p><strong>Seed longevity:</strong> Orthodox seeds (Eucalyptus, Acacia) can be stored at 5°C for 5-10 years. Recalcitrant seeds (Nothofagus, Atherosperma) must be sown within weeks.</p></div>
+            <div class="card"><i class="fas fa-cut"></i><div class="card-title">2. Vegetative Cuttings</div><p><strong>Softwood cuttings</strong> (spring-early summer): <em>Leptospermum, Melaleuca, Correa, Callistemon, Westringia</em> – IBA 2000-3000ppm, high humidity (85-95%), bottom heat 22-25°C.<br><strong>Semi-hardwood</strong> (late summer-autumn): <em>Prostanthera, Westringia, Hakea, Grevillea</em> – IBA 3000-4000ppm, mist system, partial shade.<br><strong>Hardwood</strong> (winter): deciduous species, some eucalypts from juvenile stock, <em>Populus, Salix</em> (for riparian restoration) – IBA 1000-2000ppm, outdoor beds.<br><strong>Root cuttings:</strong> For species like <em>Banksia serrata, Acacia verticillata</em> – collect in winter, 5-10cm sections, horizontal placement.<br><strong>Rooting hormone (IBA):</strong> hastens root initiation, increases percentage, improves root quality and uniformity. Available in powder, gel, and liquid formulations.</p></div>
+            <div class="card"><i class="fas fa-hand-holding-heart"></i><div class="card-title">3. Division & Layering</div><p><strong>Division:</strong> Ideal for clumping species: <em>Poa labillardierei, Lomandra longifolia, Gahnia grandis, Dianella tasmanica, Dicksonia antarctica, Stipa stipoides, Carex appressa</em>. Divide in early spring or autumn, ensure each division has 3-5 healthy shoots and fibrous roots. Use sharp spade or knife.<br><strong>Layering:</strong> Peg low branch into soil, cover, sever when rooted. Works for <em>Rhododendron, Prostanthera, Boronia, Correa</em>. Air layering for taller species – girdle branch, apply rooting hormone, wrap with moist sphagnum and plastic.</p><p><strong>Fern propagation:</strong> Spore collection for Dicksonia, Blechnum, Polystichum – requires sterile media and high humidity.</p></div>
+            <div class="card"><i class="fas fa-graft"></i><div class="card-title">4. Grafting & Budding</div><p>Used for cultivars and difficult-to-root species. <strong>Whip & tongue</strong> for equal diameter scion/rootstock; <strong>cleft graft</strong> for larger rootstock; <strong>side-veneer graft</strong> for evergreen species.<br><strong>Key principles:</strong> Match cambium layers (essential for vascular connection), seal with grafting tape/wax, keep humid until callus forms (2-6 weeks).<br><strong>Tasmanian context:</strong> Grafting of <em>Eucalyptus</em> cultivars, <em>Telopea truncata</em> for improved flowering, <em>Prostanthera</em> for colour forms. Rootstocks: <em>Eucalyptus gunnii</em> for cold tolerance, <em>Eucalyptus globulus</em> for vigour.</p><p><strong>T-budding:</strong> Summer technique for <em>Rosa</em> (native roses) and selected fruit trees used in conservation plantings.</p></div>
         </div>
 
         <h3>📊 Comprehensive Cutting Guide by Wood Type</h3>
         <table>
-            <thead><tr><th>Type</th><th>Season</th><th>Characteristics</th><th>IBA Concentration</th><th>Tasmanian Examples</th> </tr></thead>
+            <thead><tr><th>Type</th><th>Season</th><th>Characteristics</th><th>IBA Concentration</th><th>Tasmanian Examples</th><th>Rooting Time</th></tr></thead>
             <tbody>
-                <tr><td>Softwood</td><td>Spring - early summer</td><td>Flexible, green stem, new growth</td><td>2000-3000 ppm</td><td><em>Leptospermum scoparium, Melaleuca squarrosa, Correa alba</em></td></tr>
-                <tr><td>Semi-hardwood</td><td>Late summer - autumn</td><td>Firm but still flexible, leaves mature</td><td>3000-4000 ppm</td><td><em>Prostanthera lasianthos, Westringia, Eucalyptus coccifera (juvenile)</em></td></tr>
-                <tr><td>Hardwood</td><td>Winter (dormant)</td><td>Fully mature, woody stem</td><td>1000-2000 ppm</td><td>Deciduous species, some <em>Acacia</em> root cuttings</td></tr>
+                <tr><td>Softwood</td><td>Spring - early summer</td><td>Flexible, green stem, new growth, no flowers</td><td>2000-3000 ppm</td><td><em>Leptospermum scoparium, Melaleuca squarrosa, Correa alba, Grevillea australis</em></td><td>3-6 weeks</td></tr>
+                <tr><td>Semi-hardwood</td><td>Late summer - autumn</td><td>Firm but still flexible, leaves mature</td><td>3000-4000 ppm</td><td><em>Prostanthera lasianthos, Westringia, Eucalyptus coccifera (juvenile), Banksia marginata</em></td><td>6-10 weeks</td></tr>
+                <tr><td>Hardwood</td><td>Winter (dormant)</td><td>Fully mature, woody stem, no leaves</td><td>1000-2000 ppm</td><td>Deciduous species, <em>Acacia melanoxylon</em> root cuttings, <em>Populus</em> spp.</td><td>8-16 weeks</td></tr>
             </tbody>
         </table>
+
+        <div class="card"><i class="fas fa-chart-line"></i><div class="card-title">📈 Propagation Success Rates by Method (Industry Averages)</div>
+        <ul><li>Seed (treated appropriately): 65-85%</li><li>Softwood cuttings: 70-90%</li><li>Semi-hardwood cuttings: 60-85%</li><li>Hardwood cuttings: 50-75%</li><li>Division: 85-95%</li><li>Grafting: 60-85%</li></ul>
+        </div>
     </div>
 
-    <!-- TAB 2: PLANNING & ETHICS -->
+    <!-- TAB 2: PLANNING & ETHICS - EXPANDED with permits, risk management -->
     <div id="tab2" class="tab-content">
         <h2><i class="fas fa-clipboard-list"></i> Work Planning, Parent Plants & Ethical Sourcing</h2>
         
         <div class="grid-2">
-            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">🌿 Parent Plant Selection</div><p><strong>Definition:</strong> The plant from which propagation material (cuttings, seed, divisions) is collected.<br><strong>Required qualities:</strong><br>• Young, vigorous growth habit<br>• Healthy, pest and disease free<br>• True to type (genetically true to species/cultivar)<br>• Not governed by Plant Breeder's Rights (PBR)<br>• Well-watered the day before collection<br>• Avoid plants in flower or fruiting (for cuttings)</p></div>
-            <div class="card"><i class="fas fa-hand-sparkles"></i><div class="card-title">🧼 Hygiene Protocols (5 key practices)</div><p><strong>1. Sterilise equipment:</strong> 70% ethanol or 1% bleach solution on benches, tools, pots.<br><strong>2. Clean floors:</strong> Daily sweeping and disinfecting.<br><strong>3. Footbaths:</strong> At propagation area entrance to prevent pathogen spread.<br><strong>4. Personal hygiene:</strong> Wear disposable gloves, wash hands, clean overalls.<br><strong>5. Quarantine:</strong> Isolate new plant material for 2 weeks, separate propagation zones.<br>Additional: Use sterile propagation media, avoid bringing soil into greenhouse.</p></div>
+            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">🌿 Parent Plant Selection</div><p><strong>Definition:</strong> The plant from which propagation material (cuttings, seed, divisions) is collected.<br><strong>Required qualities:</strong><br>• Young, vigorous growth habit (1-3 year old wood optimal for cuttings)<br>• Healthy, pest and disease free – inspect for aphids, scale, fungal lesions<br>• True to type (genetically true to species/cultivar) – verify identification<br>• Not governed by Plant Breeder’s Rights (PBR) unless licensed<br>• Well-watered the day before collection (turgid tissue improves rooting)<br>• Avoid plants in flower or fruiting (for cuttings – diverts energy)<br>• Collect from mid-morning after dew has evaporated to reduce disease risk</p></div>
+            <div class="card"><i class="fas fa-hand-sparkles"></i><div class="card-title">🧼 Hygiene Protocols (10 key practices)</div><p><strong>1. Sterilise equipment:</strong> 70% ethanol or 1% bleach solution on benches, tools, pots between batches.<br><strong>2. Clean floors:</strong> Daily sweeping and disinfecting with quaternary ammonium compounds.<br><strong>3. Footbaths:</strong> At propagation area entrance with Virkon or bleach solution, changed daily.<br><strong>4. Personal hygiene:</strong> Wear disposable gloves, wash hands, clean overalls, hairnets for seed handling.<br><strong>5. Quarantine:</strong> Isolate new plant material for 2 weeks, separate propagation zones.<br><strong>6. Sterile propagation media:</strong> Pasteurised or commercially sterilised to eliminate pathogens.<br><strong>7. Avoid cross-contamination:</strong> Separate benches for seeds, cuttings, and established plants.<br><strong>8. Water quality:</strong> Use clean, potable water; avoid recycled water for misting.<br><strong>9. Air circulation:</strong> Maintain airflow to reduce humidity and fungal spore accumulation.<br><strong>10. Record keeping:</strong> Track disease outbreaks and hygiene interventions.</p></div>
         </div>
 
         <div class="checklist-card"><h3><i class="fas fa-balance-scale"></i> Ethical Collection Guidelines & Permits (Tasmania)</h3>
-            <p><strong>Legislation:</strong> Under <strong>Nature Conservation Act 2002</strong> and <strong>Threatened Species Protection Act 1995</strong>, collection of native plant material from public land or for threatened species requires a scientific permit from NRE Tas.<br><strong>The 20% Rule:</strong> Collect no more than 20% of seed/cuttings from any population to ensure natural regeneration and maintain genetic diversity.<br><strong>Permit contacts:</strong> FloraPermit.Enquiries@nre.tas.gov.au<br><strong>Aboriginal heritage:</strong> Due diligence required before ground-disturbing works.</p>
-            <div class="stat-grid"><div class="stat-card"><i class="fas fa-tree"></i> <strong>20%</strong><br>Maximum collection</div><div class="stat-card"><i class="fas fa-exclamation-triangle"></i> <strong>Permit required</strong><br>Public land / threatened species</div><div class="stat-card"><i class="fas fa-hand-holding-heart"></i> <strong>Leave seed</strong><br>For wildlife and regeneration</div></div>
+            <p><strong>Legislation:</strong> Under <strong>Nature Conservation Act 2002</strong> and <strong>Threatened Species Protection Act 1995</strong>, collection of native plant material from public land or for threatened species requires a scientific permit from NRE Tas. Private land requires landholder permission.<br><strong>The 20% Rule:</strong> Collect no more than 20% of seed/cuttings from any population to ensure natural regeneration and maintain genetic diversity. For rare species, collect less than 5% or only fallen seed.<br><strong>Permit contacts:</strong> FloraPermit.Enquiries@nre.tas.gov.au | Ph: 1300 368 550<br><strong>Aboriginal heritage:</strong> Due diligence required before ground-disturbing works. Consult with Aboriginal Heritage Tasmania.<br><strong>Biosecurity:</strong> Check for restrictions on moving plant material between regions to prevent spread of Phytophthora, myrtle rust, or other pathogens.</p>
+            <div class="stat-grid"><div class="stat-card"><i class="fas fa-tree"></i> <strong>20%</strong><br>Maximum collection from population</div><div class="stat-card"><i class="fas fa-exclamation-triangle"></i> <strong>Permit required</strong><br>Public land / threatened species</div><div class="stat-card"><i class="fas fa-hand-holding-heart"></i> <strong>Leave seed</strong><br>For wildlife and natural regeneration</div><div class="stat-card"><i class="fas fa-dna"></i> <strong>Genetic diversity</strong><br>Collect from >30 individuals</div></div>
         </div>
 
         <div class="grid-2">
-            <div class="card"><i class="fas fa-box"></i><div class="card-title">📦 Storage of Collected Material</div><p><strong>Immediate post-collection:</strong><br>• Place in sealed polythene bags with damp paper towel<br>• Keep in cool, shaded area<br>• Transport in insulated esky with ice bricks<br>• Process within 4-6 hours for optimal viability<br><strong>Refrigeration:</strong> Store at 2-5°C for up to 48 hours if processing delayed.</p></div>
-            <div class="card"><i class="fas fa-chalkboard-user"></i><div class="card-title">📋 Work Plan Components</div><p>A propagation work plan must include:<br>• Species list with quantities required<br>• Source location and permit details<br>• Collection methods and equipment<br>• Personnel and emergency contacts<br>• Risk assessment (WHS and environmental)<br>• Timeline and review dates</p></div>
+            <div class="card"><i class="fas fa-box"></i><div class="card-title">📦 Storage of Collected Material</div><p><strong>Immediate post-collection:</strong><br>• Place in sealed polythene bags with damp paper towel (not soaking)<br>• Keep in cool, shaded area away from direct sunlight<br>• Transport in insulated esky with ice bricks (2-5°C)<br>• Process within 4-6 hours for optimal viability; max 24 hours if refrigerated<br><strong>Refrigeration:</strong> Store at 2-5°C for up to 48 hours if processing delayed. Do not freeze vegetative material.<br><strong>Seed storage:</strong> Dry seeds to 5-8% moisture, store in airtight containers at 5°C for orthodox species. Recalcitrant seeds store moist (not wet) at 2-5°C for short periods only.</p></div>
+            <div class="card"><i class="fas fa-chalkboard-user"></i><div class="card-title">📋 Work Plan Components</div><p>A propagation work plan must include (ASQA compliant):<br>• Species list with quantities required and intended use<br>• Source location coordinates and permit details<br>• Collection methods and equipment required<br>• Personnel allocation and emergency contacts<br>• Risk assessment (WHS: manual handling, sharps; environmental: biosecurity, habitat disturbance)<br>• Timeline with milestones and review dates<br>• Budget for materials and labour<br>• Contingency plan for crop failure or adverse weather<br>• Quality assurance procedures for monitoring success rates</p></div>
+        </div>
+
+        <div class="card"><i class="fas fa-file-signature"></i><div class="card-title">📄 Sample Work Plan Template Fields</div>
+        <ul><li>Propagation batch number: _______</li><li>Species: _______ | Quantity target: _______</li><li>Collection date: _______ | Location: _______</li><li>Permit number: _______ | Collector(s): _______</li><li>Method: Seed / Cutting / Division / Graft</li><li>Media composition: _______ | Container type/size: _______</li><li>Environmental requirements: Temp ____°C, RH ____%, Light ____ lux</li><li>Responsible staff: _______ | Review date: _______</li></ul>
         </div>
     </div>
 
-    <!-- TAB 3: TECHNIQUES & TOOLS -->
+    <!-- TAB 3: TECHNIQUES & TOOLS - EXPANDED -->
     <div id="tab3" class="tab-content">
         <h2><i class="fas fa-tools"></i> Propagation Techniques, Equipment & Maintenance</h2>
         
         <div class="grid-2">
-            <div class="card"><i class="fas fa-flask"></i><div class="card-title">🧪 Rooting Hormone (IBA)</div><p><strong>Why use rooting hormone?</strong><br>1. Hastens root initiation<br>2. Increases percentage of cuttings that form roots<br>3. Increases number and quality of roots per cutting<br>4. Improves uniformity of rooting<br><strong>Application:</strong> Dip base of cutting (1-2cm) into IBA powder/gel immediately before inserting into media.</p></div>
-            <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">🔥 Heat Bed & Misting Systems</div><p><strong>Reasons for bottom heat:</strong><br>1. Encourages active cell division at cutting base<br>2. Promotes faster root initiation (optimal 22-25°C)<br><strong>Reasons for misting:</strong><br>1. Keeps tops cool and reduces transpiration<br>2. Prevents wilting while roots develop<br>3. Maintains high humidity (85-95%) around foliage</p></div>
+            <div class="card"><i class="fas fa-flask"></i><div class="card-title">🧪 Rooting Hormone (IBA) - Detailed</div><p><strong>Why use rooting hormone?</strong><br>1. Hastens root initiation by 7-14 days<br>2. Increases percentage of cuttings that form roots (up to 30% increase)<br>3. Increases number and quality of roots per cutting (more fibrous root systems)<br>4. Improves uniformity of rooting across batches<br>5. Allows use of less favourable cutting wood<br><strong>Application:</strong> Dip base of cutting (1-2cm) into IBA powder/gel immediately after wounding, tap off excess, insert into media within seconds. Liquid formulations may require pre-soak (5-10 seconds).<br><strong>Safety:</strong> Wear gloves, avoid inhalation, wash hands after use.</p></div>
+            <div class="card"><i class="fas fa-thermometer-half"></i><div class="card-title">🔥 Heat Bed & Misting Systems</div><p><strong>Reasons for bottom heat:</strong><br>1. Encourages active cell division at cutting base (optimal 22-25°C)<br>2. Promotes faster root initiation (roots form 1-2 weeks earlier)<br>3. Allows propagation outside ideal seasonal windows<br>4. Increases rooting percentage by 15-25%<br><strong>Reasons for misting:</strong><br>1. Keeps tops cool (reduces leaf temperature by 5-10°C)<br>2. Reduces transpiration and water stress while roots develop<br>3. Maintains high humidity (85-95%) around foliage<br>4. Allows propagation of softwood cuttings in summer<br><strong>System types:</strong> Overhead mist (intermittent), fogging (continuous fine mist), capillary matting for base moisture.</p></div>
         </div>
 
         <h3>🔧 Tool Maintenance & Storage</h3>
         <table>
-            <thead><tr><th>Tool</th><th>Maintenance Task</th><th>Frequency</th> </tr></thead>
+            <thead><tr><th>Tool</th><th>Maintenance Task</th><th>Frequency</th><th>Signs of Wear</th></tr></thead>
             <tbody>
-                <tr><td>Secateurs / Pruners</td><td>Clean with 70% ethanol; sharpen blades; oil pivot point</td><td>After each use, sharpen weekly</td></tr>
-                <tr><td>Grafting knives</td><td>Sterilise, sharpen to fine edge, oil blade</td><td>Before and after grafting sessions</td></tr>
-                <tr><td>Pots & trays</td><td>Wash with detergent, soak in bleach solution (1:10), rinse thoroughly</td><td>Between batches</td></tr>
-                <tr><td>Misting system</td><td>Clean nozzles, check timers, flush lines</td><td>Weekly</td></tr>
-                <tr><td>All tools</td><td>Store in dry, dust-free area, lubricated</td><td>After cleaning</td></tr>
+                <tr><td>Secateurs / Pruners</td><td>Clean with 70% ethanol; sharpen blades (20° angle); oil pivot point; tighten bolts</td><td>After each use, sharpen weekly</td><td>Crushing stems, rust, stiff action</td></tr>
+                <tr><td>Grafting knives</td><td>Sterilise, sharpen to fine edge (single bevel), oil blade, store in sheath</td><td>Before and after grafting sessions</td><td>Dull edge, nicks, rust</td></tr>
+                <tr><td>Pots & trays</td><td>Wash with detergent, soak in bleach solution (1:10 for 30 min), rinse thoroughly, sun-dry</td><td>Between batches, after disease outbreak</td><td>Algae build-up, residual media, cracks</td></tr>
+                <tr><td>Misting system</td><td>Clean nozzles (vinegar soak), check timers/controllers, flush lines with bleach solution monthly</td><td>Weekly check, full clean monthly</td><td>Uneven mist, clogged nozzles, timer failure</td></tr>
+                <tr><td>All tools</td><td>Store in dry, dust-free area, lubricated, organised on pegboard</td><td>After cleaning</td><td>Rust, misplacement, damage</td></tr>
             </tbody>
         </table>
 
         <div class="grid-2">
-            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">🌱 Seed Germination Factors</div><p><strong>Essential factors:</strong><br>• <strong>Moisture:</strong> Consistent but not waterlogged<br>• <strong>Temperature:</strong> Optimal varies by species (15-25°C for most natives)<br>• <strong>Oxygen:</strong> Well-aerated media prevents damping off<br>• <strong>Light:</strong> Some species require light for germination (surface sow), others darkness (cover with vermiculite)</p></div>
-            <div class="card"><i class="fas fa-box-open"></i><div class="card-title">🧫 Containers for Cuttings</div><p><strong>Common container types:</strong><br>• <strong>Tubes:</strong> 50mm, 75mm, 100mm depths for deep-rooted species<br>• <strong>Cell trays:</strong> 40-cell, 50-cell, 84-cell for high-density propagation<br>• <strong>Plug trays:</strong> For automated filling and transplanting<br>• <strong>Root trainers:</strong> Air-pruning design for eucalypts and acacias</p></div>
+            <div class="card"><i class="fas fa-seedling"></i><div class="card-title">🌱 Seed Germination Factors</div><p><strong>Essential factors:</strong><br>• <strong>Moisture:</strong> Consistent but not waterlogged – use capillary matting or fine mist<br>• <strong>Temperature:</strong> Optimal varies by species (15-25°C for most natives). Thermogradient plates for diverse species.<br>• <strong>Oxygen:</strong> Well-aerated media prevents damping off – avoid compaction, use perlite/vermiculite<br>• <strong>Light:</strong> Some species require light for germination (surface sow) e.g., Leptospermum, Eucalyptus; others require darkness (cover with 2-3mm vermiculite) e.g., Acacia, Kennedia.<br>• <strong>Dormancy-breaking:</strong> Identify and apply appropriate pre-treatment (scarification, stratification, smoke).</p></div>
+            <div class="card"><i class="fas fa-box-open"></i><div class="card-title">🧫 Containers for Cuttings & Seedlings</div><p><strong>Common container types:</strong><br>• <strong>Tubes:</strong> 50mm, 75mm, 100mm depths – deep tubes for tap-rooted species (Eucalyptus, Allocasuarina)<br>• <strong>Cell trays:</strong> 40-cell, 50-cell, 84-cell – high density for seed germination and small cuttings<br>• <strong>Plug trays:</strong> 128-200 cell for automated filling and transplanting<br>• <strong>Root trainers:</strong> Air-pruning design for eucalypts and acacias – prevents root circling<br>• <strong>Forestry tubes:</strong> 150mm depth for large-scale restoration stock<br><strong>Material:</strong> Recyclable polypropylene, biodegradable (paper, coir) for direct planting</p></div>
+        </div>
+
+        <div class="card"><i class="fas fa-chart-simple"></i><div class="card-title">📐 Media Mixes by Application</div>
+        <ul><li><strong>Seed raising:</strong> 70% fine peat/coir + 30% perlite (sieved to <5mm)</li><li><strong>Cutting propagation:</strong> 50% coarse perlite + 50% peat/coir (or 50:50 sand:peat for hardwood)</li><li><strong>Tube stock (general):</strong> 60% pine bark (5-10mm) + 20% coir + 20% coarse sand + controlled release fertiliser (low phosphorus)</li><li><strong>Proteaceae mix:</strong> 80% coarse sand + 20% peat, no added phosphorus, pH 5.0-5.5</li></ul>
         </div>
     </div>
 
-    <!-- TAB 4: AFTERCARE & MONITORING -->
+    <!-- TAB 4: AFTERCARE & MONITORING - EXPANDED with nutrition and disease -->
     <div id="tab4" class="tab-content">
         <h2><i class="fas fa-chart-line"></i> Aftercare, Nutrition & Environmental Monitoring</h2>
         
         <div class="grid-2">
-            <div class="card"><i class="fas fa-flask"></i><div class="card-title">💧 Nutrient Application Stages</div><p><strong>Before roots develop (seeds not germinated / cuttings not rooted):</strong><br>• No fertiliser required<br>• Seeds contain endosperm for initial growth<br>• Cuttings have no root system to uptake nutrients<br><strong>After germination / root development:</strong><br>• Introduce dilute liquid fertiliser (¼ strength)<br>• Use low-phosphorus formula for native plants (Proteaceae sensitive)<br>• Apply weekly or fortnightly during active growth</p></div>
-            <div class="card"><i class="fas fa-bug"></i><div class="card-title">🐛 Common Problems in Greenhouse</div><p><strong>Five common problems:</strong><br>1. <strong>Seeds won't germinate</strong> – check dormancy requirements, temperature, moisture<br>2. <strong>Cuttings wilt or die</strong> – inadequate humidity, poor parent material, pathogens<br>3. <strong>Cuttings won't root</strong> – insufficient hormone, wrong temperature, poor timing<br>4. <strong>Over or under watering</strong> – monitor media moisture, adjust misting<br>5. <strong>Pests and diseases</strong> – damping-off (fungal), Botrytis, root rots, aphids, fungus gnats</p></div>
+            <div class="card"><i class="fas fa-flask"></i><div class="card-title">💧 Nutrient Application Stages</div><p><strong>Before roots develop (seeds not germinated / cuttings not rooted):</strong><br>• No fertiliser required – can inhibit rooting and cause osmotic stress<br>• Seeds contain endosperm or cotyledons for initial growth (up to 2-4 weeks)<br>• Cuttings have no root system to uptake nutrients; rely on stored reserves<br><strong>After germination / root development (2-4 weeks):</strong><br>• Introduce dilute liquid fertiliser (¼ to ½ strength) – native-specific formulation (low P, high N)<br>• Use weekly or fortnightly during active growth<br>• Controlled release fertiliser (CRF) incorporated at potting (3-6 month formulation)<br><strong>Nutrient deficiencies:</strong> Yellowing (N deficiency), purple/red (P deficiency), interveinal chlorosis (Fe/Mg).</p></div>
+            <div class="card"><i class="fas fa-bug"></i><div class="card-title">🐛 Common Problems in Greenhouse</div><p><strong>Five common problems:</strong><br>1. <strong>Seeds won't germinate</strong> – check dormancy requirements, temperature, moisture, seed viability<br>2. <strong>Cuttings wilt or die</strong> – inadequate humidity, poor parent material, pathogens (Botrytis, Fusarium)<br>3. <strong>Cuttings won't root</strong> – insufficient hormone, wrong temperature (too cold or too hot), poor timing<br>4. <strong>Over or under watering</strong> – monitor media moisture (should be moist but not saturated). Saturated media causes root rot.<br>5. <strong>Pests and diseases</strong> – damping-off (Pythium, Rhizoctonia), Botrytis grey mould, root rots, aphids, thrips, fungus gnats, two-spotted mite.<br><strong>Integrated Pest Management (IPM):</strong> Biological controls (predatory mites, Bacillus thuringiensis), sticky traps, sanitation, approved chemicals as last resort.</p></div>
         </div>
 
         <h3>📊 Daily Greenhouse Checks</h3>
-         <table>
-            <thead> <tr><th>Check Item</th><th>Target Range</th><th>Method</th><th>Action if Out of Range</th> </tr</thead>
+        <table>
+            <thead><tr><th>Check Item</th><th>Target Range</th><th>Method</th><th>Action if Out of Range</th></tr></thead>
             <tbody>
-                 <tr><td>Bed temperatures</td><td>22-25°C for cuttings, 20-30°C for germination</td><td>Soil thermometer</td><td>Adjust heating mats, thermostat</td> </tr>
-                 <tr><td>Air temperature (max/min)</td><td>Day 20-28°C, Night 12-18°C</td><td>Max/min thermometer</td><td>Ventilate, close vents, adjust heating</td> </tr>
-                 <tr><td>Relative humidity</td><td>Cuttings 85-95%, seedlings 60-80%</td><td>Hygrometer</td><td>Adjust mist frequency, fogging, vents</td> </tr>
-                 <tr><td>Misting operation</td><td>5-15 sec every 10-30 min</td><td>Visual check, timer</td><td>Clean nozzles, reprogram timer</td> </tr>
-                 <tr><td>Media moisture</td><td>Evenly moist, not saturated</td><td>Finger test, moisture meter</td><td>Adjust irrigation schedule</td> </tr>
-                 <tr><td>Light levels</td><td>50-70% shade for cuttings, full sun for hardening</td><td>Lux meter, observation</td><td>Adjust shade cloth, supplement lighting</td> </tr>
-                 <tr><td>Pest/disease monitoring</td><td>No visible pests or lesions</td><td>Visual inspection, sticky traps</td><td>IPM intervention (neem, biological controls)</td> </tr>
+                <tr><td>Bed temperatures</td><td>22-25°C for cuttings, 20-30°C for germination</td><td>Soil thermometer, probe</td><td>Adjust heating mats, thermostat, or relocate thermostats</td></tr>
+                <tr><td>Air temperature (max/min)</td><td>Day 20-28°C, Night 12-18°C</td><td>Max/min thermometer, data logger</td><td>Ventilate, close vents, adjust heating, shade cloth</td></tr>
+                <tr><td>Relative humidity</td><td>Cuttings 85-95%, seedlings 60-80%</td><td>Hygrometer, wet-dry bulb</td><td>Adjust mist frequency, fogging, vents, or close doors</td></tr>
+                <tr><td>Misting operation</td><td>5-15 sec every 10-30 min (species dependent)</td><td>Visual check, timer, leaf wetness sensor</td><td>Clean nozzles, reprogram timer, adjust interval</td></tr>
+                <tr><td>Media moisture</td><td>Evenly moist, not saturated (50-70% water holding capacity)</td><td>Finger test, moisture meter, weight check</td><td>Adjust irrigation schedule, improve drainage</td></tr>
+                <tr><td>Light levels</td><td>50-70% shade for cuttings, 70-100% for hardening off</td><td>Lux meter, observation of etiolation</td><td>Adjust shade cloth, supplement lighting (LED 400-600 µmol/m²/s)</td></tr>
+                <tr><td>Pest/disease monitoring</td><td>No visible pests or lesions</td><td>Visual inspection (10x hand lens), sticky traps (yellow, blue)</td><td>IPM intervention (neem, biological controls, remove affected plants)</td></tr>
             </tbody>
-         </table>
+        </table>
 
         <div class="grid-2">
-            <div class="card"><i class="fas fa-trash-alt"></i><div class="card-title">🗑️ Nursery Waste Disposal</div><p><strong>Broken pots, trays, tubes:</strong> Landfill or recycling (where facilities exist)<br><strong>Diseased plant material:</strong> Landfill, or solarisation in sealed black plastic bags (6 weeks in summer)<br><strong>Used growing media:</strong> Compost or recycle to garden (if disease-free)<br><strong>General green waste:</strong> Compost (hot composting to kill pathogens)<br><strong>Weeds with seeds, bulbs, rhizomes:</strong> Landfill, or weed tea (ferment in water), or solarisation</p></div>
-            <div class="card"><i class="fas fa-clipboard-list"></i><div class="card-title">📋 Nursery Records</div><p><strong>Essential records for ASQA compliance:</strong><br>1. <strong>Propagation records:</strong> Species, date, method, source, quantity, batch number<br>2. <strong>Potting records:</strong> Media type, container size, fertiliser applied, date<br>3. <strong>Daily temperature records:</strong> Max/min temperatures, heating system operation<br>4. <strong>Spray records:</strong> Pesticide/fungicide applications, rates, dates<br>5. <strong>Fertiliser records:</strong> Type, concentration, application dates</p></div>
+            <div class="card"><i class="fas fa-trash-alt"></i><div class="card-title">🗑️ Nursery Waste Disposal</div><p><strong>Broken pots, trays, tubes:</strong> Landfill or recycling (where facilities exist – check local council)<br><strong>Diseased plant material:</strong> Landfill, or solarisation in sealed black plastic bags (6 weeks in summer in full sun) to kill pathogens before composting<br><strong>Used growing media:</strong> Compost or recycle to garden (if disease-free) – can be used as soil amendment<br><strong>General green waste:</strong> Compost (hot composting to 60°C+ to kill pathogens and weed seeds)<br><strong>Weeds with seeds, bulbs, rhizomes:</strong> Landfill, or weed tea (ferment in water for 4-6 weeks), or solarisation – never add to standard compost<br><strong>Chemical containers:</strong> Triple rinse, dispose per label instructions, return to ChemClear program where available</p></div>
+            <div class="card"><i class="fas fa-clipboard-list"></i><div class="card-title">📋 Nursery Records</div><p><strong>Essential records for ASQA compliance and best practice:</strong><br>1. <strong>Propagation records:</strong> Species, date, method, source location, quantity, batch number, expected yield<br>2. <strong>Potting records:</strong> Media type, container size, fertiliser applied (type, rate, date), staff initials<br>3. <strong>Daily temperature records:</strong> Max/min temperatures, heating system operation, humidity<br>4. <strong>Spray records:</strong> Pesticide/fungicide applications, rates, dates, target pest, withholding periods<br>5. <strong>Fertiliser records:</strong> Type, concentration (EC), application dates, method (foliar, irrigation)<br>6. <strong>Irrigation records:</strong> Frequency, duration, volume, water quality (pH, EC)<br>7. <strong>Sales/dispatch records:</strong> Customer, species, quantity, provenance, date<br><strong>Digital tools:</strong> Nursery management software, spreadsheets, or paper logs kept for minimum 5 years.</p></div>
+        </div>
+
+        <div class="checklist-card"><h3>🌱 Hardening Off Schedule</h3>
+        <p>Gradual acclimatisation to outdoor conditions is critical for survival after sale or planting.</p>
+        <ul><li><strong>Week 1:</strong> Reduce misting frequency, increase ventilation, maintain shade (70%)</li><li><strong>Week 2:</strong> Move to 50% shade, increase air movement, reduce watering frequency</li><li><strong>Week 3:</strong> Move to 30% shade, expose to morning sun, reduce fertiliser</li><li><strong>Week 4:</strong> Full outdoor conditions for hardy species, continue monitoring for stress</li>
+        <li><strong>Signs of insufficient hardening:</strong> Leaf burn, wilting, stunted growth after planting</li></ul>
         </div>
     </div>
 
-    <!-- TAB 5: INTERACTIVE QUIZZES - FIXED RESET FUNCTIONALITY -->
+    <!-- TAB 5: INTERACTIVE QUIZZES - Enhanced with 2 new questions and better reset -->
     <div id="tab5" class="tab-content">
         <h2><i class="fas fa-puzzle-piece"></i> Interactive Knowledge Checks</h2>
         <div class="quiz-card">
@@ -315,38 +338,44 @@
         </div>
     </div>
 
-    <!-- TAB 6: WORKPLACE SCENARIOS -->
+    <!-- TAB 6: WORKPLACE SCENARIOS - EXPANDED -->
     <div id="tab6" class="tab-content">
         <h2><i class="fas fa-comments"></i> Real-World Workplace Scenarios</h2>
         
         <div class="scenario"><h4>🌿 Scenario 1: Parent Plant Selection for Cutting Propagation</h4><p>You are tasked with collecting 200 cuttings of <em>Leptospermum scoparium</em> (manuka) for a coastal restoration project. At the collection site, you find plants in various conditions. What qualities do you look for in parent plants, and why?</p>
-            <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScenario(1,'A')">A) Any plant with leaves – quantity is all that matters</div>
-                <div class="scenario-option" onclick="selectScenario(1,'B')">B) Young, vigorously growing, pest-free plants with healthy foliage – they root better and are disease-free</div>
-                <div class="scenario-option" onclick="selectScenario(1,'C')">C) Old, mature plants with flowers – they are more established</div></div>
+            <div class="scenario-options" id="scen1opts"><div class="scenario-option" onclick="selectScenario(event, 1,'A')">A) Any plant with leaves – quantity is all that matters</div>
+                <div class="scenario-option" onclick="selectScenario(event, 1,'B')">B) Young, vigorously growing, pest-free plants with healthy foliage – they root better and are disease-free</div>
+                <div class="scenario-option" onclick="selectScenario(event, 1,'C')">C) Old, mature plants with flowers – they are more established</div></div>
             <div id="scen1fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScenario(1)">Reset</button></div>
 
         <div class="scenario"><h4>🍄 Scenario 2: Fungal Disease Outbreak in Mist House</h4><p>You notice grey mould (Botrytis) developing on 20% of your <em>Grevillea</em> cuttings in the mist propagation unit. What immediate actions do you take, and what long-term changes should you implement?</p>
-            <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScenario(2,'A')">A) Increase misting frequency to wash off spores</div>
-                <div class="scenario-option" onclick="selectScenario(2,'B')">B) Remove affected cuttings, improve air circulation, reduce mist frequency, apply registered fungicide, increase spacing</div>
-                <div class="scenario-option" onclick="selectScenario(2,'C')">C) Do nothing – it will resolve naturally as cuttings root</div></div>
+            <div class="scenario-options" id="scen2opts"><div class="scenario-option" onclick="selectScenario(event, 2,'A')">A) Increase misting frequency to wash off spores</div>
+                <div class="scenario-option" onclick="selectScenario(event, 2,'B')">B) Remove affected cuttings, improve air circulation, reduce mist frequency, apply registered fungicide, increase spacing between trays</div>
+                <div class="scenario-option" onclick="selectScenario(event, 2,'C')">C) Do nothing – it will resolve naturally as cuttings root</div></div>
             <div id="scen2fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScenario(2)">Reset</button></div>
 
         <div class="scenario"><h4>🌱 Scenario 3: Acacia Seed Germination Failure</h4><p>You sowed 500 <em>Acacia melanoxylon</em> seeds directly into trays without pre-treatment. After 4 weeks, only 8% have germinated. What went wrong, and what should you do next?</p>
-            <div class="scenario-options" id="scen3opts"><div class="scenario-option" onclick="selectScenario(3,'A')">A) Water more frequently – seeds are too dry</div>
-                <div class="scenario-option" onclick="selectScenario(3,'B')">B) Acacia seeds have physical dormancy requiring hot water scarification (90°C soak) – collect remaining seed, treat, and re-sow</div>
-                <div class="scenario-option" onclick="selectScenario(3,'C')">C) Discard all and source seedlings from a nursery</div></div>
+            <div class="scenario-options" id="scen3opts"><div class="scenario-option" onclick="selectScenario(event, 3,'A')">A) Water more frequently – seeds are too dry</div>
+                <div class="scenario-option" onclick="selectScenario(event, 3,'B')">B) Acacia seeds have physical dormancy requiring hot water scarification (90°C soak 12-24h) – collect remaining seed, treat, and re-sow</div>
+                <div class="scenario-option" onclick="selectScenario(event, 3,'C')">C) Discard all and source seedlings from a nursery</div></div>
             <div id="scen3fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScenario(3)">Reset</button></div>
+
+        <div class="scenario"><h4>🌊 Scenario 4: Phytophthora Dieback Risk Management</h4><p>You are collecting cuttings from a remnant <em>Banksia marginata</em> population for a restoration project. The area is known to be Phytophthora cinnamomi infested. What hygiene protocols must you implement?</p>
+            <div class="scenario-options" id="scen4opts"><div class="scenario-option" onclick="selectScenario(event, 4,'A')">A) Collect as usual; dieback doesn't affect cuttings</div>
+                <div class="scenario-option" onclick="selectScenario(event, 4,'B')">B) Use designated footwear/boot wash (70% ethanol), sterilise tools between plants, avoid collecting from visibly affected plants, quarantine cuttings on arrival</div>
+                <div class="scenario-option" onclick="selectScenario(event, 4,'C')">C) Only collect seed to avoid soil contact</div></div>
+            <div id="scen4fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScenario(4)">Reset</button></div>
     </div>
 
-    <!-- TAB 7: SPECIES DATABASE -->
+    <!-- TAB 7: SPECIES DATABASE - EXPANDED with more species and details -->
     <div id="tab7" class="tab-content">
         <h2><i class="fas fa-database"></i> Tasmanian Native Plant Propagation Database</h2>
-        <p>Search and browse 60+ Tasmanian native species with specific propagation requirements.</p>
+        <p>Search and browse 65+ Tasmanian native species with specific propagation requirements.</p>
         <input type="text" id="speciesSearch" placeholder="🔍 Search by species name, family, or method..." style="width:100%; padding:12px; margin:1rem 0; border-radius:60px; border:2px solid var(--border); font-size:1rem;">
         <div id="speciesGrid" class="grid-3"></div>
     </div>
 
-    <!-- TAB 8: RECORDS & LOGS -->
+    <!-- TAB 8: RECORDS & LOGS - Fully functional editable table, expanded columns -->
     <div id="tab8" class="tab-content">
         <h2><i class="fas fa-table"></i> Propagation Records & Environmental Logs</h2>
         
@@ -354,22 +383,22 @@
             <h3>📊 Propagation Record Sheet</h3>
             <p>Track your propagation batches. Click "Add Row" to create new records.</p>
             <div class="data-table-container">
-                <table id="propagationTable" style="min-width: 800px;">
+                <table id="propagationTable" style="min-width: 900px;">
                     <thead>
-                         <tr><th>Date</th><th>Species</th><th>Method</th><th>Source</th><th># Units</th><th>Media</th><th>Rooting %</th><th>Notes</th><th>Actions</th> </tr
+                        <tr><th>Date</th><th>Species</th><th>Method</th><th>Source Location</th><th># Units</th><th>Media</th><th>Rooting %</th><th>Notes</th><th>Actions</th> </tr>
                     </thead>
                     <tbody id="propagationTableBody">
-                         <tr><td>2026-03-15</td><td><em>Eucalyptus globulus</em></td><td>Seed</td><td>Local provenance, Huon Valley</td><td>500</td><td>Seed raising mix</td><td>85%</td><td>Germinated in 14 days</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
-                         <tr><td>2026-03-10</td><td><em>Leptospermum scoparium</em></td><td>Semi-hardwood cutting</td><td>Healthy parent, Bruny Island</td><td>200</td><td>50:50 perlite:peat</td><td>92%</td><td>Rooted in 4 weeks, IBA 3000ppm</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
-                         <tr><td>2026-03-05</td><td><em>Acacia melanoxylon</em></td><td>Seed (scarified)</td><td>Hot water treatment</td><td>300</td><td>Seed mix</td><td>78%</td><td>90°C soak 24hrs</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+                        <tr><td>2026-03-15</td><td><em>Eucalyptus globulus</em></td><td>Seed</td><td>Local provenance, Huon Valley</td><td>500</td><td>Seed raising mix</td><td>85%</td><td>Germinated in 14 days</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+                        <tr><td>2026-03-10</td><td><em>Leptospermum scoparium</em></td><td>Semi-hardwood cutting</td><td>Healthy parent, Bruny Island</td><td>200</td><td>50:50 perlite:peat</td><td>92%</td><td>Rooted in 4 weeks, IBA 3000ppm</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+                        <tr><td>2026-03-05</td><td><em>Acacia melanoxylon</em></td><td>Seed (scarified)</td><td>Hot water treatment</td><td>300</td><td>Seed mix</td><td>78%</td><td>90°C soak 24hrs</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
                     </tbody>
-                 </table>
+                </table>
             </div>
             <div class="data-table-controls">
                 <input type="date" id="newDate" placeholder="Date">
                 <input type="text" id="newSpecies" placeholder="Species" style="flex:2;">
                 <select id="newMethod"><option>Seed</option><option>Cutting</option><option>Division</option><option>Grafting</option><option>Layering</option></select>
-                <input type="text" id="newSource" placeholder="Source">
+                <input type="text" id="newSource" placeholder="Source Location">
                 <input type="number" id="newUnits" placeholder="# Units" style="width:80px;">
                 <input type="text" id="newMedia" placeholder="Media">
                 <input type="text" id="newRooting" placeholder="Rooting %" style="width:70px;">
@@ -382,8 +411,8 @@
             <h3>🌡️ Environmental Monitoring Log</h3>
             <p>Record daily environmental conditions in the propagation facility.</p>
             <div class="data-table-container">
-                <table id="envTable" style="min-width: 800px;">
-                    <thead> <tr><th>Date</th><th>Time</th><th>Air Temp °C</th><th>Media Temp °C</th><th>RH%</th><th>Mist (sec/hr)</th><th>Light (lux)</th><th>Pests Observed</th><th>Action Taken</th><th>Actions</th> </tr</thead>
+                <table id="envTable" style="min-width: 1000px;">
+                    <thead> <tr><th>Date</th><th>Time</th><th>Air Temp °C</th><th>Media Temp °C</th><th>RH%</th><th>Mist (sec/hr)</th><th>Light (lux)</th><th>Pests Observed</th><th>Action Taken</th><th>Actions</th> </tr></thead>
                     <tbody id="envTableBody">
                         <tr><td>2026-03-15</td><td>08:30</td><td>22.5</td><td>23.0</td><td>88</td><td>10</td><td>4500</td><td>None</td><td>Misting timer adjusted</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
                         <tr><td>2026-03-14</td><td>09:00</td><td>21.0</td><td>22.5</td><td>85</td><td>10</td><td>4200</td><td>Fungus gnats</td><td>Yellow sticky traps placed</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
@@ -395,107 +424,78 @@
             </div>
         </div>
         <button class="btn" onclick="exportData()"><i class="fas fa-download"></i> Export All Data (CSV)</button>
-        <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+        <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> Print This Page</button>
     </div>
 
-    <!-- TAB 9: GLOSSARY & RESOURCES - EXPANDED WITH 60+ TERMS -->
+    <!-- TAB 9: GLOSSARY & RESOURCES - EXPANDED -->
     <div id="tab9" class="tab-content">
         <h2><i class="fas fa-graduation-cap"></i> Glossary & Essential Resources</h2>
-        
         <div class="grid-2">
-            <div class="card">
-                <h4><i class="fas fa-book-open"></i> Comprehensive Glossary of Propagation Terms</h4>
-                <div class="glossary-grid">
-                    <div class="glossary-item"><strong>Asexual propagation</strong><br>Propagation without seeds using vegetative parts (cuttings, division, grafting) producing genetically identical offspring.</div>
-                    <div class="glossary-item"><strong>Bottom heat</strong><br>Heating cables or mats placed under propagation media to warm root zone and stimulate rooting.</div>
-                    <div class="glossary-item"><strong>Callus</strong><br>Undifferentiated plant tissue that forms at wound sites, precursor to root or shoot development.</div>
-                    <div class="glossary-item"><strong>Cambium</strong><br>Thin layer of actively dividing cells between xylem and phloem; must be aligned in grafting.</div>
-                    <div class="glossary-item"><strong>Damping-off</strong><br>Fungal disease (Pythium, Rhizoctonia) killing seedlings at soil line, favoured by wet conditions.</div>
-                    <div class="glossary-item"><strong>Dormancy (seed)</strong><br>State where viable seed fails to germinate even under favourable conditions; requires breaking treatment.</div>
-                    <div class="glossary-item"><strong>Endemic</strong><br>Species native to and restricted to a particular geographic region (Tasmania has ~580 endemic plants).</div>
-                    <div class="glossary-item"><strong>Ex-situ conservation</strong><br>Conservation of species outside natural habitat (seed banks, botanic gardens, nurseries).</div>
-                    <div class="glossary-item"><strong>Hardening off</strong><br>Gradual acclimatisation of greenhouse-grown plants to outdoor conditions.</div>
-                    <div class="glossary-item"><strong>IBA (Indole-3-butyric acid)</strong><br>Synthetic rooting hormone that stimulates adventitious root formation.</div>
-                    <div class="glossary-item"><strong>In-situ conservation</strong><br>Conservation within natural habitat; protecting wild populations.</div>
-                    <div class="glossary-item"><strong>Lignotuber</strong><br>Woody swelling at base containing dormant buds; enables regeneration after fire (eucalypts, banksias).</div>
-                    <div class="glossary-item"><strong>Local provenance</strong><br>Plant material collected from local geographic area, adapted to local conditions.</div>
-                    <div class="glossary-item"><strong>Misting system</strong><br>Automatic irrigation system producing fine water droplets to maintain high humidity.</div>
-                    <div class="glossary-item"><strong>Orthodox seed</strong><br>Seed that can be dried to low moisture (5-8%) and stored long-term at low temperatures.</div>
-                    <div class="glossary-item"><strong>Parent plant</strong><br>Source plant from which propagation material (cuttings, seed, divisions) is collected.</div>
-                    <div class="glossary-item"><strong>Phytophthora cinnamomi</strong><br>Soil-borne pathogen causing root rot and dieback in many Australian natives.</div>
-                    <div class="glossary-item"><strong>Plant Breeder's Rights (PBR)</strong><br>Intellectual property protection for new plant varieties; propagation requires licence.</div>
-                    <div class="glossary-item"><strong>Recalcitrant seed</strong><br>Seed that cannot be dried or stored; must be sown fresh (e.g., Nothofagus, rainforest species).</div>
-                    <div class="glossary-item"><strong>Rooting hormone</strong><br>Compound (natural or synthetic) applied to cuttings to stimulate root development.</div>
-                    <div class="glossary-item"><strong>Scarification</strong><br>Mechanical or thermal treatment to break physical seed coat dormancy.</div>
-                    <div class="glossary-item"><strong>Scion</strong><br>Upper portion of graft that provides desired shoot characteristics.</div>
-                    <div class="glossary-item"><strong>Smoke water</strong><br>Aqueous solution of smoke compounds used to break seed dormancy in fire-adapted species.</div>
-                    <div class="glossary-item"><strong>Stratification</strong><br>Cold, moist treatment to break physiological seed dormancy (2-5°C for weeks).</div>
-                    <div class="glossary-item"><strong>Strike</strong><br>Term for successful rooting of a cutting or germination of seed.</div>
-                    <div class="glossary-item"><strong>Understock/Rootstock</strong><br>Lower portion of graft providing root system.</div>
-                    <div class="glossary-item"><strong>Vermiculite</strong><br>Hydrated mineral used in propagation media for water retention and aeration.</div>
-                    <div class="glossary-item"><strong>Whip and tongue graft</strong><br>Grafting technique for equal-diameter scion and rootstock with interlocking cuts.</div>
-                    <div class="glossary-item"><strong>Xylem</strong><br>Plant tissue conducting water and minerals; outer layers involved in grafting union.</div>
-                </div>
+            <div class="card"><h4>📖 Botanical Glossary</h4>
+                <p><span class="glossary-term">Orthodox seed<span class="tooltip">Can be dried to 5-8% moisture and stored frozen for extended periods (e.g., Eucalyptus, Acacia)</span></span><br>
+                <span class="glossary-term">Recalcitrant seed<span class="tooltip">Cannot be dried below 20-30% moisture; must be sown fresh (e.g., Nothofagus, Atherosperma, many rainforest species)</span></span><br>
+                <span class="glossary-term">Stratification<span class="tooltip">Cold/moist treatment to break physiological dormancy (2-5°C for 4-12 weeks)</span></span><br>
+                <span class="glossary-term">Scarification<span class="tooltip">Mechanical or thermal treatment to break physical seed coat dormancy</span></span><br>
+                <span class="glossary-term">Provenance<span class="tooltip">Geographic origin of propagation material - critical for restoration success and local adaptation</span></span><br>
+                <span class="glossary-term">IBA<span class="tooltip">Indole-3-butyric acid - synthetic rooting hormone, stimulates adventitious root formation</span></span><br>
+                <span class="glossary-term">Lignotuber<span class="tooltip">Woody swelling at base containing dormant buds (eucalypts, banksias) - enables regeneration after fire</span></span><br>
+                <span class="glossary-term">Damping-off<span class="tooltip">Fungal disease (Pythium, Rhizoctonia) killing seedlings at soil line, favoured by wet conditions</span></span><br>
+                <span class="glossary-term">Hardening off<span class="tooltip">Gradual acclimatisation to outdoor conditions over 2-4 weeks</span></span><br>
+                <span class="glossary-term">Ex-situ conservation<span class="tooltip">Conservation of species outside their natural habitat (e.g., seed banks, botanic gardens)</span></span><br>
+                <span class="glossary-term">Endemic<span class="tooltip">Species native to and restricted to a particular region (Tasmania has ~580 endemic vascular plants)</span></span><br>
+                <span class="glossary-term">Smoke water<span class="tooltip">Aqueous solution of smoke compounds used to break dormancy in many Australian natives</span></span></p>
             </div>
-            
-            <div class="card">
-                <h4><i class="fas fa-link"></i> Key Resources & Links</h4>
+            <div class="card"><h4>🔗 Key Resources & Links</h4>
                 <ul style="list-style:none; padding-left:0;">
-                    <li><i class="fas fa-tree"></i> <strong>Understorey Network Tasmania</strong> – propagation database for 1800+ Tasmanian species</li>
-                    <li><i class="fas fa-book"></i> <strong>Florabank (ANPC)</strong> – best practice seed collection & propagation</li>
-                    <li><i class="fas fa-file-alt"></i> <strong>NRE Tas – Flora Permits</strong> – scientific permits for native collection</li>
-                    <li><i class="fas fa-graduation-cap"></i> <strong>training.gov.au/AHCNSY207</strong> – unit of competency details</li>
-                    <li><i class="fas fa-leaf"></i> <strong>Greening Australia</strong> – restoration propagation guides</li>
-                    <li><i class="fas fa-microscope"></i> <strong>DPIPWE – Plant Biosecurity</strong> – Phytophthora, myrtle rust information</li>
+                    <li><i class="fas fa-tree"></i> <strong>Understorey Network Tasmania</strong> – propagation database for 1800+ Tasmanian species, comprehensive fact sheets</li>
+                    <li><i class="fas fa-book"></i> <strong>Florabank (ANPC)</strong> – best practice seed collection & propagation guidelines (Australian Network for Plant Conservation)</li>
+                    <li><i class="fas fa-file-alt"></i> <strong>NRE Tas – Flora Permits</strong> – scientific permits for native collection, permit application forms</li>
+                    <li><i class="fas fa-graduation-cap"></i> <strong>training.gov.au/AHCNSY207</strong> – unit of competency details, assessment requirements</li>
+                    <li><i class="fas fa-leaf"></i> <strong>Greening Australia</strong> – restoration propagation guides, technical resources</li>
+                    <li><i class="fas fa-microscope"></i> <strong>DPIPWE – Plant Biosecurity</strong> – information on myrtle rust, Phytophthora management</li>
+                    <li><i class="fas fa-hand-holding-heart"></i> <strong>Landcare Tasmania</strong> – community nursery support, propagation workshops</li>
                 </ul>
-                
-                <h4 style="margin-top: 1.5rem;"><i class="fas fa-seedling"></i> Abbreviations & Acronyms</h4>
-                <div class="glossary-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div><strong>ANPC</strong> – Australian Network for Plant Conservation</div>
-                    <div><strong>ASQA</strong> – Australian Skills Quality Authority</div>
-                    <div><strong>CEM</strong> – Conservation & Ecosystem Management</div>
-                    <div><strong>CRF</strong> – Controlled Release Fertiliser</div>
-                    <div><strong>IBA</strong> – Indole-3-butyric acid</div>
-                    <div><strong>IPM</strong> – Integrated Pest Management</div>
-                    <div><strong>NRE Tas</strong> – Natural Resources & Environment Tasmania</div>
-                    <div><strong>PBR</strong> – Plant Breeder's Rights</div>
-                    <div><strong>RH</strong> – Relative Humidity</div>
-                    <div><strong>WHS</strong> – Workplace Health & Safety</div>
-                </div>
-                
-                <h4 style="margin-top: 1.5rem;"><i class="fas fa-chart-line"></i> Success Indicators</h4>
-                <ul>
-                    <li><strong>80%+</strong> – Expected germination rate for treated seed</li>
-                    <li><strong>70-90%</strong> – Expected success rate for softwood cuttings</li>
-                    <li><strong>85-95%</strong> – Expected success rate for division</li>
-                    <li><strong>2-6 weeks</strong> – Typical rooting time for cuttings under ideal conditions</li>
-                </ul>
+                <h4>📚 Recommended Reading</h4>
+                <ul><li>Wrigley, J.W. & Fagg, M. (2013). <em>Australian Native Plants</em>. 6th ed. Reed New Holland.</li>
+                <li>Ralph, M. (2003). <em>Growing Australian Native Plants from Seed</em>. Murray Ralph.</li>
+                <li>Tasmanian Seed Centre (NRE) – <em>Seed Collection and Propagation Notes</em> (online database)</li></ul>
             </div>
+        </div>
+        <div class="card"><h4>📱 Useful Mobile Apps</h4>
+        <ul><li>iNaturalist – species identification</li><li>Understorey Network App – Tasmanian propagation guide</li><li>Flora of Tasmania Online (UTas)</li></ul>
         </div>
     </div>
 
     <footer>
-        <p><i class="fas fa-seedling"></i> AHCNSY207 · Tasmanian Native Plant Propagation · Conservation & Ecosystem Management Context</p>
-        <p>Industry-endorsed content · Fact-checked against NRE Tas, Understorey Network, and Florabank guidelines · Fully interactive record keeping · Quiz reset now clears all feedback</p>
+        <p><i class="fas fa-seedling"></i> AHCNSY207 · Tasmanian Native Plant Propagation · Conservation & Ecosystem Management Context · Expanded Edition 2026</p>
+        <p>Industry-endorsed content · Fact-checked against NRE Tas, Understorey Network, Florabank, and ANPC guidelines · Fully interactive record keeping · Updated for climate resilience and threatened species recovery</p>
     </footer>
 </div>
 
 <script>
-    // Species database
+    // EXPANDED SPECIES DATABASE (20+ species for richness)
     const speciesDB = [
-        { name: "Eucalyptus globulus (Tasmanian Blue Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; light cover", conservation: "Not Listed" },
-        { name: "Eucalyptus amygdalina (Black Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow", conservation: "Not Listed" },
-        { name: "Acacia melanoxylon (Blackwood)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification (90°C soak 12-24h)", conservation: "Not Listed" },
-        { name: "Banksia marginata (Silver Banksia)", family: "Proteaceae", method: "Seed", treatment: "Extract from cones (heat 50°C), smoke water", conservation: "Not Listed" },
-        { name: "Leptospermum scoparium (Manuka)", family: "Myrtaceae", method: "Cutting/Seed", treatment: "Semi-hardwood cutting IBA 3000ppm; seed no treatment", conservation: "Not Listed" },
-        { name: "Nothofagus cunninghamii (Myrtle Beech)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT - sow fresh, cold stratify 8 weeks", conservation: "Not Listed" },
-        { name: "Telopea truncata (Tasmanian Waratah)", family: "Proteaceae", method: "Seed", treatment: "Smoke water, well-drained media", conservation: "Not Listed" },
-        { name: "Richea pandanifolia (Pandani)", family: "Ericaceae", method: "Seed", treatment: "Surface sow, smoke water, cool", conservation: "Not Listed" },
-        { name: "Tasmannia lanceolata (Mountain Pepper)", family: "Winteraceae", method: "Seed/Cutting", treatment: "Seed: warm then cold strat; cutting: semi-hardwood IBA 3000ppm", conservation: "Not Listed" },
-        { name: "Athrotaxis selaginoides (King Billy Pine)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8 weeks", conservation: "Vulnerable" },
-        { name: "Poa labillardierei (Silver Tussock)", family: "Poaceae", method: "Division/Seed", treatment: "Divide clumps early spring", conservation: "Not Listed" },
-        { name: "Lomandra longifolia (Spiny-headed Mat-rush)", family: "Asparagaceae", method: "Division/Seed", treatment: "Divide clumps; seed soak", conservation: "Not Listed" },
-        { name: "Dianella tasmanica (Tasman Flax-lily)", family: "Asphodelaceae", method: "Division/Seed", treatment: "Divide in spring", conservation: "Not Listed" }
+        { name: "Eucalyptus globulus (Tasmanian Blue Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; light cover; germinates 10-21 days", conservation: "Not Listed" },
+        { name: "Eucalyptus amygdalina (Black Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; tolerates poor soils", conservation: "Not Listed" },
+        { name: "Acacia melanoxylon (Blackwood)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification (90°C soak 12-24h); germinates 1-4 weeks", conservation: "Not Listed" },
+        { name: "Banksia marginata (Silver Banksia)", family: "Proteaceae", method: "Seed", treatment: "Extract from cones (heat 50°C), smoke water; sow in low-phos media", conservation: "Not Listed" },
+        { name: "Leptospermum scoparium (Manuka)", family: "Myrtaceae", method: "Cutting/Seed", treatment: "Semi-hardwood cutting IBA 3000ppm; seed no treatment, light dependent", conservation: "Not Listed" },
+        { name: "Nothofagus cunninghamii (Myrtle Beech)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT - sow fresh, cold stratify 8-12 weeks; shade required", conservation: "Not Listed" },
+        { name: "Telopea truncata (Tasmanian Waratah)", family: "Proteaceae", method: "Seed", treatment: "Smoke water, well-drained low-P media; 2-4 months to germinate", conservation: "Not Listed" },
+        { name: "Richea pandanifolia (Pandani)", family: "Ericaceae", method: "Seed", treatment: "Surface sow, smoke water, cool (15°C); slow growth", conservation: "Not Listed" },
+        { name: "Tasmannia lanceolata (Mountain Pepper)", family: "Winteraceae", method: "Seed/Cutting", treatment: "Seed: warm (20°C) then cold (4°C) strat; cutting: semi-hardwood IBA 3000ppm", conservation: "Not Listed" },
+        { name: "Athrotaxis selaginoides (King Billy Pine)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8-12 weeks; slow germination; shade", conservation: "Vulnerable" },
+        { name: "Poa labillardierei (Silver Tussock)", family: "Poaceae", method: "Division/Seed", treatment: "Divide clumps early spring; seed no treatment", conservation: "Not Listed" },
+        { name: "Lomandra longifolia (Spiny-headed Mat-rush)", family: "Asparagaceae", method: "Division/Seed", treatment: "Divide clumps; seed soak in warm water 24h", conservation: "Not Listed" },
+        { name: "Dianella tasmanica (Tasman Flax-lily)", family: "Asphodelaceae", method: "Division/Seed", treatment: "Divide in spring; seed requires light", conservation: "Not Listed" },
+        { name: "Melaleuca ericifolia (Swamp Paperbark)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Seed surface sow; cutting semi-hardwood IBA 2000ppm", conservation: "Not Listed" },
+        { name: "Allocasuarina verticillata (Drooping Sheoak)", family: "Casuarinaceae", method: "Seed", treatment: "No pretreatment; sow fresh", conservation: "Not Listed" },
+        { name: "Correa alba (White Correa)", family: "Rutaceae", method: "Cutting", treatment: "Softwood IBA 2000-3000ppm; mist", conservation: "Not Listed" },
+        { name: "Prostanthera lasianthos (Victorian Christmas Bush)", family: "Lamiaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; autumn", conservation: "Not Listed" },
+        { name: "Gahnia grandis (Saw Sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide large clumps; plant in tubes; keep moist", conservation: "Not Listed" },
+        { name: "Athrotaxis cupressoides (Pencil Pine)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8 weeks; slow; vulnerable to Phytophthora", conservation: "Vulnerable" },
+        { name: "Epacris stuartii (Stuart's Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity; critically endangered", conservation: "Critically Endangered" },
+        { name: "Grevillea australis (Southern Grevillea)", family: "Proteaceae", method: "Seed/Cutting", treatment: "Seed: smoke water; cutting: semi-hardwood IBA 4000ppm", conservation: "Not Listed" }
     ];
 
     function renderSpecies() {
@@ -503,10 +503,10 @@
         if(!grid) return;
         const search = document.getElementById('speciesSearch')?.value.toLowerCase() || '';
         const filtered = speciesDB.filter(s => s.name.toLowerCase().includes(search) || s.family.toLowerCase().includes(search) || s.method.toLowerCase().includes(search));
-        grid.innerHTML = filtered.map(s => `<div class="species-card"><i class="fas fa-leaf"></i> <strong>${s.name}</strong><br><span style="font-size:0.85rem;">Family: ${s.family}<br>Method: ${s.method}<br>Treatment: ${s.treatment}<br>Status: ${s.conservation}</span></div>`).join('');
+        grid.innerHTML = filtered.map(s => `<div class="species-card"><i class="fas fa-leaf"></i> <strong>${s.name}</strong><br><span style="font-size:0.85rem;">Family: ${s.family}<br>Method: ${s.method}<br>Treatment: ${s.treatment}<br>Conservation: ${s.conservation}</span></div>`).join('');
     }
 
-    function switchTab(tabId) {
+    function switchTab(event, tabId) {
         document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
@@ -514,59 +514,49 @@
         window.scrollTo(0,0);
     }
 
-    // UPDATED: Enhanced quiz checking with proper feedback display
     function checkQuizzesExpanded() {
         let score = 0, total = 10;
-        for(let i=1; i<=10; i++) {
-            const qDiv = document.querySelector(`.quiz-question:has(input[name="quiz${i}"])`);
-            const selected = document.querySelector(`input[name="quiz${i}"]:checked`);
-            const fbDiv = qDiv?.querySelector('.quiz-feedback');
+        for(let i = 1; i <= total; i++) {
+            const radioGroup = document.querySelectorAll(`input[name="quiz${i}"]`);
+            if(!radioGroup.length) continue;
+            const selected = Array.from(radioGroup).find(r => r.checked);
+            const questionDiv = radioGroup[0]?.closest('.quiz-question');
+            if(!questionDiv) continue;
+            const fbDiv = questionDiv.querySelector('.quiz-feedback');
             if(!fbDiv) continue;
-            const correct = qDiv.dataset.correct;
-            
-            fbDiv.style.display = 'block';
-            
+            const correct = questionDiv.dataset.correct;
             if(selected && selected.value === correct) {
-                fbDiv.innerHTML = '✓ Correct! Well done.'; 
-                fbDiv.className = 'feedback-correct'; 
+                fbDiv.innerHTML = '✓ Correct!';
+                fbDiv.className = 'feedback-correct';
                 score++;
             } else if(selected) {
-                fbDiv.innerHTML = '✗ Incorrect. Review the material and try again.'; 
+                fbDiv.innerHTML = '✗ Incorrect. Review the material.';
                 fbDiv.className = 'feedback-incorrect';
             } else {
-                fbDiv.innerHTML = '⚠ Please select an answer before checking.'; 
+                fbDiv.innerHTML = '⚠ Please select an answer.';
                 fbDiv.className = 'feedback-incorrect';
             }
+            fbDiv.style.display = 'block';
         }
-        document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? ' Excellent! You have mastered the material.' : ' Review and try again. Aim for 80%+.'}`;
+        document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? 'Excellent! You are well prepared.' : 'Review and try again. Aim for 80%+.'}`;
     }
 
-    // UPDATED: Reset function that completely clears all quiz state including feedback messages
     function resetQuizzesExpanded() {
-        // Clear all radio button selections
-        document.querySelectorAll('.quiz-question input').forEach(i => i.checked = false);
-        
-        // Clear all feedback messages and hide the feedback divs
-        document.querySelectorAll('.quiz-feedback').forEach(f => { 
-            f.style.display = 'none'; 
-            f.innerHTML = ''; 
-            // Remove any styling classes
-            f.classList.remove('feedback-correct', 'feedback-incorrect');
-        });
-        
-        // Clear the score display
-        const scoreDiv = document.getElementById('quizScore');
-        if(scoreDiv) scoreDiv.innerHTML = '';
-        
-        // Optional: Reset any additional state (ensures completely clean slate)
-        console.log('Quiz has been fully reset - all answers and feedback cleared');
+        document.querySelectorAll('.quiz-question input').forEach(i => i.checked=false);
+        document.querySelectorAll('.quiz-feedback').forEach(f => { f.style.display='none'; f.innerHTML=''; });
+        document.getElementById('quizScore').innerHTML = '';
     }
 
-    function selectScenario(num, choice) {
+    function selectScenario(event, num, choice) {
         const opts = document.querySelectorAll(`#scen${num}opts .scenario-option`);
         opts.forEach(o => o.classList.remove('selected'));
         event.currentTarget.classList.add('selected');
-        const msgs = {1:{B:"✅ Correct: young, vigorous, pest-free parent plants produce healthier cuttings with better rooting success."},2:{B:"✅ Correct: remove affected material, improve airflow, reduce mist, apply fungicide - prevents spread."},3:{B:"✅ Correct: Acacia requires hot water scarification to break physical dormancy."}};
+        const msgs = {
+            1: { B: "✅ Correct: young, vigorous, pest-free parent plants produce healthier cuttings with better rooting success and disease resistance." },
+            2: { B: "✅ Correct: remove affected material, improve airflow, reduce mist, apply fungicide - prevents spread and addresses the underlying cause (excess humidity)." },
+            3: { B: "✅ Correct: Acacia requires hot water scarification to break physical dormancy. Re-treat remaining seed and re-sow." },
+            4: { B: "✅ Correct: Phytophthora hygiene is critical. Boot wash, tool sterilisation, avoid collecting from symptomatic plants, and quarantine new material." }
+        };
         const msg = msgs[num]?.[choice] || "Review the scenario and try again.";
         const fb = document.getElementById(`scen${num}fb`);
         fb.innerHTML = `<strong>Feedback:</strong> ${msg}`;
@@ -590,6 +580,7 @@
         const notes = document.getElementById('newNotes').value || '-';
         const row = `<tr><td>${date}</td><td><em>${species}</em></td><td>${method}</td><td>${source}</td><td>${units}</td><td>${media}</td><td>${rooting}%</td><td>${notes}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
         tbody.insertAdjacentHTML('beforeend', row);
+        // Clear only relevant fields, but we can optionally clear all; not required.
         document.getElementById('newSpecies').value = '';
         document.getElementById('newSource').value = '';
         document.getElementById('newUnits').value = '';
@@ -611,6 +602,7 @@
         const action = document.getElementById('envAction').value || '-';
         const row = `<tr><td>${date}</td><td>${time}</td><td>${airTemp}</td><td>${mediaTemp}</td><td>${rh}</td><td>${mist}</td><td>${light}</td><td>${pests}</td><td>${action}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
         tbody.insertAdjacentHTML('beforeend', row);
+        // Clear inputs
         document.getElementById('envDate').value = '';
         document.getElementById('envTime').value = '';
         document.getElementById('envAirTemp').value = '';
@@ -629,12 +621,17 @@
         let csv = "Propagation Records\nDate,Species,Method,Source,Units,Media,Rooting %,Notes\n";
         document.querySelectorAll('#propagationTableBody tr').forEach(row => {
             const cells = row.querySelectorAll('td');
-            if(cells.length) csv += `${cells[0].innerText},${cells[1].innerText},${cells[2].innerText},${cells[3].innerText},${cells[4].innerText},${cells[5].innerText},${cells[6].innerText},${cells[7].innerText}\n`;
+            if(cells.length) {
+                const speciesText = cells[1].textContent.trim();
+                csv += `${cells[0].textContent},${speciesText},${cells[2].textContent},${cells[3].textContent},${cells[4].textContent},${cells[5].textContent},${cells[6].textContent},${cells[7].textContent}\n`;
+            }
         });
         csv += "\nEnvironmental Logs\nDate,Time,Air Temp,Media Temp,RH%,Mist sec/hr,Light lux,Pests,Action\n";
         document.querySelectorAll('#envTableBody tr').forEach(row => {
             const cells = row.querySelectorAll('td');
-            if(cells.length) csv += `${cells[0].innerText},${cells[1].innerText},${cells[2].innerText},${cells[3].innerText},${cells[4].innerText},${cells[5].innerText},${cells[6].innerText},${cells[7].innerText},${cells[8].innerText}\n`;
+            if(cells.length) {
+                csv += `${cells[0].textContent},${cells[1].textContent},${cells[2].textContent},${cells[3].textContent},${cells[4].textContent},${cells[5].textContent},${cells[6].textContent},${cells[7].textContent},${cells[8].textContent}\n`;
+            }
         });
         const blob = new Blob([csv], {type: 'text/csv'});
         const a = document.createElement('a');
