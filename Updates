@@ -1,0 +1,15 @@
+Glossary:
+            <div class="card"><h4>📖 Botanical Glossary</h4>
+                <p><span class="glossary-term">Orthodox seed<span class="tooltip">Can be dried to 5-8% moisture and stored frozen for extended periods (e.g., Eucalyptus, Acacia)</span></span><br>
+                <span class="glossary-term">Recalcitrant seed<span class="tooltip">Cannot be dried below 20-30% moisture; must be sown fresh (e.g., Nothofagus, Atherosperma, many rainforest species)</span></span><br>
+                <span class="glossary-term">Stratification<span class="tooltip">Cold/moist treatment to break physiological dormancy (2-5°C for 4-12 weeks)</span></span><br>
+                <span class="glossary-term">Scarification<span class="tooltip">Mechanical or thermal treatment to break physical seed coat dormancy</span></span><br>
+                <span class="glossary-term">Provenance<span class="tooltip">Geographic origin of propagation material - critical for restoration success and local adaptation</span></span><br>
+                <span class="glossary-term">IBA<span class="tooltip">Indole-3-butyric acid - synthetic rooting hormone, stimulates adventitious root formation</span></span><br>
+                <span class="glossary-term">Lignotuber<span class="tooltip">Woody swelling at base containing dormant buds (eucalypts, banksias) - enables regeneration after fire</span></span><br>
+                <span class="glossary-term">Damping-off<span class="tooltip">Fungal disease (Pythium, Rhizoctonia) killing seedlings at soil line, favoured by wet conditions</span></span><br>
+                <span class="glossary-term">Hardening off<span class="tooltip">Gradual acclimatisation to outdoor conditions over 2-4 weeks</span></span><br>
+                <span class="glossary-term">Ex-situ conservation<span class="tooltip">Conservation of species outside their natural habitat (e.g., seed banks, botanic gardens)</span></span><br>
+                <span class="glossary-term">Endemic<span class="tooltip">Species native to and restricted to a particular region (Tasmania has ~580 endemic vascular plants)</span></span><br>
+                <span class="glossary-term">Smoke water<span class="tooltip">Aqueous solution of smoke compounds used to break dormancy in many Australian natives</span></span></p>
+            </div>
