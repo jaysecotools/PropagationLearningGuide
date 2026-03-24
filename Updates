@@ -1,93 +1,171 @@
-// EXPANDED SPECIES DATABASE (65+ species for richness)
-const speciesDB = [
-    // EUCALYPTS & MYRTACEAE (10 species)
-    { name: "Eucalyptus globulus (Tasmanian Blue Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; light cover; germinates 10-21 days", conservation: "Not Listed" },
-    { name: "Eucalyptus amygdalina (Black Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; tolerates poor soils", conservation: "Not Listed" },
-    { name: "Eucalyptus obliqua (Stringybark)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow fresh; well-drained media", conservation: "Not Listed" },
-    { name: "Eucalyptus regnans (Mountain Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; requires high light for germination", conservation: "Not Listed" },
-    { name: "Eucalyptus delegatensis (Alpine Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; cold tolerant; sow spring", conservation: "Not Listed" },
-    { name: "Eucalyptus coccifera (Snow Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; cold stratify 4 weeks for alpine provenance", conservation: "Not Listed" },
-    { name: "Eucalyptus pauciflora (Cabbage Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow spring; cold tolerant", conservation: "Not Listed" },
-    { name: "Eucalyptus pulchella (White Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; well-drained", conservation: "Not Listed" },
-    { name: "Eucalyptus viminalis (Manna Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow fresh; germinates 10-20 days", conservation: "Not Listed" },
-    { name: "Eucalyptus tenuiramis (Silver Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; requires full light", conservation: "Not Listed" },
+I'm glad you're happy with the expansion! We can definitely add local storage in this chat—it's relatively simple and will make the propagation records persist between browser sessions. Let's do that now while we're here.
+
+Here's the updated code for the Records & Logs section with local storage functionality added. I'll show you the key additions:
+
+Updated JavaScript for Local Storage (add to existing script)
+
+```javascript
+// LOCAL STORAGE FUNCTIONS - Add to existing script
+
+// Load propagation data from localStorage on page load
+function loadPropagationData() {
+    const savedData = localStorage.getItem('propagationRecords');
+    if (savedData) {
+        const tbody = document.getElementById('propagationTableBody');
+        tbody.innerHTML = savedData;
+        // Re-attach delete handlers to new rows
+        document.querySelectorAll('#propagationTableBody .btn-outline').forEach(btn => {
+            btn.onclick = function() { deleteRow(this); savePropagationData(); };
+        });
+    }
+}
+
+// Save propagation data to localStorage
+function savePropagationData() {
+    const tbody = document.getElementById('propagationTableBody');
+    localStorage.setItem('propagationRecords', tbody.innerHTML);
+}
+
+// Load environmental data from localStorage on page load
+function loadEnvData() {
+    const savedData = localStorage.getItem('envRecords');
+    if (savedData) {
+        const tbody = document.getElementById('envTableBody');
+        tbody.innerHTML = savedData;
+        // Re-attach delete handlers to new rows
+        document.querySelectorAll('#envTableBody .btn-outline').forEach(btn => {
+            btn.onclick = function() { deleteEnvRow(this); saveEnvData(); };
+        });
+    }
+}
+
+// Save environmental data to localStorage
+function saveEnvData() {
+    const tbody = document.getElementById('envTableBody');
+    localStorage.setItem('envRecords', tbody.innerHTML);
+}
+
+// Clear all stored data (optional utility)
+function clearAllStorage() {
+    if (confirm('⚠️ WARNING: This will permanently delete ALL your saved propagation and environmental records. Are you sure?')) {
+        localStorage.removeItem('propagationRecords');
+        localStorage.removeItem('envRecords');
+        // Reset tables to default example data
+        document.getElementById('propagationTableBody').innerHTML = `
+            <tr><td>2026-03-15</td><td><em>Eucalyptus globulus</em></td><td>Seed</td><td>Local provenance, Huon Valley</td><td>500</td><td>Seed raising mix</td><td>85%</td><td>Germinated in 14 days</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-10</td><td><em>Leptospermum scoparium</em></td><td>Semi-hardwood cutting</td><td>Healthy parent, Bruny Island</td><td>200</td><td>50:50 perlite:peat</td><td>92%</td><td>Rooted in 4 weeks, IBA 3000ppm</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-05</td><td><em>Acacia melanoxylon</em></td><td>Seed (scarified)</td><td>Hot water treatment</td><td>300</td><td>Seed mix</td><td>78%</td><td>90°C soak 24hrs</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+        `;
+        document.getElementById('envTableBody').innerHTML = `
+            <tr><td>2026-03-15</td><td>08:30</td><td>22.5</td><td>23.0</td><td>88</td><td>10</td><td>4500</td><td>None</td><td>Misting timer adjusted</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+            <tr><td>2026-03-14</td><td>09:00</td><td>21.0</td><td>22.5</td><td>85</td><td>10</td><td>4200</td><td>Fungus gnats</td><td>Yellow sticky traps placed</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
+        `;
+        savePropagationData();
+        saveEnvData();
+        alert('All records have been reset to defaults.');
+    }
+}
+
+// Show storage usage info (optional utility)
+function showStorageInfo() {
+    let propSize = localStorage.getItem('propagationRecords')?.length || 0;
+    let envSize = localStorage.getItem('envRecords')?.length || 0;
+    let totalSize = (propSize + envSize) / 1024;
+    alert(`📊 Local Storage Usage:\nPropagation Records: ${propSize} characters\nEnvironmental Records: ${envSize} characters\nTotal: ~${totalSize.toFixed(1)} KB\n\nLocalStorage limit is typically 5-10 MB per domain.`);
+}
+
+// MODIFIED addPropagationRow function with save
+function addPropagationRow() {
+    const tbody = document.getElementById('propagationTableBody');
+    const date = document.getElementById('newDate').value || new Date().toISOString().slice(0,10);
+    const species = document.getElementById('newSpecies').value || 'Unknown';
+    const method = document.getElementById('newMethod').value;
+    const source = document.getElementById('newSource').value || '-';
+    const units = document.getElementById('newUnits').value || '0';
+    const media = document.getElementById('newMedia').value || '-';
+    const rooting = document.getElementById('newRooting').value || '-';
+    const notes = document.getElementById('newNotes').value || '-';
+    const row = `<tr><td>${date}</td><td><em>${species}</em></td><td>${method}</td><td>${source}</td><td>${units}</td><td>${media}</td><td>${rooting}%</td><td>${notes}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    tbody.insertAdjacentHTML('beforeend', row);
+    savePropagationData();
+    // Clear inputs
+    document.getElementById('newSpecies').value = '';
+    document.getElementById('newSource').value = '';
+    document.getElementById('newUnits').value = '';
+    document.getElementById('newMedia').value = '';
+    document.getElementById('newRooting').value = '';
+    document.getElementById('newNotes').value = '';
+}
+
+// MODIFIED addEnvRow function with save
+function addEnvRow() {
+    const tbody = document.getElementById('envTableBody');
+    const date = document.getElementById('envDate').value || new Date().toISOString().slice(0,10);
+    const time = document.getElementById('envTime').value || '09:00';
+    const airTemp = document.getElementById('envAirTemp').value || '-';
+    const mediaTemp = document.getElementById('envMediaTemp').value || '-';
+    const rh = document.getElementById('envRH').value || '-';
+    const mist = document.getElementById('envMist').value || '-';
+    const light = document.getElementById('envLight').value || '-';
+    const pests = document.getElementById('envPests').value || '-';
+    const action = document.getElementById('envAction').value || '-';
+    const row = `<tr><td>${date}</td><td>${time}</td><td>${airTemp}</td><td>${mediaTemp}</td><td>${rh}</td><td>${mist}</td><td>${light}</td><td>${pests}</td><td>${action}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    tbody.insertAdjacentHTML('beforeend', row);
+    saveEnvData();
+    // Clear inputs
+    document.getElementById('envDate').value = '';
+    document.getElementById('envTime').value = '';
+    document.getElementById('envAirTemp').value = '';
+    document.getElementById('envMediaTemp').value = '';
+    document.getElementById('envRH').value = '';
+    document.getElementById('envMist').value = '';
+    document.getElementById('envLight').value = '';
+    document.getElementById('envPests').value = '';
+    document.getElementById('envAction').value = '';
+}
+
+// MODIFIED deleteRow function with save
+function deleteRow(btn) {
+    btn.closest('tr').remove();
+    savePropagationData();
+}
+
+// MODIFIED deleteEnvRow function with save
+function deleteEnvRow(btn) {
+    btn.closest('tr').remove();
+    saveEnvData();
+}
+
+// Update DOMContentLoaded to load saved data
+document.addEventListener('DOMContentLoaded', () => {
+    renderSpecies();
+    if(document.getElementById('speciesSearch')) document.getElementById('speciesSearch').addEventListener('input', renderSpecies);
     
-    // ACACIAS & FABACEAE (8 species)
-    { name: "Acacia melanoxylon (Blackwood)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification (90°C soak 12-24h); germinates 1-4 weeks", conservation: "Not Listed" },
-    { name: "Acacia dealbata (Silver Wattle)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification; fast growing", conservation: "Not Listed" },
-    { name: "Acacia verticillata (Prickly Moses)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification; tolerates coastal conditions", conservation: "Not Listed" },
-    { name: "Acacia mucronata (Narrow-leaf Wattle)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification; hardy in moist sites", conservation: "Not Listed" },
-    { name: "Acacia suaveolens (Sweet Wattle)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification; coastal heathland", conservation: "Not Listed" },
-    { name: "Acacia myrtifolia (Myrtle Wattle)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification; well-drained", conservation: "Not Listed" },
-    { name: "Kennedia prostrata (Running Postman)", family: "Fabaceae", method: "Seed/Cutting", treatment: "Hot water scarification; softwood cutting IBA 2000ppm", conservation: "Not Listed" },
-    { name: "Hardenbergia violacea (Purple Coral Pea)", family: "Fabaceae", method: "Seed/Cutting", treatment: "Hot water scarification; semi-hardwood cutting IBA 3000ppm", conservation: "Not Listed" },
-    
-    // BANKSIAS & PROTEACEAE (8 species)
-    { name: "Banksia marginata (Silver Banksia)", family: "Proteaceae", method: "Seed", treatment: "Extract from cones (heat 50°C), smoke water; sow in low-phos media", conservation: "Not Listed" },
-    { name: "Banksia serrata (Old Man Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke water; low-phos media; slow growing", conservation: "Not Listed" },
-    { name: "Banksia spinulosa (Hairpin Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke water; well-drained; tolerates coastal", conservation: "Not Listed" },
-    { name: "Grevillea australis (Southern Grevillea)", family: "Proteaceae", method: "Seed/Cutting", treatment: "Seed: smoke water; cutting: semi-hardwood IBA 4000ppm", conservation: "Not Listed" },
-    { name: "Grevillea linearifolia (Linear-leaf Grevillea)", family: "Proteaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000-4000ppm; mist", conservation: "Not Listed" },
-    { name: "Hakea lissosperma (Mountain Needlewood)", family: "Proteaceae", method: "Seed", treatment: "No pretreatment; well-drained", conservation: "Not Listed" },
-    { name: "Hakea epiglottis (Beaked Hakea)", family: "Proteaceae", method: "Seed", treatment: "No pretreatment; soak in smoke water", conservation: "Endemic" },
-    { name: "Telopea truncata (Tasmanian Waratah)", family: "Proteaceae", method: "Seed", treatment: "Smoke water, well-drained low-P media; 2-4 months to germinate", conservation: "Not Listed" },
-    
-    // RAINFOREST & COOL TEMPERATE (7 species)
-    { name: "Nothofagus cunninghamii (Myrtle Beech)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT - sow fresh, cold stratify 8-12 weeks; shade required", conservation: "Not Listed" },
-    { name: "Nothofagus gunnii (Deciduous Beech/Fagus)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT; cold stratify 12 weeks; very slow", conservation: "Endemic" },
-    { name: "Atherosperma moschatum (Southern Sassafras)", family: "Atherospermataceae", method: "Seed", treatment: "RECALCITRANT; sow fresh; shade; moist", conservation: "Not Listed" },
-    { name: "Phyllocladus aspleniifolius (Celery-top Pine)", family: "Podocarpaceae", method: "Seed", treatment: "Cold stratify 12 weeks; slow germination", conservation: "Not Listed" },
-    { name: "Lagarostrobos franklinii (Huon Pine)", family: "Podocarpaceae", method: "Cutting", treatment: "Hardwood cutting IBA 4000ppm; bottom heat; very slow", conservation: "Vulnerable" },
-    { name: "Pittosporum bicolor (Cheesewood)", family: "Pittosporaceae", method: "Seed/Cutting", treatment: "Sow fresh; remove pulp; semi-hardwood cutting IBA 3000ppm", conservation: "Not Listed" },
-    { name: "Bedfordia arborescens (Blanket Leaf)", family: "Asteraceae", method: "Seed", treatment: "Sow fresh; light cover; moist", conservation: "Not Listed" },
-    
-    // HEATH & EPACRIDS (6 species)
-    { name: "Richea pandanifolia (Pandani)", family: "Ericaceae", method: "Seed", treatment: "Surface sow, smoke water, cool (15°C); slow growth", conservation: "Endemic" },
-    { name: "Richea scoparia (Scoparia)", family: "Ericaceae", method: "Seed", treatment: "Surface sow; smoke water; alpine species", conservation: "Endemic" },
-    { name: "Epacris impressa (Common Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity; well-drained", conservation: "Not Listed" },
-    { name: "Epacris stuartii (Stuart's Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity; critically endangered", conservation: "Critically Endangered" },
-    { name: "Epacris serpyllifolia (Thyme Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; alpine; well-drained", conservation: "Not Listed" },
-    { name: "Leucopogon hookeri (Mountain Beard-heath)", family: "Ericaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; requires mycorrhiza", conservation: "Not Listed" },
-    
-    // GRASSES, SEDGES & LILIES (8 species)
-    { name: "Poa labillardierei (Silver Tussock)", family: "Poaceae", method: "Division/Seed", treatment: "Divide clumps early spring; seed no treatment", conservation: "Not Listed" },
-    { name: "Poa poiformis (Coastal Tussock Grass)", family: "Poaceae", method: "Division", treatment: "Divide clumps; coastal dunes", conservation: "Not Listed" },
-    { name: "Lomandra longifolia (Spiny-headed Mat-rush)", family: "Asparagaceae", method: "Division/Seed", treatment: "Divide clumps; seed soak in warm water 24h", conservation: "Not Listed" },
-    { name: "Dianella tasmanica (Tasman Flax-lily)", family: "Asphodelaceae", method: "Division/Seed", treatment: "Divide in spring; seed requires light", conservation: "Not Listed" },
-    { name: "Gahnia grandis (Saw Sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide large clumps; plant in tubes; keep moist", conservation: "Not Listed" },
-    { name: "Gahnia trifida (Coast Saw-sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide in spring; salt tolerant", conservation: "Not Listed" },
-    { name: "Carex appressa (Tall Sedge)", family: "Cyperaceae", method: "Division/Seed", treatment: "Divide clumps; seed no treatment; riparian", conservation: "Not Listed" },
-    { name: "Juncus kraussii (Sea Rush)", family: "Juncaceae", method: "Division/Seed", treatment: "Divide rhizomes; salt marsh species", conservation: "Not Listed" },
-    
-    // MELALEUCAS & CALLISTEMON (6 species)
-    { name: "Melaleuca ericifolia (Swamp Paperbark)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Seed surface sow; cutting semi-hardwood IBA 2000ppm", conservation: "Not Listed" },
-    { name: "Melaleuca squarrosa (Scented Paperbark)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Softwood cutting IBA 2000ppm; seed no treatment", conservation: "Not Listed" },
-    { name: "Melaleuca gibbosa (Slender Honey-myrtle)", family: "Myrtaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; coastal", conservation: "Not Listed" },
-    { name: "Callistemon pallidus (Lemon Bottlebrush)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Softwood cutting IBA 2000ppm; seed surface sow", conservation: "Not Listed" },
-    { name: "Leptospermum scoparium (Manuka)", family: "Myrtaceae", method: "Cutting/Seed", treatment: "Semi-hardwood cutting IBA 3000ppm; seed no treatment, light dependent", conservation: "Not Listed" },
-    { name: "Leptospermum lanigerum (Woolly Teatree)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Softwood cutting IBA 3000ppm; seed surface sow", conservation: "Not Listed" },
-    
-    // SHRUBS & SMALL TREES (8 species)
-    { name: "Tasmannia lanceolata (Mountain Pepper)", family: "Winteraceae", method: "Seed/Cutting", treatment: "Seed: warm (20°C) then cold (4°C) strat; cutting: semi-hardwood IBA 3000ppm", conservation: "Not Listed" },
-    { name: "Correa alba (White Correa)", family: "Rutaceae", method: "Cutting", treatment: "Softwood IBA 2000-3000ppm; mist", conservation: "Not Listed" },
-    { name: "Correa reflexa (Common Correa)", family: "Rutaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; well-drained", conservation: "Not Listed" },
-    { name: "Prostanthera lasianthos (Victorian Christmas Bush)", family: "Lamiaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; autumn", conservation: "Not Listed" },
-    { name: "Prostanthera rotundifolia (Round-leaf Mintbush)", family: "Lamiaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; well-drained", conservation: "Not Listed" },
-    { name: "Westringia brevifolia (Coast Westringia)", family: "Lamiaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; coastal", conservation: "Not Listed" },
-    { name: "Pomaderris apetala (Common Dogwood)", family: "Rhamnaceae", method: "Seed", treatment: "Cold stratify 8 weeks; slow germination", conservation: "Not Listed" },
-    { name: "Olearia phlogopappa (Dusty Daisy-bush)", family: "Asteraceae", method: "Cutting/Seed", treatment: "Softwood cutting IBA 2000ppm; seed light dependent", conservation: "Not Listed" },
-    
-    // CONIFERS & GYMNOSPERMS (5 species)
-    { name: "Athrotaxis selaginoides (King Billy Pine)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8-12 weeks; slow germination; shade", conservation: "Vulnerable" },
-    { name: "Athrotaxis cupressoides (Pencil Pine)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8 weeks; slow; vulnerable to Phytophthora", conservation: "Vulnerable" },
-    { name: "Athrotaxis laxifolia (Summit Cedar)", family: "Cupressaceae", method: "Seed", treatment: "Cold strat 8-12 weeks; hybrid of A. selaginoides and A. cupressoides", conservation: "Vulnerable" },
-    { name: "Allocasuarina verticillata (Drooping Sheoak)", family: "Casuarinaceae", method: "Seed", treatment: "No pretreatment; sow fresh", conservation: "Not Listed" },
-    { name: "Allocasuarina monilifera (Necklace Sheoak)", family: "Casuarinaceae", method: "Seed", treatment: "No pretreatment; coastal", conservation: "Not Listed" },
-    
-    // FERNS (5 species)
-    { name: "Dicksonia antarctica (Soft Tree Fern)", family: "Dicksoniaceae", method: "Spore/Division", treatment: "Spore: sterile media, high humidity; division: remove pups with roots", conservation: "Not Listed" },
-    { name: "Blechnum wattsii (Hard Water Fern)", family: "Blechnaceae", method: "Division", treatment: "Divide rhizomes in spring; keep moist", conservation: "Not Listed" },
-    { name: "Polystichum proliferum (Mother Shield Fern)", family: "Dryopteridaceae", method: "Spore/Division", treatment: "Divide pups; spore on peat/perlite", conservation: "Not Listed" },
-    { name: "Todea barbara (King Fern)", family: "Osmundaceae", method: "Spore", treatment: "Spore on sterile media; slow growing", conservation: "Not Listed" },
-    { name: "Asplenium bulbiferum (Mother Spleenwort)", family: "Aspleniaceae", method: "Division/Bulbil", treatment: "Plant bulbils; divide clumps", conservation: "Not Listed" }
-];
+    // Load saved data from localStorage
+    loadPropagationData();
+    loadEnvData();
+});
+```
+
+Add these buttons to the Records tab (Tab 8) - add after export/print buttons:
+
+```html
+<button class="btn btn-outline" onclick="showStorageInfo()" style="background: #2c7a4a; color: white;"><i class="fas fa-database"></i> Storage Info</button>
+<button class="btn btn-danger" onclick="clearAllStorage()" style="background: #b34343;"><i class="fas fa-trash-alt"></i> Clear All Records</button>
+```
+
+Summary of what's added:
+
+1. Automatic save – Every time you add or delete a row, data is saved to localStorage
+2. Automatic load – When you refresh the page, all your records reappear
+3. Storage info button – Shows how much space your records are using
+4. Clear all records button – Allows resetting to default example data (with confirmation prompt)
+5. Cross-session persistence – Close the browser, come back days later, your data is still there
+
+The localStorage limit is typically 5-10MB per domain, which is plenty for thousands of records. Your data stays on your own device/browser—perfect for personal tracking without needing a server.
+
+Would you like me to also add:
+
+· Export to JSON (for backup/restore functionality)?
+· Data validation (check for duplicate entries, required fields)?
+· Search/filter within the records tables?
