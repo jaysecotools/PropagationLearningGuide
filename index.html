@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>AHCNSY207 · Undertake Propagation Activities · Complete Learning Ecosystem</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-dark: #1e4a2f;
+            --primary-medium: #2d6a4f;
+            --primary-light: #52b788;
+            --accent-gold: #f9c74f;
+            --accent-soft: #fff3e0;
+            --bg-light: #f0f9f0;
+            --text-dark: #1e3a2f;
+            --border-light: #c8e6d9;
+            --card-shadow: 0 20px 40px -10px rgba(0, 40, 0, 0.2);
+            --footer-text: #e9f5e9;
+            --footer-heading: #ffd966;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #cfdec6;
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding: 1rem;
+        }
+
+        .master-ecosystem {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 3rem;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        /* ===== HERO ===== */
+        .hero-banner {
+            background: linear-gradient(145deg, #0d3b2a, #1e6b4a, #0f4a33);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-bottom: 12px solid var(--accent-gold);
+        }
+        .hero-banner h1 {
+            font-size: clamp(2rem, 7vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .hero-banner h1 i { color: var(--accent-gold); margin-right: 10px; }
+        .hero-qual { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .hero-qual span {
+            background: rgba(255,255,220,0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            border-left: 4px solid var(--accent-gold);
+            font-weight: 500;
+        }
+
+        /* ===== TABS ===== */
+        .tab-bar {
+            background: #154f34;
+            padding: 0.5rem 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            border-bottom: 3px solid #a8d0a8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .tab {
+            color: #e0f0da;
+            font-weight: 600;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            border-bottom: 4px solid transparent;
+            transition: all 0.2s;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            border-radius: 8px 8px 0 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tab:hover { background: #216344; color: white; }
+        .tab.active { color: white; border-bottom-color: var(--accent-gold); background: linear-gradient(transparent 60%, rgba(245,179,66,0.15) 100%);}
+        .tab-content { display: none; padding: 2rem 1.5rem; background: white; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity:0.3; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            color: var(--primary-dark);
+            margin: 1.5rem 0 1rem 0;
+            border-left: 12px solid var(--accent-gold);
+            padding-left: 1rem;
+        }
+        h3 {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: #1b5a3a;
+            margin: 1.8rem 0 1rem 0;
+            border-bottom: 3px dashed #c8e6c8;
+            padding-bottom: 0.5rem;
+        }
+        .card-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .info-card {
+            background: var(--bg-light);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .info-card i { font-size: 2rem; color: var(--primary-medium); margin-bottom: 0.8rem; }
+        .legislation-panel {
+            background: #edf7ed;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-left: 10px solid var(--primary-medium);
+            margin: 1.5rem 0;
+        }
+        .tool-matrix, .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            display: block;
+            overflow-x: auto;
+        }
+        .tool-matrix th, .risk-table th {
+            background: var(--primary-medium);
+            color: white;
+            padding: 0.8rem;
+        }
+        .tool-matrix td, .risk-table td {
+            border: 1px solid var(--border-light);
+            padding: 0.8rem;
+            vertical-align: top;
+        }
+        .checklist-super {
+            background: white;
+            border: 3px solid var(--primary-medium);
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.8rem;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f6fff0;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+        }
+        .btn {
+            background: var(--accent-gold);
+            color: #1e402a;
+            border: none;
+            font-weight: 700;
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem 0.5rem 0 0;
+            display: inline-block;
+        }
+        .btn-outline { background: transparent; border: 2px solid var(--primary-medium); color: var(--primary-dark); }
+        .btn:hover { background: #ffda77; transform: translateY(-2px);}
+        .quiz-container { background: #1e4a2f; border-radius: 2rem; padding: 1.5rem; margin: 2rem 0; color: white; }
+        .quiz-question-card { background: #2c6e4f; border-radius: 1.5rem; padding: 1.2rem; margin: 1.2rem 0; }
+        .quiz-option { background: #3f8b62; margin: 0.6rem 0; padding: 0.6rem 1.2rem; border-radius: 60px; cursor: pointer; }
+        .quiz-feedback { display: none; margin-top: 0.8rem; padding: 0.8rem; border-radius: 1rem; }
+        .feedback-correct { background: #2f8d5a; }
+        .feedback-incorrect { background: #b64a4a; }
+        .scenario-box {
+            background: #fff2db;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            border-left: 10px solid var(--accent-gold);
+        }
+        .scenario-option {
+            background: white;
+            border-radius: 60px;
+            padding: 0.7rem 1.2rem;
+            margin: 0.6rem 0;
+            cursor: pointer;
+            border: 2px solid #ddd;
+        }
+        .scenario-option.selected { background: var(--primary-medium); color: white; border-color: var(--accent-gold);}
+        .scenario-feedback { display: none; margin-top: 1rem; padding: 1rem; border-radius: 1rem; background: white; }
+        .footer-expanded {
+            background: #0f3829;
+            color: var(--footer-text);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-top: 8px solid var(--accent-gold);
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
+        .footer-expanded a { color: var(--footer-heading); text-decoration: none; }
+        @media print {
+            .tab-bar, .btn, .hero-banner, .quiz-container, .scenario-box { display: none; }
+            .tab-content { display: block !important; page-break-after: avoid; }
+        }
+    </style>
+</head>
+<body>
+<div class="master-ecosystem">
+    <div class="hero-banner">
+        <h1><i class="fas fa-seedling"></i> AHCNSY207 · Undertake Propagation Activities</h1>
+        <div class="hero-qual">
+            <span><i class="fas fa-certificate"></i> Certificate II / III in Horticulture / Nursery Operations</span>
+            <span><i class="fas fa-flask"></i> Release 1.2 · ASQA compliant</span>
+            <span><i class="fas fa-leaf"></i> Germination · Cutting · Grafting · Division</span>
+        </div>
+    </div>
+
+    <div class="tab-bar" role="tablist">
+        <button class="tab active" onclick="switchTab('tab1')"><i class="fas fa-balance-scale"></i> Legislation & WHS</button>
+        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-clipboard-list"></i> Planning & Prep</button>
+        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-hand-holding-heart"></i> Propagation Methods</button>
+        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-water"></i> Aftercare & Hardening</button>
+        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> Quizzes & Games</button>
+        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-comment-dots"></i> Scenarios</button>
+        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-print"></i> Printables & Records</button>
+        <button class="tab" onclick="switchTab('tab8')"><i class="fas fa-book-open"></i> Glossary & Resources</button>
+    </div>
+
+    <!-- ========== TAB 1: LEGISLATION, WHS, ASQA ========= -->
+    <div id="tab1" class="tab-content active">
+        <h2>⚖️ Legislative & Regulatory Framework (ASQA / WHS)</h2>
+        <div class="legislation-panel">
+            <h3><i class="fas fa-gavel"></i> Key legislation for propagation activities</h3>
+            <ul><li><strong>Work Health and Safety Act 2011</strong> – duty of care, risk management, PPE</li>
+            <li><strong>Biosecurity Act 2015</strong> – plant movement, pest and disease prevention</li>
+            <li><strong>Plant Breeder’s Rights Act 1994</strong> – propagation of protected varieties requires licence</li>
+            <li><strong>Environment Protection and Biodiversity Conservation Act 1999</strong> – threatened species propagation permits</li>
+            <li><strong>ASQA compliance:</strong> All assessments must align with unit AHCNSY207 elements: prepare for propagation, carry out propagation, complete propagation activities, monitor environmental conditions.</li></ul>
+        </div>
+        <h3>⚠️ WHS Risk Controls – Nursery & Propagation</h3>
+        <table class="tool-matrix">
+            <tr><th>Hazard</th><th>Risk level</th><th>Control measures</th></tr>
+            <tr><td>Manual handling (potting, lifting)</td><td>High</td><td>Team lifting, trolleys, max 15kg per bag, rotate tasks</td></tr>
+            <tr><td>Sharps (secateurs, knives, grafting tools)</td><td>High</td><td>Cut-resistant gloves, tool sterilisation, safe storage</td></tr>
+            <tr><td>Chemicals (rooting hormone, fungicides)</td><td>Medium</td><td>Use PPE, follow SDS, mix in ventilated area</td></tr>
+            <tr><td>Biological (soil pathogens, dermatitis)</td><td>Medium</td><td>Wash hands, use gloves, hygiene protocols</td></tr>
+            <tr><td>Heat stress / UV</td><td>Medium</td><td>Shade cloth, hydration, sunscreen, scheduled breaks</td></tr>
+        </table>
+        <div class="card-deck">
+            <div class="info-card"><i class="fas fa-file-signature"></i><h4>ASQA assessment requirements</h4><p>Evidence must include: preparation of materials, safe use of tools, application of 3+ propagation techniques (seed, cutting, division), records of environmental monitoring, and completion of workplace documentation.</p></div>
+            <div class="info-card"><i class="fas fa-hand-sparkles"></i><h4>Biosecurity hygiene</h4><p>Clean tools with 70% ethanol or bleach between batches; quarantine incoming plant material; prevent spread of <em>Phytophthora</em> and myrtle rust.</p></div>
+        </div>
+    </div>
+
+    <!-- ========== TAB 2: PLANNING & PREPARATION ========= -->
+    <div id="tab2" class="tab-content">
+        <h2>📋 Work planning & resource preparation</h2>
+        <div class="checklist-super">
+            <h3><i class="fas fa-check-double"></i> Pre-propagation checklist (ASQA evidence)</h3>
+            <div class="checklist-grid">
+                <div class="checklist-item"><input type="checkbox"> Interpret work plan / propagation schedule</div>
+                <div class="checklist-item"><input type="checkbox"> Select species & source quality parent material</div>
+                <div class="checklist-item"><input type="checkbox"> Confirm propagation method: seed, cutting, graft, division, layering</div>
+                <div class="checklist-item"><input type="checkbox"> Prepare growing media (sterile, appropriate texture, pH)</div>
+                <div class="checklist-item"><input type="checkbox"> Select containers (trays, tubes, pots) clean and sterilised</div>
+                <div class="checklist-item"><input type="checkbox"> Gather tools: secateurs, grafting knife, dibber, misting system</div>
+                <div class="checklist-item"><input type="checkbox"> Rooting hormone (IBA gel/powder) ready</div>
+                <div class="checklist-item"><input type="checkbox"> Environmental controls: heating mats, mist timer, shade cloth</div>
+                <div class="checklist-item"><input type="checkbox"> Labels & permanent marker (species, date, batch)</div>
+                <div class="checklist-item"><input type="checkbox"> PPE: gloves, safety glasses, apron</div>
+                <div class="checklist-item"><input type="checkbox"> Water quality tested (pH, EC)</div>
+                <div class="checklist-item"><input type="checkbox"> First aid & emergency contacts posted</div>
+            </div>
+        </div>
+        <h3>🌱 Selecting propagation material</h3>
+        <p><strong>Seed:</strong> Use fresh, viable seed from reliable supplier or collected under permit. Record provenance. <strong>Cuttings:</strong> Select healthy, disease-free stock plants; take semi-hardwood or softwood at correct phenological stage. <strong>Grafting:</strong> Ensure compatible rootstock and scion (same genus/family). <strong>Division:</strong> Choose vigorous clumping plants (grasses, ferns, lilies).</p>
+    </div>
+
+    <!-- ========== TAB 3: PROPAGATION METHODS ========= -->
+    <div id="tab3" class="tab-content">
+        <h2>🪴 Core propagation techniques (Seed, Cutting, Grafting, Division)</h2>
+        <div class="card-deck">
+            <div class="info-card"><i class="fas fa-seedling"></i><h4>Seed propagation</h4><ul><li>Pre-treatment: scarification (hot water, sandpaper) for hard-coated seeds; stratification (cold) for temperate species.</li><li>Sowing depth = 2–3× seed diameter.</li><li>Use sterile seed-raising mix; keep moist but not waterlogged.</li><li>Cover with vermiculite to reduce damping-off.</li></ul></div>
+            <div class="info-card"><i class="fas fa-cut"></i><h4>Cutting propagation</h4><ul><li>Softwood cuttings (spring): 5–10 cm, remove lower leaves, dip in rooting hormone (IBA 2000–3000ppm).</li><li>Semi-hardwood (summer): use heel cutting, wound base.</li><li>Hardwood cuttings (dormant): 15–25 cm, insert into sandy medium.</li><li>Maintain high humidity (mist/fog) and bottom heat (22–25°C).</li></ul></div>
+            <div class="info-card"><i class="fas fa-hand-holding-heart"></i><h4>Grafting & budding</h4><ul><li>Whip & tongue, cleft graft, T-budding.</li><li>Match cambium layers, seal with grafting tape/wax.</li><li>Keep graft union humid until callus forms.</li><li>Remove rootstock suckers promptly.</li></ul></div>
+            <div class="info-card"><i class="fas fa-fill-drip"></i><h4>Division & layering</h4><ul><li>Division: separate rhizomes, crowns or clumps (ornamental grasses, daylilies). Ensure each division has roots and shoots.</li><li>Layering: peg down low branch, cover with soil, sever when rooted.</li><li>Ideal for shrubs (Magnolia, Rhododendron).</li></ul></div>
+        </div>
+        <h3>🧪 Environmental controls for propagation</h3>
+        <table class="tool-matrix">
+            <tr><th>Factor</th><th>Optimal range</th><th>Monitoring method</th></tr>
+            <tr><td>Temperature (air)</td><td>18–25°C (cuttings), 20–30°C (germination)</td><td>Max/min thermometer, soil probe</td></tr>
+            <tr><td>Relative humidity</td><td>80–95% for cuttings / grafting</td><td>Hygrometer, mist intervals</td></tr>
+            <tr><td>Light intensity</td><td>50–70% shade (hardening gradually)</td><td>Lux meter / observation</td></tr>
+            <tr><td>Growing medium moisture</td><td>Evenly moist, not saturated</td><td>Finger test, moisture meter</td></tr>
+        </table>
+    </div>
+
+    <!-- ========== TAB 4: AFTERCARE & HARDENING OFF ========= -->
+    <div id="tab4" class="tab-content">
+        <h2>💧 Post-propagation care & hardening off</h2>
+        <div class="legislation-panel">
+            <h3>🌿 Monitoring for plant health</h3>
+            <p>Record daily observations: root development (visible at drainage holes), new leaf growth, signs of disease (damping-off, grey mould), pest presence (fungus gnats, aphids). Adjust misting frequency as roots form; reduce humidity gradually. <strong>Hardening off:</strong> Over 7–14 days, increase light exposure and reduce water to acclimatise plants to external conditions before transplanting.</p>
+        </div>
+        <div class="card-deck">
+            <div class="info-card"><i class="fas fa-chart-line"></i><h4>Nutrient management</h4><p>Apply dilute liquid fertiliser (N-P-K 20:10:20) at ¼ strength once true leaves appear or cuttings show roots. Avoid high nitrogen before hardening.</p></div>
+            <div class="info-card"><i class="fas fa-biohazard"></i><h4>Integrated pest management</h4><p>Preventative: good hygiene, air movement. Use beneficial insects (lacewings) for aphids; apply neem oil for mites; remove infected material.</p></div>
+        </div>
+        <h3>📊 Environmental monitoring log (ASQA evidence example)</h3>
+        <table class="tool-matrix">
+            <tr><th>Date</th><th>Species/Batch</th><th>Temp (°C)</th><th>Humidity %</th><th>Misting (min/hr)</th><th>Roots visible</th><th>Action</th></tr>
+            <tr><td>26/03/26</td><td>Grevillea 'Robyn Gordon'</td><td>22</td><td>88</td><td>15 sec/20 min</td><td>No</td><td>Maintain mist</td></tr>
+            <tr><td>02/04/26</td><td>Grevillea cuttings</td><td>23</td><td>80</td><td>10 sec/30 min</td><td>Yes (week 3)</td><td>Reduce mist, start hardening</td></tr>
+        </table>
+    </div>
+
+    <!-- ========== TAB 5: QUIZZES & GAMES ========= -->
+    <div id="tab5" class="tab-content">
+        <h2>🎓 Interactive knowledge checks</h2>
+        <div class="quiz-container">
+            <h3 style="color:white">Quiz 1: Propagation basics</h3>
+            <div class="quiz-question-card" data-correct="B">
+                <div class="quiz-question">1. What is the recommended concentration of IBA rooting hormone for semi-hardwood cuttings?</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="A"> A) 100–200 ppm</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="B"> B) 2000–3000 ppm</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="C"> C) 5000–8000 ppm</div>
+                <div class="quiz-feedback"></div>
+            </div>
+            <div class="quiz-question-card" data-correct="C">
+                <div class="quiz-question">2. Which pre-treatment is essential for Acacia seeds with physical dormancy?</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="A"> A) Cold stratification</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="B"> B) Fermentation</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="C"> C) Hot water scarification (80–90°C)</div>
+                <div class="quiz-feedback"></div>
+            </div>
+            <div class="quiz-question-card" data-correct="A">
+                <div class="quiz-question">3. Why is it critical to sterilise propagation tools between batches?</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="A"> A) Prevent spread of fungal/bacterial diseases</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="B"> B) Increase rooting speed</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="C"> C) Comply with plant breeder's rights</div>
+                <div class="quiz-feedback"></div>
+            </div>
+            <div class="quiz-question-card" data-correct="B">
+                <div class="quiz-question">4. What does "hardening off" involve?</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="A"> A) Applying fungicide to roots</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="B"> B) Gradually exposing plants to lower humidity and higher light</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="C"> C) Storing seeds at -18°C</div>
+                <div class="quiz-feedback"></div>
+            </div>
+            <button class="btn" onclick="checkAllQuizzes()"><i class="fas fa-check"></i> Check answers</button>
+            <button class="btn btn-outline" onclick="resetQuizzes()">Reset</button>
+        </div>
+        <h3>✂️ Match propagation method to species</h3>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+            <div style="background:#f0f7f0; padding:1rem; border-radius:1.5rem; flex:1;">
+                <h4>Drag & drop game (interactive concept)</h4>
+                <p><strong>Match:</strong> <span style="background:#ddd; padding:4px 12px; border-radius:20px;">Lavender</span> → Cutting <span style="display:inline-block; width:30px;"></span> <span style="background:#ddd; padding:4px 12px;">Eucalypt</span> → Seed <span style="background:#ddd; padding:4px 12px;">Liriope</span> → Division</p>
+                <p>In workplace assessment, demonstrate correct technique for each species according to industry standards.</p>
+                <div id="dragDropMsg" style="margin-top:1rem; font-weight:bold;"></div>
+                <button class="btn btn-outline" onclick="simulateMatch()">Check matching knowledge</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TAB 6: SCENARIOS ========= -->
+    <div id="tab6" class="tab-content">
+        <h2><i class="fas fa-comment-dots"></i> Real‑world scenarios (ASQA evidence)</h2>
+        <div class="scenario-box"><h3>Scenario 1: Fungus on cuttings</h3><p>You notice grey mould (Botrytis) on 30% of your Grevillea cuttings in the mist house. What actions do you take?</p>
+            <div class="scenario-options" id="s1opts">
+                <div class="scenario-option" onclick="selectScenario(1,'A')">A) Do nothing – it will dry out naturally</div>
+                <div class="scenario-option" onclick="selectScenario(1,'B')">B) Remove affected cuttings, improve air circulation, reduce mist frequency, apply registered fungicide</div>
+                <div class="scenario-option" onclick="selectScenario(1,'C')">C) Increase misting to wash off spores</div>
+            </div><div id="s1fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(1)">Reset</button>
+        </div>
+        <div class="scenario-box"><h3>Scenario 2: Inconsistent germination</h3><p>Your native pea seeds (Pultenaea) have only 20% germination after 4 weeks; they were sown without pre-treatment. How to improve next batch?</p>
+            <div class="scenario-options" id="s2opts">
+                <div class="scenario-option" onclick="selectScenario(2,'A')">A) Increase watering</div>
+                <div class="scenario-option" onclick="selectScenario(2,'B')">B) Apply hot water scarification (80°C soak) and nick seed coat before sowing</div>
+                <div class="scenario-option" onclick="selectScenario(2,'C')">C) Sow deeper</div>
+            </div><div id="s2fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(2)">Reset</button>
+        </div>
+    </div>
+
+    <!-- ========== TAB 7: PRINTABLES ========= -->
+    <div id="tab7" class="tab-content">
+        <h2>🖨️ Printable logs & assessment templates</h2>
+        <div class="checklist-super">
+            <h3>📋 Propagation daily record (ASQA evidence)</h3>
+            <table style="width:100%; border-collapse:collapse;"><tr><th>Date</th><th>Crop / species</th><th>Method</th><th>Environment (temp/humidity)</th><th>Observations</th><th>Signature</th></tr>
+            <tr><td>____/____</td><td>__________</td><td>__________</td><td>____°C / ___%</td><td>__________</td><td>________</td></tr>
+            <tr><td>____/____</td><td>__________</td><td>__________</td><td>____°C / ___%</td><td>__________</td><td>________</td></tr>
+            </table>
+            <h3>📦 Equipment & chemical inventory</h3>
+            <div class="checklist-grid"><div class="checklist-item"><input type="checkbox"> Secateurs sterilised</div><div class="checklist-item"><input type="checkbox"> Rooting hormone (expiry OK)</div><div class="checklist-item"><input type="checkbox"> Mist timer calibrated</div><div class="checklist-item"><input type="checkbox"> Labels & tags</div></div>
+            <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Print all forms</button>
+        </div>
+    </div>
+
+    <!-- ========== TAB 8: GLOSSARY & RESOURCES ========= -->
+    <div id="tab8" class="tab-content">
+        <h2><i class="fas fa-book-open"></i> Industry glossary & resources</h2>
+        <div style="columns:2; column-gap:2rem;">
+            <p><strong>Callus</strong>: Undifferentiated tissue that forms at cutting base prior to rooting.</p>
+            <p><strong>Stratification</strong>: Cold treatment to break seed dormancy.</p>
+            <p><strong>Scarification</strong>: Mechanical or thermal treatment to allow water uptake.</p>
+            <p><strong>IBA</strong>: Indole-3-butyric acid – rooting hormone.</p>
+            <p><strong>Damping-off</strong>: Fungal disease killing seedlings at soil line.</p>
+            <p><strong>Hardening off</strong>: Acclimatisation process.</p>
+            <p><strong>Provenance</strong>: Geographic origin of propagation material.</p>
+        </div>
+        <div class="legislation-panel">
+            <h3>🔗 Key resources (ASQA / industry links)</h3>
+            <ul><li><a href="https://training.gov.au/Training/Details/AHCNSY207" target="_blank">Training.gov.au – AHCNSY207 unit details</a></li>
+            <li><a href="https://www.anpc.asn.au/" target="_blank">Australian Native Plants Society – propagation guides</a></li>
+            <li><a href="https://www.dpi.nsw.gov.au/agriculture/horticulture/nursery" target="_blank">NSW DPI Nursery industry best practice</a></li>
+            <li><a href="https://www.ippc.int/en/countries/australia/" target="_blank">Biosecurity Australia – plant movement standards</a></li></ul>
+        </div>
+        <div class="info-card"><i class="fas fa-clipboard"></i><h4>ASQA compliance note</h4><p>All performance evidence must demonstrate ability to prepare media, select tools, apply 3 propagation techniques, maintain hygiene, monitor environment, and complete workplace records. Use the checklists and logs from this resource as evidence templates.</p></div>
+    </div>
+
+    <footer class="footer-expanded">
+        <div class="footer-grid">
+            <div><h5>AHCNSY207 v1.2</h5><p>Complete learning resource aligned to ASQA requirements & unit of competency.</p></div>
+            <div><h5>References</h5><p>Florabank, Nursery & Garden Industry Australia, ANPC propagation manuals, WorkSafe guidelines.</p></div>
+            <div><h5>Assessment evidence</h5><p>Use printable logs, scenario responses, quiz results as part of portfolio.</p></div>
+            <div><h5>Last updated</h5><p>March 2026 · interactive learning ecosystem</p></div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function checkAllQuizzes() {
+        const cards = document.querySelectorAll('.quiz-question-card');
+        cards.forEach(card => {
+            const selected = card.querySelector('input:checked');
+            const fb = card.querySelector('.quiz-feedback');
+            if (!selected) { fb.style.display='block'; fb.innerHTML='⚠️ Select an answer'; fb.className='quiz-feedback feedback-incorrect'; return; }
+            const isCorrect = (selected.value === card.dataset.correct);
+            fb.style.display='block';
+            fb.innerHTML = isCorrect ? '✓ Correct! Well done.' : '✗ Incorrect. Review the section.';
+            fb.className = isCorrect ? 'quiz-feedback feedback-correct' : 'quiz-feedback feedback-incorrect';
+        });
+    }
+    function resetQuizzes() {
+        document.querySelectorAll('.quiz-question-card input').forEach(i => i.checked=false);
+        document.querySelectorAll('.quiz-feedback').forEach(f => f.style.display='none');
+    }
+    function selectScenario(scenario, choice) {
+        const opts = document.querySelectorAll(`#s${scenario}opts .scenario-option`);
+        opts.forEach(o => o.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+        let feedbackMsg = "";
+        if(scenario===1){
+            if(choice==='B') feedbackMsg = "✅ Correct: Remove affected cuttings, increase air flow, reduce mist, apply registered fungicide. This aligns with IPM and WHS.";
+            else if(choice==='A') feedbackMsg = "❌ Incorrect: Doing nothing spreads disease and risks total crop loss.";
+            else feedbackMsg = "❌ Incorrect: Increasing moisture worsens Botrytis. Improve ventilation instead.";
+        } else {
+            if(choice==='B') feedbackMsg = "✅ Correct: Hard-seeded Fabaceae need scarification (hot water or nicking) to allow water uptake and germination.";
+            else feedbackMsg = "❌ Incorrect: Watering or depth won't break physical dormancy. Scarification required.";
+        }
+        const fbDiv = document.getElementById(`s${scenario}fb`);
+        fbDiv.innerHTML = `<strong>Feedback:</strong> ${feedbackMsg}`;
+        fbDiv.style.display = 'block';
+    }
+    function resetScenario(scenario) {
+        document.getElementById(`s${scenario}fb`).style.display = 'none';
+        document.querySelectorAll(`#s${scenario}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
+    }
+    function simulateMatch() {
+        document.getElementById('dragDropMsg').innerHTML = '✅ Lavender → cutting, Eucalypt → seed, Liriope → division. For assessment, demonstrate each technique under supervision.';
+    }
+    // initial ARIA
+    document.querySelectorAll('.tab-content:not(.active)').forEach(c => c.setAttribute('aria-hidden','true'));
+</script>
+</body>
+</html>
