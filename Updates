@@ -1,93 +1,220 @@
-I'm glad you're happy with the expansion! We can definitely add local storage in this chat—it's relatively simple and will make the propagation records persist between browser sessions. Let's do that now while we're here.
+Excellent! I'll add all three enhancements: JSON Export/Import for backup/restore, Data validation, and Search/Filter within the records tables. Here's the complete enhanced version for the Records & Logs section:
 
-Here's the updated code for the Records & Logs section with local storage functionality added. I'll show you the key additions:
+Complete Enhanced Records Tab HTML (Tab 8)
 
-Updated JavaScript for Local Storage (add to existing script)
+Replace the entire Tab 8 content with this enhanced version:
+
+```html
+<!-- TAB 8: RECORDS & LOGS - Enhanced with localStorage, validation, search/filter -->
+<div id="tab8" class="tab-content">
+    <h2><i class="fas fa-table"></i> Propagation Records & Environmental Logs</h2>
+    
+    <!-- Data Management Toolbar -->
+    <div style="background: var(--bg-light); border-radius: 1rem; padding: 1rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between;">
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            <button class="btn btn-primary" onclick="exportToJSON()"><i class="fas fa-file-export"></i> Backup (JSON)</button>
+            <button class="btn btn-outline" onclick="document.getElementById('importFile').click()"><i class="fas fa-file-import"></i> Restore (JSON)</button>
+            <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importFromJSON(this)">
+            <button class="btn btn-outline" onclick="showStorageInfo()"><i class="fas fa-database"></i> Storage Info</button>
+            <button class="btn btn-danger" onclick="clearAllStorage()"><i class="fas fa-trash-alt"></i> Clear All Records</button>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-light);">
+            <i class="fas fa-save"></i> Auto-saved to browser • Data persists after refresh
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📊 Propagation Record Sheet</h3>
+        <p>Track your propagation batches. All data auto-saves to your browser.</p>
+        
+        <!-- Search/Filter Bar -->
+        <div style="background: var(--primary-soft); border-radius: 1rem; padding: 0.8rem; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;">
+            <i class="fas fa-search" style="color: var(--primary);"></i>
+            <input type="text" id="propSearchInput" placeholder="Search species, source, or notes..." style="flex: 2; padding: 8px; border: 1px solid var(--border); border-radius: 8px; min-width: 180px;">
+            <select id="propMethodFilter" style="padding: 8px; border: 1px solid var(--border); border-radius: 8px;">
+                <option value="">All Methods</option>
+                <option>Seed</option>
+                <option>Cutting</option>
+                <option>Division</option>
+                <option>Grafting</option>
+                <option>Layering</option>
+            </select>
+            <button class="btn btn-outline" onclick="clearPropFilters()" style="padding: 6px 12px;"><i class="fas fa-times"></i> Clear Filters</button>
+            <span id="propRecordCount" style="margin-left: auto; font-size: 0.85rem;"><i class="fas fa-list"></i> 0 records</span>
+        </div>
+        
+        <div class="data-table-container">
+            <table id="propagationTable" style="min-width: 900px;">
+                <thead>
+                    <tr><th>Date</th><th>Species</th><th>Method</th><th>Source Location</th><th># Units</th><th>Media</th><th>Rooting %</th><th>Notes</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="propagationTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="data-table-controls">
+            <input type="date" id="newDate" placeholder="Date">
+            <input type="text" id="newSpecies" placeholder="Species*" style="flex:2;" required>
+            <select id="newMethod"><option>Seed</option><option>Cutting</option><option>Division</option><option>Grafting</option><option>Layering</option></select>
+            <input type="text" id="newSource" placeholder="Source Location">
+            <input type="number" id="newUnits" placeholder="# Units" style="width:80px;" min="0">
+            <input type="text" id="newMedia" placeholder="Media">
+            <input type="text" id="newRooting" placeholder="Rooting %" style="width:70px;">
+            <input type="text" id="newNotes" placeholder="Notes" style="flex:2;">
+            <button class="btn" onclick="addPropagationRowWithValidation()"><i class="fas fa-plus"></i> Add Row</button>
+        </div>
+        <div id="propValidationMsg" style="color: #b34343; font-size: 0.85rem; margin-top: 0.5rem;"></div>
+    </div>
+
+    <div class="card">
+        <h3>🌡️ Environmental Monitoring Log</h3>
+        <p>Record daily environmental conditions in the propagation facility.</p>
+        
+        <!-- Search/Filter Bar for Environmental Log -->
+        <div style="background: var(--primary-soft); border-radius: 1rem; padding: 0.8rem; margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center;">
+            <i class="fas fa-search" style="color: var(--primary);"></i>
+            <input type="text" id="envSearchInput" placeholder="Search by date, pests, or actions..." style="flex: 2; padding: 8px; border: 1px solid var(--border); border-radius: 8px; min-width: 180px;">
+            <button class="btn btn-outline" onclick="clearEnvFilters()" style="padding: 6px 12px;"><i class="fas fa-times"></i> Clear Filters</button>
+            <span id="envRecordCount" style="margin-left: auto; font-size: 0.85rem;"><i class="fas fa-list"></i> 0 records</span>
+        </div>
+        
+        <div class="data-table-container">
+            <table id="envTable" style="min-width: 1000px;">
+                <thead><tr><th>Date</th><th>Time</th><th>Air Temp °C</th><th>Media Temp °C</th><th>RH%</th><th>Mist (sec/hr)</th><th>Light (lux)</th><th>Pests Observed</th><th>Action Taken</th><th>Actions</th></tr></thead>
+                <tbody id="envTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="data-table-controls">
+            <input type="date" id="envDate"><input type="time" id="envTime"><input type="number" id="envAirTemp" placeholder="Air Temp" step="0.1"><input type="number" id="envMediaTemp" placeholder="Media Temp" step="0.1"><input type="number" id="envRH" placeholder="RH%" min="0" max="100"><input type="number" id="envMist" placeholder="Mist sec/hr" min="0"><input type="number" id="envLight" placeholder="Light lux" min="0"><input type="text" id="envPests" placeholder="Pests"><input type="text" id="envAction" placeholder="Action"><button class="btn" onclick="addEnvRowWithValidation()"><i class="fas fa-plus"></i> Add Row</button>
+        </div>
+        <div id="envValidationMsg" style="color: #b34343; font-size: 0.85rem; margin-top: 0.5rem;"></div>
+    </div>
+    
+    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+        <button class="btn" onclick="exportData()"><i class="fas fa-download"></i> Export as CSV</button>
+        <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> Print This Page</button>
+    </div>
+</div>
+```
+
+Complete Enhanced JavaScript (add to existing script)
 
 ```javascript
-// LOCAL STORAGE FUNCTIONS - Add to existing script
+// ============ LOCAL STORAGE FUNCTIONS ============
 
-// Load propagation data from localStorage on page load
 function loadPropagationData() {
     const savedData = localStorage.getItem('propagationRecords');
     if (savedData) {
-        const tbody = document.getElementById('propagationTableBody');
-        tbody.innerHTML = savedData;
-        // Re-attach delete handlers to new rows
-        document.querySelectorAll('#propagationTableBody .btn-outline').forEach(btn => {
-            btn.onclick = function() { deleteRow(this); savePropagationData(); };
-        });
-    }
-}
-
-// Save propagation data to localStorage
-function savePropagationData() {
-    const tbody = document.getElementById('propagationTableBody');
-    localStorage.setItem('propagationRecords', tbody.innerHTML);
-}
-
-// Load environmental data from localStorage on page load
-function loadEnvData() {
-    const savedData = localStorage.getItem('envRecords');
-    if (savedData) {
-        const tbody = document.getElementById('envTableBody');
-        tbody.innerHTML = savedData;
-        // Re-attach delete handlers to new rows
-        document.querySelectorAll('#envTableBody .btn-outline').forEach(btn => {
-            btn.onclick = function() { deleteEnvRow(this); saveEnvData(); };
-        });
-    }
-}
-
-// Save environmental data to localStorage
-function saveEnvData() {
-    const tbody = document.getElementById('envTableBody');
-    localStorage.setItem('envRecords', tbody.innerHTML);
-}
-
-// Clear all stored data (optional utility)
-function clearAllStorage() {
-    if (confirm('⚠️ WARNING: This will permanently delete ALL your saved propagation and environmental records. Are you sure?')) {
-        localStorage.removeItem('propagationRecords');
-        localStorage.removeItem('envRecords');
-        // Reset tables to default example data
+        document.getElementById('propagationTableBody').innerHTML = savedData;
+    } else {
+        // Load default data
         document.getElementById('propagationTableBody').innerHTML = `
             <tr><td>2026-03-15</td><td><em>Eucalyptus globulus</em></td><td>Seed</td><td>Local provenance, Huon Valley</td><td>500</td><td>Seed raising mix</td><td>85%</td><td>Germinated in 14 days</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
             <tr><td>2026-03-10</td><td><em>Leptospermum scoparium</em></td><td>Semi-hardwood cutting</td><td>Healthy parent, Bruny Island</td><td>200</td><td>50:50 perlite:peat</td><td>92%</td><td>Rooted in 4 weeks, IBA 3000ppm</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
             <tr><td>2026-03-05</td><td><em>Acacia melanoxylon</em></td><td>Seed (scarified)</td><td>Hot water treatment</td><td>300</td><td>Seed mix</td><td>78%</td><td>90°C soak 24hrs</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>
         `;
+    }
+    attachDeleteHandlers();
+    updatePropRecordCount();
+    applyPropFilters();
+}
+
+function loadEnvData() {
+    const savedData = localStorage.getItem('envRecords');
+    if (savedData) {
+        document.getElementById('envTableBody').innerHTML = savedData;
+    } else {
         document.getElementById('envTableBody').innerHTML = `
             <tr><td>2026-03-15</td><td>08:30</td><td>22.5</td><td>23.0</td><td>88</td><td>10</td><td>4500</td><td>None</td><td>Misting timer adjusted</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
             <tr><td>2026-03-14</td><td>09:00</td><td>21.0</td><td>22.5</td><td>85</td><td>10</td><td>4200</td><td>Fungus gnats</td><td>Yellow sticky traps placed</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>
         `;
-        savePropagationData();
-        saveEnvData();
-        alert('All records have been reset to defaults.');
     }
+    attachEnvDeleteHandlers();
+    updateEnvRecordCount();
+    applyEnvFilters();
 }
 
-// Show storage usage info (optional utility)
-function showStorageInfo() {
-    let propSize = localStorage.getItem('propagationRecords')?.length || 0;
-    let envSize = localStorage.getItem('envRecords')?.length || 0;
-    let totalSize = (propSize + envSize) / 1024;
-    alert(`📊 Local Storage Usage:\nPropagation Records: ${propSize} characters\nEnvironmental Records: ${envSize} characters\nTotal: ~${totalSize.toFixed(1)} KB\n\nLocalStorage limit is typically 5-10 MB per domain.`);
-}
-
-// MODIFIED addPropagationRow function with save
-function addPropagationRow() {
+function savePropagationData() {
     const tbody = document.getElementById('propagationTableBody');
-    const date = document.getElementById('newDate').value || new Date().toISOString().slice(0,10);
-    const species = document.getElementById('newSpecies').value || 'Unknown';
+    localStorage.setItem('propagationRecords', tbody.innerHTML);
+    updatePropRecordCount();
+    applyPropFilters();
+}
+
+function saveEnvData() {
+    const tbody = document.getElementById('envTableBody');
+    localStorage.setItem('envRecords', tbody.innerHTML);
+    updateEnvRecordCount();
+    applyEnvFilters();
+}
+
+function attachDeleteHandlers() {
+    document.querySelectorAll('#propagationTableBody .btn-outline').forEach(btn => {
+        btn.onclick = function() { deleteRow(this); };
+    });
+}
+
+function attachEnvDeleteHandlers() {
+    document.querySelectorAll('#envTableBody .btn-outline').forEach(btn => {
+        btn.onclick = function() { deleteEnvRow(this); };
+    });
+}
+
+// ============ VALIDATION FUNCTIONS ============
+
+function addPropagationRowWithValidation() {
+    const species = document.getElementById('newSpecies').value.trim();
+    const date = document.getElementById('newDate').value;
+    const units = document.getElementById('newUnits').value;
+    const msgDiv = document.getElementById('propValidationMsg');
+    
+    // Validation
+    if (!species) {
+        msgDiv.innerHTML = '❌ Species name is required.';
+        document.getElementById('newSpecies').focus();
+        return;
+    }
+    if (species.length < 2) {
+        msgDiv.innerHTML = '❌ Species name must be at least 2 characters.';
+        return;
+    }
+    if (!date) {
+        msgDiv.innerHTML = '❌ Please select a date.';
+        return;
+    }
+    if (units && (isNaN(units) || units < 0)) {
+        msgDiv.innerHTML = '❌ Units must be a positive number.';
+        return;
+    }
+    
+    msgDiv.innerHTML = '';
+    
+    const tbody = document.getElementById('propagationTableBody');
     const method = document.getElementById('newMethod').value;
     const source = document.getElementById('newSource').value || '-';
-    const units = document.getElementById('newUnits').value || '0';
     const media = document.getElementById('newMedia').value || '-';
     const rooting = document.getElementById('newRooting').value || '-';
     const notes = document.getElementById('newNotes').value || '-';
-    const row = `<tr><td>${date}</td><td><em>${species}</em></td><td>${method}</td><td>${source}</td><td>${units}</td><td>${media}</td><td>${rooting}%</td><td>${notes}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    
+    // Check for duplicate (optional)
+    const existingRows = tbody.querySelectorAll('tr');
+    let isDuplicate = false;
+    existingRows.forEach(row => {
+        const speciesCell = row.cells[1]?.innerText.replace(/<[^>]*>/g, '');
+        if (speciesCell === species && row.cells[0]?.innerText === date) {
+            isDuplicate = true;
+        }
+    });
+    if (isDuplicate && !confirm('⚠️ A record for this species on this date already exists. Add anyway?')) {
+        return;
+    }
+    
+    const row = `<tr><td>${date}</td><td><em>${escapeHtml(species)}</em></td><td>${escapeHtml(method)}</td><td>${escapeHtml(source)}</td><td>${units || '0'}</td><td>${escapeHtml(media)}</td><td>${rooting}%</td><td>${escapeHtml(notes)}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
     tbody.insertAdjacentHTML('beforeend', row);
     savePropagationData();
+    attachDeleteHandlers();
+    
     // Clear inputs
     document.getElementById('newSpecies').value = '';
     document.getElementById('newSource').value = '';
@@ -95,12 +222,30 @@ function addPropagationRow() {
     document.getElementById('newMedia').value = '';
     document.getElementById('newRooting').value = '';
     document.getElementById('newNotes').value = '';
+    document.getElementById('newDate').value = '';
+    
+    // Show success message
+    const successMsg = document.createElement('div');
+    successMsg.innerHTML = '✅ Record added successfully!';
+    successMsg.style.color = '#2c7840';
+    successMsg.style.fontSize = '0.85rem';
+    successMsg.style.marginTop = '0.5rem';
+    msgDiv.parentNode.insertBefore(successMsg, msgDiv.nextSibling);
+    setTimeout(() => successMsg.remove(), 3000);
 }
 
-// MODIFIED addEnvRow function with save
-function addEnvRow() {
+function addEnvRowWithValidation() {
+    const date = document.getElementById('envDate').value;
+    const msgDiv = document.getElementById('envValidationMsg');
+    
+    if (!date) {
+        msgDiv.innerHTML = '❌ Please select a date.';
+        return;
+    }
+    
+    msgDiv.innerHTML = '';
+    
     const tbody = document.getElementById('envTableBody');
-    const date = document.getElementById('envDate').value || new Date().toISOString().slice(0,10);
     const time = document.getElementById('envTime').value || '09:00';
     const airTemp = document.getElementById('envAirTemp').value || '-';
     const mediaTemp = document.getElementById('envMediaTemp').value || '-';
@@ -109,9 +254,12 @@ function addEnvRow() {
     const light = document.getElementById('envLight').value || '-';
     const pests = document.getElementById('envPests').value || '-';
     const action = document.getElementById('envAction').value || '-';
-    const row = `<tr><td>${date}</td><td>${time}</td><td>${airTemp}</td><td>${mediaTemp}</td><td>${rh}</td><td>${mist}</td><td>${light}</td><td>${pests}</td><td>${action}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
+    
+    const row = `<tr><td>${date}</td><td>${escapeHtml(time)}</td><td>${airTemp}</td><td>${mediaTemp}</td><td>${rh}</td><td>${mist}</td><td>${light}</td><td>${escapeHtml(pests)}</td><td>${escapeHtml(action)}</td><td><button class="btn btn-outline" style="padding:2px 8px;" onclick="deleteEnvRow(this)"><i class="fas fa-trash"></i></button></td></tr>`;
     tbody.insertAdjacentHTML('beforeend', row);
     saveEnvData();
+    attachEnvDeleteHandlers();
+    
     // Clear inputs
     document.getElementById('envDate').value = '';
     document.getElementById('envTime').value = '';
@@ -122,21 +270,221 @@ function addEnvRow() {
     document.getElementById('envLight').value = '';
     document.getElementById('envPests').value = '';
     document.getElementById('envAction').value = '';
+    
+    const successMsg = document.createElement('div');
+    successMsg.innerHTML = '✅ Environmental record added successfully!';
+    successMsg.style.color = '#2c7840';
+    successMsg.style.fontSize = '0.85rem';
+    successMsg.style.marginTop = '0.5rem';
+    msgDiv.parentNode.insertBefore(successMsg, msgDiv.nextSibling);
+    setTimeout(() => successMsg.remove(), 3000);
 }
 
-// MODIFIED deleteRow function with save
+// Helper to escape HTML
+function escapeHtml(str) {
+    if (!str) return str;
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
+// ============ SEARCH & FILTER FUNCTIONS ============
+
+function applyPropFilters() {
+    const searchTerm = document.getElementById('propSearchInput')?.value.toLowerCase() || '';
+    const methodFilter = document.getElementById('propMethodFilter')?.value || '';
+    const rows = document.querySelectorAll('#propagationTableBody tr');
+    let visibleCount = 0;
+    
+    rows.forEach(row => {
+        const species = row.cells[1]?.innerText.toLowerCase() || '';
+        const source = row.cells[3]?.innerText.toLowerCase() || '';
+        const notes = row.cells[7]?.innerText.toLowerCase() || '';
+        const method = row.cells[2]?.innerText.toLowerCase() || '';
+        
+        const matchesSearch = searchTerm === '' || species.includes(searchTerm) || source.includes(searchTerm) || notes.includes(searchTerm);
+        const matchesMethod = methodFilter === '' || method === methodFilter.toLowerCase();
+        
+        if (matchesSearch && matchesMethod) {
+            row.style.display = '';
+            visibleCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    const countSpan = document.getElementById('propRecordCount');
+    if (countSpan) countSpan.innerHTML = `<i class="fas fa-list"></i> ${visibleCount} record${visibleCount !== 1 ? 's' : ''} shown`;
+}
+
+function applyEnvFilters() {
+    const searchTerm = document.getElementById('envSearchInput')?.value.toLowerCase() || '';
+    const rows = document.querySelectorAll('#envTableBody tr');
+    let visibleCount = 0;
+    
+    rows.forEach(row => {
+        const date = row.cells[0]?.innerText.toLowerCase() || '';
+        const pests = row.cells[7]?.innerText.toLowerCase() || '';
+        const action = row.cells[8]?.innerText.toLowerCase() || '';
+        
+        const matchesSearch = searchTerm === '' || date.includes(searchTerm) || pests.includes(searchTerm) || action.includes(searchTerm);
+        
+        if (matchesSearch) {
+            row.style.display = '';
+            visibleCount++;
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    const countSpan = document.getElementById('envRecordCount');
+    if (countSpan) countSpan.innerHTML = `<i class="fas fa-list"></i> ${visibleCount} record${visibleCount !== 1 ? 's' : ''} shown`;
+}
+
+function clearPropFilters() {
+    document.getElementById('propSearchInput').value = '';
+    document.getElementById('propMethodFilter').value = '';
+    applyPropFilters();
+}
+
+function clearEnvFilters() {
+    document.getElementById('envSearchInput').value = '';
+    applyEnvFilters();
+}
+
+function updatePropRecordCount() {
+    const count = document.querySelectorAll('#propagationTableBody tr').length;
+    const countSpan = document.getElementById('propRecordCount');
+    if (countSpan) countSpan.innerHTML = `<i class="fas fa-list"></i> ${count} total record${count !== 1 ? 's' : ''}`;
+}
+
+function updateEnvRecordCount() {
+    const count = document.querySelectorAll('#envTableBody tr').length;
+    const countSpan = document.getElementById('envRecordCount');
+    if (countSpan) countSpan.innerHTML = `<i class="fas fa-list"></i> ${count} total record${count !== 1 ? 's' : ''}`;
+}
+
+// ============ JSON BACKUP/RESTORE FUNCTIONS ============
+
+function exportToJSON() {
+    const propData = localStorage.getItem('propagationRecords');
+    const envData = localStorage.getItem('envRecords');
+    const backupData = {
+        version: '1.0',
+        exportedAt: new Date().toISOString(),
+        propagationRecords: propData,
+        environmentalRecords: envData
+    };
+    
+    const jsonStr = JSON.stringify(backupData, null, 2);
+    const blob = new Blob([jsonStr], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `propagation_backup_${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+    
+    alert('✅ Backup exported successfully!');
+}
+
+function importFromJSON(fileInput) {
+    const file = fileInput.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const backupData = JSON.parse(e.target.result);
+            
+            if (backupData.propagationRecords) {
+                localStorage.setItem('propagationRecords', backupData.propagationRecords);
+                loadPropagationData();
+            }
+            if (backupData.environmentalRecords) {
+                localStorage.setItem('envRecords', backupData.environmentalRecords);
+                loadEnvData();
+            }
+            
+            alert('✅ Restore successful! Page will reload to show restored data.');
+            location.reload();
+        } catch (err) {
+            alert('❌ Error: Invalid backup file. Please select a valid JSON backup.');
+        }
+    };
+    reader.readAsText(file);
+    fileInput.value = ''; // Reset file input
+}
+
+// ============ MODIFIED DELETE FUNCTIONS ============
+
 function deleteRow(btn) {
-    btn.closest('tr').remove();
-    savePropagationData();
+    if (confirm('Delete this propagation record?')) {
+        btn.closest('tr').remove();
+        savePropagationData();
+    }
 }
 
-// MODIFIED deleteEnvRow function with save
 function deleteEnvRow(btn) {
-    btn.closest('tr').remove();
-    saveEnvData();
+    if (confirm('Delete this environmental record?')) {
+        btn.closest('tr').remove();
+        saveEnvData();
+    }
 }
 
-// Update DOMContentLoaded to load saved data
+function clearAllStorage() {
+    if (confirm('⚠️ WARNING: This will permanently delete ALL your saved propagation and environmental records. This cannot be undone. Are you sure?')) {
+        localStorage.removeItem('propagationRecords');
+        localStorage.removeItem('envRecords');
+        loadPropagationData();
+        loadEnvData();
+        alert('All records have been cleared and reset to defaults.');
+    }
+}
+
+function showStorageInfo() {
+    let propSize = localStorage.getItem('propagationRecords')?.length || 0;
+    let envSize = localStorage.getItem('envRecords')?.length || 0;
+    let totalSize = (propSize + envSize) / 1024;
+    let recordCount = document.querySelectorAll('#propagationTableBody tr').length;
+    let envCount = document.querySelectorAll('#envTableBody tr').length;
+    alert(`📊 Local Storage Summary:\n\nPropagation Records: ${recordCount} records (${propSize} characters)\nEnvironmental Records: ${envCount} records (${envSize} characters)\nTotal storage: ~${totalSize.toFixed(1)} KB\n\nLocalStorage limit is 5-10 MB per domain.`);
+}
+
+// ============ MODIFIED EXPORT CSV ============
+
+function exportData() {
+    let csv = "Propagation Records\nDate,Species,Method,Source,Units,Media,Rooting %,Notes\n";
+    document.querySelectorAll('#propagationTableBody tr').forEach(row => {
+        if (row.style.display !== 'none') {
+            const cells = row.querySelectorAll('td');
+            if (cells.length) {
+                const speciesText = cells[1]?.innerText.replace(/<[^>]*>/g, '').trim() || '';
+                csv += `"${cells[0]?.innerText}","${speciesText}","${cells[2]?.innerText}","${cells[3]?.innerText}","${cells[4]?.innerText}","${cells[5]?.innerText}","${cells[6]?.innerText}","${cells[7]?.innerText}"\n`;
+            }
+        }
+    });
+    csv += "\nEnvironmental Logs\nDate,Time,Air Temp,Media Temp,RH%,Mist sec/hr,Light lux,Pests,Action\n";
+    document.querySelectorAll('#envTableBody tr').forEach(row => {
+        if (row.style.display !== 'none') {
+            const cells = row.querySelectorAll('td');
+            if (cells.length) {
+                csv += `"${cells[0]?.innerText}","${cells[1]?.innerText}","${cells[2]?.innerText}","${cells[3]?.innerText}","${cells[4]?.innerText}","${cells[5]?.innerText}","${cells[6]?.innerText}","${cells[7]?.innerText}","${cells[8]?.innerText}"\n`;
+            }
+        }
+    });
+    const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `propagation_records_${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+}
+
+// ============ UPDATE DOMContentLoaded ============
+
 document.addEventListener('DOMContentLoaded', () => {
     renderSpecies();
     if(document.getElementById('speciesSearch')) document.getElementById('speciesSearch').addEventListener('input', renderSpecies);
@@ -144,28 +492,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load saved data from localStorage
     loadPropagationData();
     loadEnvData();
+    
+    // Attach search/filter event listeners
+    const propSearch = document.getElementById('propSearchInput');
+    const propFilter = document.getElementById('propMethodFilter');
+    const envSearch = document.getElementById('envSearchInput');
+    
+    if (propSearch) propSearch.addEventListener('input', applyPropFilters);
+    if (propFilter) propFilter.addEventListener('change', applyPropFilters);
+    if (envSearch) envSearch.addEventListener('input', applyEnvFilters);
 });
 ```
 
-Add these buttons to the Records tab (Tab 8) - add after export/print buttons:
+Summary of Added Features:
 
-```html
-<button class="btn btn-outline" onclick="showStorageInfo()" style="background: #2c7a4a; color: white;"><i class="fas fa-database"></i> Storage Info</button>
-<button class="btn btn-danger" onclick="clearAllStorage()" style="background: #b34343;"><i class="fas fa-trash-alt"></i> Clear All Records</button>
-```
+1. JSON Backup/Restore
 
-Summary of what's added:
+· Backup – Exports all records to a timestamped JSON file
+· Restore – Import JSON backup to recover previous data
+· Includes version tracking and export timestamp
 
-1. Automatic save – Every time you add or delete a row, data is saved to localStorage
-2. Automatic load – When you refresh the page, all your records reappear
-3. Storage info button – Shows how much space your records are using
-4. Clear all records button – Allows resetting to default example data (with confirmation prompt)
-5. Cross-session persistence – Close the browser, come back days later, your data is still there
+2. Data Validation
 
-The localStorage limit is typically 5-10MB per domain, which is plenty for thousands of records. Your data stays on your own device/browser—perfect for personal tracking without needing a server.
+· Required fields: Species name and date must be filled
+· Data type checks: Units must be positive numbers
+· Minimum length: Species name at least 2 characters
+· Duplicate warnings: Alerts if same species/date combination exists
+· Input sanitization: Escapes HTML to prevent XSS
+· Success messages: Visual feedback when records are added
 
-Would you like me to also add:
+3. Search & Filter
 
-· Export to JSON (for backup/restore functionality)?
-· Data validation (check for duplicate entries, required fields)?
-· Search/filter within the records tables?
+· Propagation table:
+  · Search by species, source location, or notes
+  · Filter by propagation method (Seed, Cutting, Division, etc.)
+  · Live count of visible records
+· Environmental table:
+  · Search by date, pests observed, or actions taken
+· Clear filters button for each table
+· Record counters show total vs. visible
+
+4. Enhanced Delete Confirmation
+
+· Confirmation dialog before deleting individual records
+· Clear All with double confirmation
+
+5. Storage Info Panel
+
+· Shows number of records and storage size
+· Helps users understand their data usage
+
+6. Improved CSV Export
+
+· Only exports visible/filtered records
+· Proper CSV quoting for fields with commas
+· Timestamped filenames
+
+7. Visual Improvements
+
+· Toolbar with organized buttons
+· Search/filter bars with icons
+· Success messages for successful additions
+· Record counters for better data awareness
+
+The data is now fully persistent, validated, searchable, and backup-capable—making it a complete record-keeping system for your propagation activities!
