@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>AHCNSY207 · Undertake Propagation Activities · Complete Learning Ecosystem</title>
+    <title>AHCNSY207 · Tasmanian Native Plant Propagation · Complete Resource</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -14,202 +14,185 @@
         }
         
         :root {
-            --primary-dark: #1e4a2f;
-            --primary-medium: #2d6a4f;
+            --primary-dark: #0f3b2c;
+            --primary-medium: #1d6f4a;
             --primary-light: #52b788;
-            --accent-gold: #f9c74f;
-            --accent-soft: #fff3e0;
-            --bg-light: #f0f9f0;
+            --accent-gold: #f4a261;
+            --accent-soft: #fef3e6;
+            --bg-light: #e9f5ef;
             --text-dark: #1e3a2f;
-            --border-light: #c8e6d9;
-            --card-shadow: 0 20px 40px -10px rgba(0, 40, 0, 0.2);
-            --footer-text: #e9f5e9;
-            --footer-heading: #ffd966;
+            --border-light: #c0dfcf;
+            --card-shadow: 0 20px 35px -12px rgba(0, 32, 0, 0.2);
+            --footer-text: #f0f7ea;
+            --tas-green: #2c6e49;
+            --tas-blue: #2c5f8a;
         }
 
         body {
             font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
-            background: #cfdec6;
+            background: #d4e2cf;
             color: var(--text-dark);
             line-height: 1.7;
             padding: 1rem;
         }
 
         .master-ecosystem {
-            max-width: 1800px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
-            border-radius: 3rem;
+            border-radius: 2.5rem;
             box-shadow: var(--card-shadow);
             overflow: hidden;
         }
 
-        /* ===== HERO ===== */
         .hero-banner {
-            background: linear-gradient(145deg, #0d3b2a, #1e6b4a, #0f4a33);
+            background: linear-gradient(125deg, #0b3b2a, #1f6e4a, #154f38);
             color: white;
-            padding: 2.5rem 2rem;
-            border-bottom: 12px solid var(--accent-gold);
+            padding: 2.2rem 2rem;
+            border-bottom: 8px solid var(--accent-gold);
+            position: relative;
         }
         .hero-banner h1 {
-            font-size: clamp(2rem, 7vw, 4rem);
+            font-size: clamp(1.8rem, 7vw, 3.6rem);
             font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
-        .hero-banner h1 i { color: var(--accent-gold); margin-right: 10px; }
-        .hero-qual { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .hero-banner h1 i { color: var(--accent-gold); margin-right: 12px; }
+        .hero-qual { display: flex; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
         .hero-qual span {
-            background: rgba(255,255,220,0.15);
+            background: rgba(0,0,0,0.25);
             backdrop-filter: blur(4px);
             padding: 0.5rem 1.2rem;
             border-radius: 60px;
-            border-left: 4px solid var(--accent-gold);
             font-weight: 500;
+            border-left: 4px solid var(--accent-gold);
         }
 
-        /* ===== TABS ===== */
         .tab-bar {
-            background: #154f34;
-            padding: 0.5rem 1rem;
+            background: #144d38;
+            padding: 0.4rem 1rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.25rem;
-            border-bottom: 3px solid #a8d0a8;
+            gap: 0.2rem;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         .tab {
-            color: #e0f0da;
-            font-weight: 600;
-            padding: 0.8rem 1rem;
-            cursor: pointer;
-            border-bottom: 4px solid transparent;
-            transition: all 0.2s;
             background: transparent;
             border: none;
+            color: #e0f0e0;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: 0.2s;
             font-family: inherit;
-            border-radius: 8px 8px 0 0;
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            border-radius: 8px 8px 0 0;
         }
-        .tab:hover { background: #216344; color: white; }
-        .tab.active { color: white; border-bottom-color: var(--accent-gold); background: linear-gradient(transparent 60%, rgba(245,179,66,0.15) 100%);}
-        .tab-content { display: none; padding: 2rem 1.5rem; background: white; animation: fadeIn 0.4s ease; }
+        .tab:hover { background: #2a6b4e; color: white; }
+        .tab.active { color: white; border-bottom-color: var(--accent-gold); background: linear-gradient(transparent 70%, rgba(244,162,97,0.2) 100%);}
+        .tab-content { display: none; padding: 2rem 1.8rem; background: white; animation: fadeIn 0.3s ease; }
         .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity:0.3; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px);} to { opacity:1; transform: translateY(0);}}
 
         h2 {
-            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-size: clamp(1.7rem, 5vw, 2.5rem);
             color: var(--primary-dark);
-            margin: 1.5rem 0 1rem 0;
-            border-left: 12px solid var(--accent-gold);
-            padding-left: 1rem;
+            margin: 1.2rem 0 1rem 0;
+            border-left: 14px solid var(--accent-gold);
+            padding-left: 1.2rem;
         }
         h3 {
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            color: #1b5a3a;
+            font-size: 1.6rem;
+            color: #1e5a3c;
             margin: 1.8rem 0 1rem 0;
-            border-bottom: 3px dashed #c8e6c8;
-            padding-bottom: 0.5rem;
+            border-bottom: 3px dashed #c0e0c0;
+            padding-bottom: 0.4rem;
         }
         .card-deck {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 1.8rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
         }
         .info-card {
             background: var(--bg-light);
             border-radius: 1.5rem;
             padding: 1.5rem;
             border: 1px solid var(--border-light);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            box-shadow: 0 6px 14px rgba(0,20,0,0.05);
         }
-        .info-card i { font-size: 2rem; color: var(--primary-medium); margin-bottom: 0.8rem; }
-        .legislation-panel {
-            background: #edf7ed;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            border-left: 10px solid var(--primary-medium);
-            margin: 1.5rem 0;
-        }
-        .tool-matrix, .risk-table {
+        .info-card:hover { transform: translateY(-4px);}
+        .info-card i { font-size: 2rem; color: var(--primary-medium); margin-bottom: 1rem; }
+        .species-table, .tool-matrix {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
+            background: white;
+            margin: 1.8rem 0;
             display: block;
             overflow-x: auto;
+            border-radius: 1rem;
         }
-        .tool-matrix th, .risk-table th {
-            background: var(--primary-medium);
+        .species-table th, .tool-matrix th {
+            background: var(--primary-dark);
             color: white;
-            padding: 0.8rem;
+            padding: 12px;
+            font-weight: 600;
         }
-        .tool-matrix td, .risk-table td {
+        .species-table td, .tool-matrix td {
             border: 1px solid var(--border-light);
-            padding: 0.8rem;
+            padding: 10px;
             vertical-align: top;
         }
         .checklist-super {
-            background: white;
-            border: 3px solid var(--primary-medium);
+            background: #fef9ef;
+            border: 3px solid var(--primary-light);
             border-radius: 1.8rem;
             padding: 1.5rem;
-            margin: 1.8rem 0;
+            margin: 2rem 0;
         }
         .checklist-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 0.8rem;
         }
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #f6fff0;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-        }
         .btn {
             background: var(--accent-gold);
-            color: #1e402a;
+            color: #1f3d2c;
+            font-weight: bold;
             border: none;
-            font-weight: 700;
-            padding: 0.7rem 1.5rem;
-            border-radius: 60px;
+            padding: 0.6rem 1.4rem;
+            border-radius: 40px;
             cursor: pointer;
-            font-size: 1rem;
-            margin: 0.5rem 0.5rem 0 0;
-            display: inline-block;
+            margin: 0.3rem 0.3rem 0 0;
+            transition: 0.2s;
         }
-        .btn-outline { background: transparent; border: 2px solid var(--primary-medium); color: var(--primary-dark); }
-        .btn:hover { background: #ffda77; transform: translateY(-2px);}
-        .quiz-container { background: #1e4a2f; border-radius: 2rem; padding: 1.5rem; margin: 2rem 0; color: white; }
-        .quiz-question-card { background: #2c6e4f; border-radius: 1.5rem; padding: 1.2rem; margin: 1.2rem 0; }
-        .quiz-option { background: #3f8b62; margin: 0.6rem 0; padding: 0.6rem 1.2rem; border-radius: 60px; cursor: pointer; }
-        .quiz-feedback { display: none; margin-top: 0.8rem; padding: 0.8rem; border-radius: 1rem; }
-        .feedback-correct { background: #2f8d5a; }
-        .feedback-incorrect { background: #b64a4a; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary-medium); color: var(--primary-dark);}
+        .btn:hover { background: #f7b05e; transform: translateY(-2px);}
+        .quiz-container { background: #1e553b; border-radius: 2rem; padding: 1.5rem; color: white; margin: 2rem 0; }
+        .quiz-question-card { background: #2a6f4f; border-radius: 1.2rem; padding: 1.2rem; margin: 1rem 0; }
         .scenario-box {
-            background: #fff2db;
+            background: #fef1df;
             border-radius: 1.5rem;
             padding: 1.5rem;
             margin: 1.8rem 0;
-            border-left: 10px solid var(--accent-gold);
+            border-left: 12px solid var(--accent-gold);
         }
         .scenario-option {
             background: white;
             border-radius: 60px;
-            padding: 0.7rem 1.2rem;
+            padding: 0.6rem 1.2rem;
             margin: 0.6rem 0;
             cursor: pointer;
-            border: 2px solid #ddd;
+            border: 2px solid #ccc;
         }
         .scenario-option.selected { background: var(--primary-medium); color: white; border-color: var(--accent-gold);}
-        .scenario-feedback { display: none; margin-top: 1rem; padding: 1rem; border-radius: 1rem; background: white; }
         .footer-expanded {
             background: #0f3829;
             color: var(--footer-text);
@@ -217,234 +200,218 @@
             margin-top: 2rem;
             border-top: 8px solid var(--accent-gold);
         }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
-        .footer-expanded a { color: var(--footer-heading); text-decoration: none; }
+        .glossary-term {
+            background: #e2f0e2;
+            border-bottom: 2px dotted var(--primary-medium);
+            cursor: help;
+            padding: 0 4px;
+        }
         @media print {
-            .tab-bar, .btn, .hero-banner, .quiz-container, .scenario-box { display: none; }
-            .tab-content { display: block !important; page-break-after: avoid; }
+            .tab-bar, .btn, .quiz-container, .scenario-box { display: none; }
+            .tab-content { display: block !important; }
         }
     </style>
 </head>
 <body>
 <div class="master-ecosystem">
     <div class="hero-banner">
-        <h1><i class="fas fa-seedling"></i> AHCNSY207 · Undertake Propagation Activities</h1>
+        <h1><i class="fas fa-seedling"></i> AHCNSY207 · Tasmanian Native Propagation</h1>
         <div class="hero-qual">
-            <span><i class="fas fa-certificate"></i> Certificate II / III in Horticulture / Nursery Operations</span>
-            <span><i class="fas fa-flask"></i> Release 1.2 · ASQA compliant</span>
-            <span><i class="fas fa-leaf"></i> Germination · Cutting · Grafting · Division</span>
+            <span><i class="fas fa-certificate"></i> Certificate III Conservation & Ecosystem Management</span>
+            <span><i class="fas fa-tree"></i> Tasmanian endemics & ecological restoration</span>
+            <span><i class="fas fa-flask"></i> Seed · Cutting · Division · Grafting</span>
+            <span><i class="fas fa-mountain"></i> TAS Bioregions: Furneaux, Ben Lomond, West Coast</span>
         </div>
     </div>
 
-    <div class="tab-bar" role="tablist">
-        <button class="tab active" onclick="switchTab('tab1')"><i class="fas fa-balance-scale"></i> Legislation & WHS</button>
-        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-clipboard-list"></i> Planning & Prep</button>
-        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-hand-holding-heart"></i> Propagation Methods</button>
-        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-water"></i> Aftercare & Hardening</button>
-        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> Quizzes & Games</button>
-        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-comment-dots"></i> Scenarios</button>
-        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-print"></i> Printables & Records</button>
-        <button class="tab" onclick="switchTab('tab8')"><i class="fas fa-book-open"></i> Glossary & Resources</button>
+    <div class="tab-bar">
+        <button class="tab active" onclick="switchTab('tab1')"><i class="fas fa-leaf"></i> TAS Native Species</button>
+        <button class="tab" onclick="switchTab('tab2')"><i class="fas fa-hand-holding-heart"></i> Propagation Methods</button>
+        <button class="tab" onclick="switchTab('tab3')"><i class="fas fa-clipboard-list"></i> Planning & Ethics</button>
+        <button class="tab" onclick="switchTab('tab4')"><i class="fas fa-chart-line"></i> Aftercare & Hardening</button>
+        <button class="tab" onclick="switchTab('tab5')"><i class="fas fa-puzzle-piece"></i> Quizzes & Scenarios</button>
+        <button class="tab" onclick="switchTab('tab6')"><i class="fas fa-print"></i> Records & Checklists</button>
+        <button class="tab" onclick="switchTab('tab7')"><i class="fas fa-book-open"></i> Glossary + Resources</button>
     </div>
 
-    <!-- ========== TAB 1: LEGISLATION, WHS, ASQA ========= -->
+    <!-- ========= TAB 1: TASMANIAN NATIVE SPECIES & ECOLOGY ========= -->
     <div id="tab1" class="tab-content active">
-        <h2>⚖️ Legislative & Regulatory Framework (ASQA / WHS)</h2>
-        <div class="legislation-panel">
-            <h3><i class="fas fa-gavel"></i> Key legislation for propagation activities</h3>
-            <ul><li><strong>Work Health and Safety Act 2011</strong> – duty of care, risk management, PPE</li>
-            <li><strong>Biosecurity Act 2015</strong> – plant movement, pest and disease prevention</li>
-            <li><strong>Plant Breeder’s Rights Act 1994</strong> – propagation of protected varieties requires licence</li>
-            <li><strong>Environment Protection and Biodiversity Conservation Act 1999</strong> – threatened species propagation permits</li>
-            <li><strong>ASQA compliance:</strong> All assessments must align with unit AHCNSY207 elements: prepare for propagation, carry out propagation, complete propagation activities, monitor environmental conditions.</li></ul>
-        </div>
-        <h3>⚠️ WHS Risk Controls – Nursery & Propagation</h3>
-        <table class="tool-matrix">
-            <tr><th>Hazard</th><th>Risk level</th><th>Control measures</th></tr>
-            <tr><td>Manual handling (potting, lifting)</td><td>High</td><td>Team lifting, trolleys, max 15kg per bag, rotate tasks</td></tr>
-            <tr><td>Sharps (secateurs, knives, grafting tools)</td><td>High</td><td>Cut-resistant gloves, tool sterilisation, safe storage</td></tr>
-            <tr><td>Chemicals (rooting hormone, fungicides)</td><td>Medium</td><td>Use PPE, follow SDS, mix in ventilated area</td></tr>
-            <tr><td>Biological (soil pathogens, dermatitis)</td><td>Medium</td><td>Wash hands, use gloves, hygiene protocols</td></tr>
-            <tr><td>Heat stress / UV</td><td>Medium</td><td>Shade cloth, hydration, sunscreen, scheduled breaks</td></tr>
+        <h2><i class="fab fa-envira"></i> Key Tasmanian Native Plants for Propagation</h2>
+        <p>This resource focuses on species critical for ecological restoration, threatened species recovery, and sustainable nursery production across Tasmanian bioregions. Provenance matters: always use local seed/stock within seed transfer zones.</p>
+        <table class="species-table">
+            <thead><tr><th>Species (common)</th><th>Propagation method</th><th>Pre-treatment / details</th><th>Eco-notes</th></tr></thead>
+            <tbody>
+                <tr><td><em>Eucalyptus amygdalina</em> (black peppermint)</td><td>Seed</td><td>No pre-treatment; sow in autumn; light cover; germination 14–28 days</td><td>Dry sclerophyll forest; important koala/insect habitat</td></tr>
+                <tr><td><em>Acacia melanoxylon</em> (blackwood)</td><td>Seed</td><td>Hot water scarification (90°C soak overnight); treat with smoke water to boost germination</td><td>Wet forest; nitrogen-fixing</td></tr>
+                <tr><td><em>Banksia marginata</em> (silver banksia)</td><td>Seed</td><td>Extract from cones by heating at 60°C for 2h; sow in well-drained mix</td><td>Coastal heath, serotinous cones; bird attracting</td></tr>
+                <tr><td><em>Melaleuca ericifolia</em> (swamp paperbark)</td><td>Seed / cutting</td><td>Seed no treatment; semi-hardwood cuttings (IBA 3000ppm)</td><td>Riparian zones, wetlands; erosion control</td></tr>
+                <tr><td><em>Pomaderris apetala</em> (dogwood)</td><td>Seed</td><td>Cold stratification 6–8 weeks; smoke treatment improves germination</td><td>Rainforest margins, threatened in some areas</td></tr>
+                <tr><td><em>Leptospermum scoparium</em> (manuka)</td><td>Seed / cutting</td><td>Seed surface sow; cuttings semi-hardwood with IBA 3000ppm</td><td>Widespread; honey production, coloniser</td></tr>
+                <tr><td><em>Callistemon pallidus</em> (lemon bottlebrush)</td><td>Seed / cutting</td><td>Seed no treatment; softwood cuttings spring</td><td>Riparian; attracts birds</td></tr>
+                <tr><td><em>Gahnia grandis</em> (saw sedge)</td><td>Division</td><td>Divide mature clumps in autumn; retain roots and shoots</td><td>Understorey; important habitat for small mammals</td></tr>
+                <tr><td><em>Poa labillardierei</em> (silver tussock)</td><td>Seed / division</td><td>Seed needs light; surface sow; division easy in spring</td><td>Grasslands, revegetation staple</td></tr>
+                <tr><td><em>Nothofagus cunninghamii</em> (myrtle beech)</td><td>Seed (recalcitrant)</td><td>Sow fresh immediately; cannot dry; keep moist, cool stratification 8 weeks</td><td>Cool temperate rainforest; recalcitrant seed</td></tr>
+                <tr><td><em>Tasmannia lanceolata</em> (mountain pepper)</td><td>Seed / cutting</td><td>Seed requires warm then cold stratification; cuttings semi-hardwood with IBA</td><td>Understorey; culinary uses, dioecious</td></tr>
+                <tr><td><em>Correa alba</em> (white correa)</td><td>Cutting</td><td>Semi-hardwood cuttings, IBA 2000ppm, high humidity</td><td>Coastal; salt tolerant</td></tr>
+            </tbody>
         </table>
         <div class="card-deck">
-            <div class="info-card"><i class="fas fa-file-signature"></i><h4>ASQA assessment requirements</h4><p>Evidence must include: preparation of materials, safe use of tools, application of 3+ propagation techniques (seed, cutting, division), records of environmental monitoring, and completion of workplace documentation.</p></div>
-            <div class="info-card"><i class="fas fa-hand-sparkles"></i><h4>Biosecurity hygiene</h4><p>Clean tools with 70% ethanol or bleach between batches; quarantine incoming plant material; prevent spread of <em>Phytophthora</em> and myrtle rust.</p></div>
+            <div class="info-card"><i class="fas fa-dna"></i><h4>Provenance & Seed Transfer Zones</h4><p>For Tasmanian restoration, source seed within the same bioregion (e.g., Ben Lomond, Northern Slopes, West Coast). Climate-adjusted provenancing (collect from lower elevation/warmer sites) helps future-proof plantings.</p></div>
+            <div class="info-card"><i class="fas fa-fire"></i><h4>Fire-adapted species</h4><p>Many Banksia, Hakea, and some eucalypts are serotinous – collect cones after fire or use heat to extract seed. Smoke water (or smoke disks) enhances germination for many fire-responsive Tasmanian shrubs.</p></div>
         </div>
     </div>
 
-    <!-- ========== TAB 2: PLANNING & PREPARATION ========= -->
+    <!-- ========= TAB 2: PROPAGATION METHODS (DETAILED) ========= -->
     <div id="tab2" class="tab-content">
-        <h2>📋 Work planning & resource preparation</h2>
-        <div class="checklist-super">
-            <h3><i class="fas fa-check-double"></i> Pre-propagation checklist (ASQA evidence)</h3>
-            <div class="checklist-grid">
-                <div class="checklist-item"><input type="checkbox"> Interpret work plan / propagation schedule</div>
-                <div class="checklist-item"><input type="checkbox"> Select species & source quality parent material</div>
-                <div class="checklist-item"><input type="checkbox"> Confirm propagation method: seed, cutting, graft, division, layering</div>
-                <div class="checklist-item"><input type="checkbox"> Prepare growing media (sterile, appropriate texture, pH)</div>
-                <div class="checklist-item"><input type="checkbox"> Select containers (trays, tubes, pots) clean and sterilised</div>
-                <div class="checklist-item"><input type="checkbox"> Gather tools: secateurs, grafting knife, dibber, misting system</div>
-                <div class="checklist-item"><input type="checkbox"> Rooting hormone (IBA gel/powder) ready</div>
-                <div class="checklist-item"><input type="checkbox"> Environmental controls: heating mats, mist timer, shade cloth</div>
-                <div class="checklist-item"><input type="checkbox"> Labels & permanent marker (species, date, batch)</div>
-                <div class="checklist-item"><input type="checkbox"> PPE: gloves, safety glasses, apron</div>
-                <div class="checklist-item"><input type="checkbox"> Water quality tested (pH, EC)</div>
-                <div class="checklist-item"><input type="checkbox"> First aid & emergency contacts posted</div>
-            </div>
-        </div>
-        <h3>🌱 Selecting propagation material</h3>
-        <p><strong>Seed:</strong> Use fresh, viable seed from reliable supplier or collected under permit. Record provenance. <strong>Cuttings:</strong> Select healthy, disease-free stock plants; take semi-hardwood or softwood at correct phenological stage. <strong>Grafting:</strong> Ensure compatible rootstock and scion (same genus/family). <strong>Division:</strong> Choose vigorous clumping plants (grasses, ferns, lilies).</p>
+        <h2>🌱 Propagation Techniques for Tasmanian Natives</h2>
+        <h3>1. Seed propagation – ecology & treatment</h3>
+        <p>Many Tasmanian natives have dormancy mechanisms: <strong>Physical dormancy</strong> (Acacia, Kennedia) → hot water scarification (80–90°C soak until water cools). <strong>Physiological dormancy</strong> (many eucalypts, Pomaderris) → cold stratification 4–8 weeks at 2–4°C. <strong>Smoke-responsive</strong> (Anigozanthos, Stylidium) → smoke water soak or smoke granules in media.</p>
+        <table class="tool-matrix">
+            <tr><th>Dormancy type</th><th>Treatment</th><th>Example Tasmanian species</th></tr>
+            <tr><td>Physical (hard seed coat)</td><td>Hot water scarification, nicking</td><td><em>Acacia melanoxylon, A. verticillata, Kennedia prostrata</em></td></tr>
+            <tr><td>Physiological (cold required)</td><td>Stratification (4°C, 6–10 weeks)</td><td><em>Pomaderris apetala, Eucalyptus coccifera, Coprosma quadrifida</em></td></tr>
+            <tr><td>Morphological</td><td>Warm then cold stratification</td><td><em>Tasmannia lanceolata, Billardiera longiflora</em></td></tr>
+            <tr><td>Smoke-responsive</td><td>Smoke water / aerosol smoke</td><td><em>Actinotus bellidioides, Lomatia tinctoria</em></td></tr>
+        </table>
+
+        <h3>2. Cutting propagation – key species</h3>
+        <p>Use semi-hardwood cuttings for most woody natives (December–March). <strong>Rooting hormone:</strong> IBA (indole-3-butyric acid) 3000–5000 ppm for difficult species; 1000–2000 ppm for easy. Mist or fog system essential. Maintain 22–25°C bottom heat.</p>
+        <ul><li><strong>Easy to root:</strong> <em>Leptospermum, Melaleuca, Callistemon, Correa, Westringia</em> – IBA 1000–2000ppm, 80% success</li>
+        <li><strong>Moderate:</strong> <em>Eucalyptus</em> (cuttings from juvenile stock), <em>Prostanthera, Grevillea</em> – IBA 3000ppm, high humidity</li>
+        <li><strong>Difficult / grafted:</strong> many <em>Banksia</em> (seed only), <em>Nothofagus</em> (seed only), some epacrids</li></ul>
+
+        <h3>3. Division & rhizome propagation</h3>
+        <p>Ideal for clumping species: <em>Poa labillardierei, Lomandra longifolia, Gahnia grandis, Dianella tasmanica</em>. Divide in early spring, ensure each division has 3–5 healthy shoots and fibrous roots. Pot into premium potting mix, keep shaded for 2 weeks.</p>
     </div>
 
-    <!-- ========== TAB 3: PROPAGATION METHODS ========= -->
+    <!-- ========= TAB 3: PLANNING, PERMITS & ETHICS ========= -->
     <div id="tab3" class="tab-content">
-        <h2>🪴 Core propagation techniques (Seed, Cutting, Grafting, Division)</h2>
-        <div class="card-deck">
-            <div class="info-card"><i class="fas fa-seedling"></i><h4>Seed propagation</h4><ul><li>Pre-treatment: scarification (hot water, sandpaper) for hard-coated seeds; stratification (cold) for temperate species.</li><li>Sowing depth = 2–3× seed diameter.</li><li>Use sterile seed-raising mix; keep moist but not waterlogged.</li><li>Cover with vermiculite to reduce damping-off.</li></ul></div>
-            <div class="info-card"><i class="fas fa-cut"></i><h4>Cutting propagation</h4><ul><li>Softwood cuttings (spring): 5–10 cm, remove lower leaves, dip in rooting hormone (IBA 2000–3000ppm).</li><li>Semi-hardwood (summer): use heel cutting, wound base.</li><li>Hardwood cuttings (dormant): 15–25 cm, insert into sandy medium.</li><li>Maintain high humidity (mist/fog) and bottom heat (22–25°C).</li></ul></div>
-            <div class="info-card"><i class="fas fa-hand-holding-heart"></i><h4>Grafting & budding</h4><ul><li>Whip & tongue, cleft graft, T-budding.</li><li>Match cambium layers, seal with grafting tape/wax.</li><li>Keep graft union humid until callus forms.</li><li>Remove rootstock suckers promptly.</li></ul></div>
-            <div class="info-card"><i class="fas fa-fill-drip"></i><h4>Division & layering</h4><ul><li>Division: separate rhizomes, crowns or clumps (ornamental grasses, daylilies). Ensure each division has roots and shoots.</li><li>Layering: peg down low branch, cover with soil, sever when rooted.</li><li>Ideal for shrubs (Magnolia, Rhododendron).</li></ul></div>
+        <h2>📋 Regulatory framework & ethical sourcing</h2>
+        <div class="checklist-super">
+            <h3><i class="fas fa-file-contract"></i> Permits & legislation (Tasmania)</h3>
+            <p>Under <strong>Nature Conservation Act 2002</strong> and <strong>Threatened Species Protection Act 1995</strong>, collection of native plant material (including seed, cuttings) from public land or for threatened species requires a permit. Always obtain landholder permission and ensure compliance with <strong>Plant Breeder's Rights</strong> for commercial varieties.</p>
+            <p><strong>ASQA assessment requirement:</strong> Students must demonstrate ability to interpret work plans, follow biosecurity, and maintain accurate propagation records including provenance.</p>
         </div>
-        <h3>🧪 Environmental controls for propagation</h3>
-        <table class="tool-matrix">
-            <tr><th>Factor</th><th>Optimal range</th><th>Monitoring method</th></tr>
-            <tr><td>Temperature (air)</td><td>18–25°C (cuttings), 20–30°C (germination)</td><td>Max/min thermometer, soil probe</td></tr>
-            <tr><td>Relative humidity</td><td>80–95% for cuttings / grafting</td><td>Hygrometer, mist intervals</td></tr>
-            <tr><td>Light intensity</td><td>50–70% shade (hardening gradually)</td><td>Lux meter / observation</td></tr>
-            <tr><td>Growing medium moisture</td><td>Evenly moist, not saturated</td><td>Finger test, moisture meter</td></tr>
-        </table>
+        <h3>🌿 Ethical collection guidelines (20% rule)</h3>
+        <div class="card-deck">
+            <div class="info-card"><i class="fas fa-percent"></i><h4>Collect sustainably</h4><p>Take no more than 10–20% of seed/cuttings from any population. For rare species, collect <5% and only from robust stands. Never collect from plants with signs of stress or disease.</p></div>
+            <div class="info-card"><i class="fas fa-biohazard"></i><h4>Biosecurity protocol</h4><p>Disinfect tools between sites (70% ethanol or 1% bleach). Prevent spread of <em>Phytophthora cinnamomi</em> (root rot) which threatens many Tasmanian natives. Clean boots and vehicle tyres before entering bushland.</p></div>
+        </div>
     </div>
 
-    <!-- ========== TAB 4: AFTERCARE & HARDENING OFF ========= -->
+    <!-- ========= TAB 4: AFTERCARE & HARDENING OFF ========= -->
     <div id="tab4" class="tab-content">
-        <h2>💧 Post-propagation care & hardening off</h2>
-        <div class="legislation-panel">
-            <h3>🌿 Monitoring for plant health</h3>
-            <p>Record daily observations: root development (visible at drainage holes), new leaf growth, signs of disease (damping-off, grey mould), pest presence (fungus gnats, aphids). Adjust misting frequency as roots form; reduce humidity gradually. <strong>Hardening off:</strong> Over 7–14 days, increase light exposure and reduce water to acclimatise plants to external conditions before transplanting.</p>
-        </div>
-        <div class="card-deck">
-            <div class="info-card"><i class="fas fa-chart-line"></i><h4>Nutrient management</h4><p>Apply dilute liquid fertiliser (N-P-K 20:10:20) at ¼ strength once true leaves appear or cuttings show roots. Avoid high nitrogen before hardening.</p></div>
-            <div class="info-card"><i class="fas fa-biohazard"></i><h4>Integrated pest management</h4><p>Preventative: good hygiene, air movement. Use beneficial insects (lacewings) for aphids; apply neem oil for mites; remove infected material.</p></div>
-        </div>
-        <h3>📊 Environmental monitoring log (ASQA evidence example)</h3>
+        <h2>💧 Nursery aftercare & acclimatisation</h2>
+        <p>Successful propagation extends to post-rooting management. Monitor moisture, nutrient, and disease control.</p>
+        <h3>🌡️ Environmental monitoring log (example)</h3>
         <table class="tool-matrix">
-            <tr><th>Date</th><th>Species/Batch</th><th>Temp (°C)</th><th>Humidity %</th><th>Misting (min/hr)</th><th>Roots visible</th><th>Action</th></tr>
-            <tr><td>26/03/26</td><td>Grevillea 'Robyn Gordon'</td><td>22</td><td>88</td><td>15 sec/20 min</td><td>No</td><td>Maintain mist</td></tr>
-            <tr><td>02/04/26</td><td>Grevillea cuttings</td><td>23</td><td>80</td><td>10 sec/30 min</td><td>Yes (week 3)</td><td>Reduce mist, start hardening</td></tr>
+            <tr><th>Stage</th><th>Temperature (day/night)</th><th>Humidity</th><th>Light</th><th>Duration</th></tr>
+            <tr><td>Seed germination</td><td>20–28°C</td><td>80–90%</td><td>Low light / indirect</td><td>Until cotyledon emergence</td></tr>
+            <tr><td>Cutting rooting</td><td>22–25°C (bottom heat)</td><td>85–95% mist</td><td>50% shade</td><td>3–8 weeks</td></tr>
+            <tr><td>Hardening off</td><td>15–22°C ambient</td><td>Reduce gradually to 60%</td><td>Full sun over 10–14 days</td><td>2 weeks before transplant</td></tr>
         </table>
+        <div class="info-card"><i class="fas fa-tint"></i><h4>Fertiliser regime for natives</h4><p>Use low-phosphorus slow-release (native blend). Apply liquid seaweed or diluted fish emulsion weekly after roots establish. Avoid high-P fertilisers which damage Proteaceae (Banksia, Hakea, Grevillea).</p></div>
+        <div class="info-card"><i class="fas fa-bug"></i><h4>Pest & disease watch</h4><p>Damping-off (fungal) – use sterilised media, improve airflow. Aphids on new growth – introduce ladybird beetles or use neem oil. Root rot – ensure well-drained media, avoid overwatering.</p></div>
     </div>
 
-    <!-- ========== TAB 5: QUIZZES & GAMES ========= -->
+    <!-- ========= TAB 5: QUIZZES & SCENARIOS ========= -->
     <div id="tab5" class="tab-content">
-        <h2>🎓 Interactive knowledge checks</h2>
+        <h2>🎯 Interactive learning (ASQA evidence ready)</h2>
         <div class="quiz-container">
-            <h3 style="color:white">Quiz 1: Propagation basics</h3>
-            <div class="quiz-question-card" data-correct="B">
-                <div class="quiz-question">1. What is the recommended concentration of IBA rooting hormone for semi-hardwood cuttings?</div>
-                <div class="quiz-option"><input type="radio" name="q1" value="A"> A) 100–200 ppm</div>
-                <div class="quiz-option"><input type="radio" name="q1" value="B"> B) 2000–3000 ppm</div>
-                <div class="quiz-option"><input type="radio" name="q1" value="C"> C) 5000–8000 ppm</div>
+            <h3>Quiz: Tasmanian Native Propagation</h3>
+            <div class="quiz-question-card" data-correct="B"><div class="quiz-question">1. Which pre-treatment is essential for <em>Acacia melanoxylon</em> seed?</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="A"> A) Cold stratification 8 weeks</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="B"> B) Hot water scarification (90°C soak)</div>
+                <div class="quiz-option"><input type="radio" name="q1" value="C"> C) Fermentation for 3 days</div>
                 <div class="quiz-feedback"></div>
             </div>
-            <div class="quiz-question-card" data-correct="C">
-                <div class="quiz-question">2. Which pre-treatment is essential for Acacia seeds with physical dormancy?</div>
-                <div class="quiz-option"><input type="radio" name="q2" value="A"> A) Cold stratification</div>
-                <div class="quiz-option"><input type="radio" name="q2" value="B"> B) Fermentation</div>
-                <div class="quiz-option"><input type="radio" name="q2" value="C"> C) Hot water scarification (80–90°C)</div>
+            <div class="quiz-question-card" data-correct="A"><div class="quiz-question">2. Why is low-phosphorus fertiliser critical for <em>Banksia marginata</em>?</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="A"> A) Proteaceae are phosphorus-sensitive; high P causes toxicity</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="B"> B) They need high nitrogen only</div>
+                <div class="quiz-option"><input type="radio" name="q2" value="C"> C) Phosphorus slows root growth in all natives</div>
                 <div class="quiz-feedback"></div>
             </div>
-            <div class="quiz-question-card" data-correct="A">
-                <div class="quiz-question">3. Why is it critical to sterilise propagation tools between batches?</div>
-                <div class="quiz-option"><input type="radio" name="q3" value="A"> A) Prevent spread of fungal/bacterial diseases</div>
-                <div class="quiz-option"><input type="radio" name="q3" value="B"> B) Increase rooting speed</div>
-                <div class="quiz-option"><input type="radio" name="q3" value="C"> C) Comply with plant breeder's rights</div>
+            <div class="quiz-question-card" data-correct="C"><div class="quiz-question">3. What is the recommended IBA concentration for semi-hardwood <em>Leptospermum</em> cuttings?</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="A"> A) 100 ppm</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="B"> B) 8000 ppm</div>
+                <div class="quiz-option"><input type="radio" name="q3" value="C"> C) 2000–3000 ppm</div>
                 <div class="quiz-feedback"></div>
             </div>
-            <div class="quiz-question-card" data-correct="B">
-                <div class="quiz-question">4. What does "hardening off" involve?</div>
-                <div class="quiz-option"><input type="radio" name="q4" value="A"> A) Applying fungicide to roots</div>
-                <div class="quiz-option"><input type="radio" name="q4" value="B"> B) Gradually exposing plants to lower humidity and higher light</div>
-                <div class="quiz-option"><input type="radio" name="q4" value="C"> C) Storing seeds at -18°C</div>
+            <div class="quiz-question-card" data-correct="B"><div class="quiz-question">4. Which Tasmanian species has recalcitrant seed that must be sown fresh?</div>
+                <div class="quiz-option"><input type="radio" name="q4" value="A"> A) <em>Eucalyptus globulus</em></div>
+                <div class="quiz-option"><input type="radio" name="q4" value="B"> B) <em>Nothofagus cunninghamii</em></div>
+                <div class="quiz-option"><input type="radio" name="q4" value="C"> C) <em>Acacia dealbata</em></div>
                 <div class="quiz-feedback"></div>
             </div>
-            <button class="btn" onclick="checkAllQuizzes()"><i class="fas fa-check"></i> Check answers</button>
+            <button class="btn" onclick="checkAllQuizzes()">Check answers</button>
             <button class="btn btn-outline" onclick="resetQuizzes()">Reset</button>
         </div>
-        <h3>✂️ Match propagation method to species</h3>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-            <div style="background:#f0f7f0; padding:1rem; border-radius:1.5rem; flex:1;">
-                <h4>Drag & drop game (interactive concept)</h4>
-                <p><strong>Match:</strong> <span style="background:#ddd; padding:4px 12px; border-radius:20px;">Lavender</span> → Cutting <span style="display:inline-block; width:30px;"></span> <span style="background:#ddd; padding:4px 12px;">Eucalypt</span> → Seed <span style="background:#ddd; padding:4px 12px;">Liriope</span> → Division</p>
-                <p>In workplace assessment, demonstrate correct technique for each species according to industry standards.</p>
-                <div id="dragDropMsg" style="margin-top:1rem; font-weight:bold;"></div>
-                <button class="btn btn-outline" onclick="simulateMatch()">Check matching knowledge</button>
-            </div>
+
+        <h3>🌿 Field Scenarios (Conservation context)</h3>
+        <div class="scenario-box"><h4>Scenario 1: Rare species propagation</h4><p>You are tasked with propagating <em>Pomaderris apetala</em> (dogwood) for a riparian restoration project. Seeds have low germination after 4 weeks.</p>
+            <div class="scenario-options" id="s1opts"><div class="scenario-option" onclick="selectScenario(1,'A')">A) Increase watering frequency</div><div class="scenario-option" onclick="selectScenario(1,'B')">B) Apply cold stratification (6 weeks) and smoke water treatment, then sow at 15°C</div><div class="scenario-option" onclick="selectScenario(1,'C')">C) Discard seed and buy seedlings</div></div>
+            <div id="s1fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(1)">Reset</button>
+        </div>
+        <div class="scenario-box"><h4>Scenario 2: Dieback hygiene failure</h4><p>You moved from a site with <em>Phytophthora</em> infestation to a clean propagation area without sterilising tools. What's the correct response?</p>
+            <div class="scenario-options" id="s2opts"><div class="scenario-option" onclick="selectScenario(2,'A')">A) Continue as normal</div><div class="scenario-option" onclick="selectScenario(2,'B')">B) Immediately sterilise all tools, footwear, and equipment with 70% ethanol, notify supervisor, and quarantine recent propagation batches</div>
+            <div class="scenario-option" onclick="selectScenario(2,'C')">C) Only wash with water</div></div>
+            <div id="s2fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(2)">Reset</button>
         </div>
     </div>
 
-    <!-- ========== TAB 6: SCENARIOS ========= -->
+    <!-- ========= TAB 6: PRINTABLE RECORDS & CHECKLISTS ========= -->
     <div id="tab6" class="tab-content">
-        <h2><i class="fas fa-comment-dots"></i> Real‑world scenarios (ASQA evidence)</h2>
-        <div class="scenario-box"><h3>Scenario 1: Fungus on cuttings</h3><p>You notice grey mould (Botrytis) on 30% of your Grevillea cuttings in the mist house. What actions do you take?</p>
-            <div class="scenario-options" id="s1opts">
-                <div class="scenario-option" onclick="selectScenario(1,'A')">A) Do nothing – it will dry out naturally</div>
-                <div class="scenario-option" onclick="selectScenario(1,'B')">B) Remove affected cuttings, improve air circulation, reduce mist frequency, apply registered fungicide</div>
-                <div class="scenario-option" onclick="selectScenario(1,'C')">C) Increase misting to wash off spores</div>
-            </div><div id="s1fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(1)">Reset</button>
-        </div>
-        <div class="scenario-box"><h3>Scenario 2: Inconsistent germination</h3><p>Your native pea seeds (Pultenaea) have only 20% germination after 4 weeks; they were sown without pre-treatment. How to improve next batch?</p>
-            <div class="scenario-options" id="s2opts">
-                <div class="scenario-option" onclick="selectScenario(2,'A')">A) Increase watering</div>
-                <div class="scenario-option" onclick="selectScenario(2,'B')">B) Apply hot water scarification (80°C soak) and nick seed coat before sowing</div>
-                <div class="scenario-option" onclick="selectScenario(2,'C')">C) Sow deeper</div>
-            </div><div id="s2fb" class="scenario-feedback"></div><button class="btn" onclick="resetScenario(2)">Reset</button>
-        </div>
-    </div>
-
-    <!-- ========== TAB 7: PRINTABLES ========= -->
-    <div id="tab7" class="tab-content">
-        <h2>🖨️ Printable logs & assessment templates</h2>
+        <h2>📄 ASQA-ready documentation templates</h2>
         <div class="checklist-super">
-            <h3>📋 Propagation daily record (ASQA evidence)</h3>
-            <table style="width:100%; border-collapse:collapse;"><tr><th>Date</th><th>Crop / species</th><th>Method</th><th>Environment (temp/humidity)</th><th>Observations</th><th>Signature</th></tr>
-            <tr><td>____/____</td><td>__________</td><td>__________</td><td>____°C / ___%</td><td>__________</td><td>________</td></tr>
-            <tr><td>____/____</td><td>__________</td><td>__________</td><td>____°C / ___%</td><td>__________</td><td>________</td></tr>
+            <h3><i class="fas fa-clipboard"></i> Propagation work plan checklist</h3>
+            <div class="checklist-grid">
+                <div class="checklist-item"><input type="checkbox"> Species list (Tasmanian natives, provenance recorded)</div>
+                <div class="checklist-item"><input type="checkbox"> Permit / landholder approval attached</div>
+                <div class="checklist-item"><input type="checkbox"> Growing media sterilised & pH tested</div>
+                <div class="checklist-item"><input type="checkbox"> Containers cleaned, labels ready</div>
+                <div class="checklist-item"><input type="checkbox"> Rooting hormone & smoke water available</div>
+                <div class="checklist-item"><input type="checkbox"> Mist system / bottom heat functional</div>
+                <div class="checklist-item"><input type="checkbox"> PPE: gloves, eye protection, apron</div>
+                <div class="checklist-item"><input type="checkbox"> First aid kit & emergency contacts visible</div>
+            </div>
+            <h3>📊 Propagation log (monthly)</h3>
+            <table style="width:100%; border:1px solid #ccc;"> <tr><th>Date</th><th>Species</th><th>Method</th><th># units</th><th>Media</th><th>Rooting success %</th><th>Notes</th></tr>
+            <tr><td>____/____</td><td>________</td><td>Seed/cutting</td><td>____</td><td>________</td><td>____%</td><td>________</td></tr>
+            <tr><td>____/____</td><td>________</td><td>Seed/cutting</td><td>____</td><td>________</td><td>____%</td><td>________</td></tr>
             </table>
-            <h3>📦 Equipment & chemical inventory</h3>
-            <div class="checklist-grid"><div class="checklist-item"><input type="checkbox"> Secateurs sterilised</div><div class="checklist-item"><input type="checkbox"> Rooting hormone (expiry OK)</div><div class="checklist-item"><input type="checkbox"> Mist timer calibrated</div><div class="checklist-item"><input type="checkbox"> Labels & tags</div></div>
-            <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Print all forms</button>
+            <button class="btn" onclick="window.print()"><i class="fas fa-print"></i> Print checklists & logs</button>
         </div>
     </div>
 
-    <!-- ========== TAB 8: GLOSSARY & RESOURCES ========= -->
-    <div id="tab8" class="tab-content">
-        <h2><i class="fas fa-book-open"></i> Industry glossary & resources</h2>
-        <div style="columns:2; column-gap:2rem;">
-            <p><strong>Callus</strong>: Undifferentiated tissue that forms at cutting base prior to rooting.</p>
-            <p><strong>Stratification</strong>: Cold treatment to break seed dormancy.</p>
-            <p><strong>Scarification</strong>: Mechanical or thermal treatment to allow water uptake.</p>
-            <p><strong>IBA</strong>: Indole-3-butyric acid – rooting hormone.</p>
-            <p><strong>Damping-off</strong>: Fungal disease killing seedlings at soil line.</p>
-            <p><strong>Hardening off</strong>: Acclimatisation process.</p>
-            <p><strong>Provenance</strong>: Geographic origin of propagation material.</p>
+    <!-- ========= TAB 7: GLOSSARY & RESOURCES ========= -->
+    <div id="tab7" class="tab-content">
+        <h2><i class="fas fa-graduation-cap"></i> Expanded glossary & industry resources</h2>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:1rem;">
+            <div><p><span class="glossary-term">Provenance</span> – geographic origin; local seed increases survival.</p>
+            <p><span class="glossary-term">Recalcitrant seed</span> – cannot be dried or frozen; sow fresh (e.g., myrtle beech).</p>
+            <p><span class="glossary-term">Serotinous</span> – fruits/cones that require heat to release seed (Banksia).</p>
+            <p><span class="glossary-term">Stratification</span> – cold/moist treatment to break dormancy.</p></div>
+            <div><p><span class="glossary-term">Smoke water</span> – liquid concentrate that mimics fire cues, boosts germination.</p>
+            <p><span class="glossary-term">IBA</span> – rooting hormone (indole-3-butyric acid).</p>
+            <p><span class="glossary-term">Hardening off</span> – gradual acclimatisation to outdoor conditions.</p>
+            <p><span class="glossary-term">Dieback</span> – <em>Phytophthora cinnamomi</em> root rot, major threat in Tas.</p></div>
         </div>
-        <div class="legislation-panel">
-            <h3>🔗 Key resources (ASQA / industry links)</h3>
-            <ul><li><a href="https://training.gov.au/Training/Details/AHCNSY207" target="_blank">Training.gov.au – AHCNSY207 unit details</a></li>
-            <li><a href="https://www.anpc.asn.au/" target="_blank">Australian Native Plants Society – propagation guides</a></li>
-            <li><a href="https://www.dpi.nsw.gov.au/agriculture/horticulture/nursery" target="_blank">NSW DPI Nursery industry best practice</a></li>
-            <li><a href="https://www.ippc.int/en/countries/australia/" target="_blank">Biosecurity Australia – plant movement standards</a></li></ul>
+        <div class="legislation-panel" style="background:#eef3e8; padding:1.5rem; border-radius:1.5rem;">
+            <h3>🔗 Essential references (Tasmania & national)</h3>
+            <ul><li><i class="fas fa-tree"></i> <strong>Understorey Network Tasmania</strong> – propagation database for 1800+ Tasmanian species</li>
+            <li><i class="fas fa-book"></i> <strong>Florabank (ANPC)</strong> – best practice seed collection & propagation</li>
+            <li><i class="fas fa-file-alt"></i> <strong>NRE Tas – Flora permits & threatened species lists</strong></li>
+            <li><i class="fas fa-tint"></i> <strong>DPIPWE – Phytophthora hygiene guidelines</strong></li>
+            <li><i class="fas fa-graduation-cap"></i> <strong>Training.gov.au: AHCNSY207</strong> – unit of competency details</li></ul>
         </div>
-        <div class="info-card"><i class="fas fa-clipboard"></i><h4>ASQA compliance note</h4><p>All performance evidence must demonstrate ability to prepare media, select tools, apply 3 propagation techniques, maintain hygiene, monitor environment, and complete workplace records. Use the checklists and logs from this resource as evidence templates.</p></div>
+        <div class="info-card"><i class="fas fa-clipboard-check"></i><h4>ASQA assessment summary</h4><p>To be deemed competent, students must demonstrate preparation, safe operation, use of at least three propagation methods (seed, cutting, division), environmental monitoring, and accurate record keeping. This resource provides all necessary templates and knowledge.</p></div>
     </div>
 
     <footer class="footer-expanded">
-        <div class="footer-grid">
-            <div><h5>AHCNSY207 v1.2</h5><p>Complete learning resource aligned to ASQA requirements & unit of competency.</p></div>
-            <div><h5>References</h5><p>Florabank, Nursery & Garden Industry Australia, ANPC propagation manuals, WorkSafe guidelines.</p></div>
-            <div><h5>Assessment evidence</h5><p>Use printable logs, scenario responses, quiz results as part of portfolio.</p></div>
-            <div><h5>Last updated</h5><p>March 2026 · interactive learning ecosystem</p></div>
+        <div class="footer-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;">
+            <div><h5>AHCNSY207 v2.0 · Tasmanian context</h5><p>Developed for Certificate III Conservation and Ecosystem Management students.</p></div>
+            <div><h5>Key partners</h5><p>Understorey Network, NRE Tasmania, Australian Native Plants Society (Tasmania).</p></div>
+            <div><h5>Last update</h5><p>March 2026 · aligned to 2026 ASQA standards</p></div>
         </div>
     </footer>
 </div>
@@ -462,11 +429,11 @@
         cards.forEach(card => {
             const selected = card.querySelector('input:checked');
             const fb = card.querySelector('.quiz-feedback');
-            if (!selected) { fb.style.display='block'; fb.innerHTML='⚠️ Select an answer'; fb.className='quiz-feedback feedback-incorrect'; return; }
-            const isCorrect = (selected.value === card.dataset.correct);
+            if(!selected) { fb.style.display='block'; fb.innerHTML='❌ Select an answer'; fb.className='quiz-feedback feedback-incorrect'; return; }
+            const correct = selected.value === card.dataset.correct;
             fb.style.display='block';
-            fb.innerHTML = isCorrect ? '✓ Correct! Well done.' : '✗ Incorrect. Review the section.';
-            fb.className = isCorrect ? 'quiz-feedback feedback-correct' : 'quiz-feedback feedback-incorrect';
+            fb.innerHTML = correct ? '✓ Correct!' : '✗ Incorrect. Review the section.';
+            fb.className = correct ? 'quiz-feedback feedback-correct' : 'quiz-feedback feedback-incorrect';
         });
     }
     function resetQuizzes() {
@@ -477,28 +444,16 @@
         const opts = document.querySelectorAll(`#s${scenario}opts .scenario-option`);
         opts.forEach(o => o.classList.remove('selected'));
         event.currentTarget.classList.add('selected');
-        let feedbackMsg = "";
-        if(scenario===1){
-            if(choice==='B') feedbackMsg = "✅ Correct: Remove affected cuttings, increase air flow, reduce mist, apply registered fungicide. This aligns with IPM and WHS.";
-            else if(choice==='A') feedbackMsg = "❌ Incorrect: Doing nothing spreads disease and risks total crop loss.";
-            else feedbackMsg = "❌ Incorrect: Increasing moisture worsens Botrytis. Improve ventilation instead.";
-        } else {
-            if(choice==='B') feedbackMsg = "✅ Correct: Hard-seeded Fabaceae need scarification (hot water or nicking) to allow water uptake and germination.";
-            else feedbackMsg = "❌ Incorrect: Watering or depth won't break physical dormancy. Scarification required.";
-        }
-        const fbDiv = document.getElementById(`s${scenario}fb`);
-        fbDiv.innerHTML = `<strong>Feedback:</strong> ${feedbackMsg}`;
-        fbDiv.style.display = 'block';
+        let msg = "";
+        if(scenario===1) msg = (choice==='B') ? "✅ Correct: Cold stratification + smoke water mimics natural dormancy-breaking cues for Pomaderris. This follows best practice for many Tasmanian shrubs." : (choice==='A' ? "❌ Incorrect: Increasing moisture won't break dormancy; seeds need cold stratification." : "❌ Not best practice: Sourcing seedlings may be necessary but understanding seed dormancy is core competency.");
+        else msg = (choice==='B') ? "✅ Correct: Immediate hygiene response prevents spread of Phytophthora cinnamomi, a devastating pathogen for Tasmanian natives." : (choice==='A' ? "❌ Dangerous: Continuing spreads dieback to clean areas." : "❌ Insufficient: Water alone does not kill Phytophthora spores.");
+        document.getElementById(`s${scenario}fb`).innerHTML = `<strong>Feedback:</strong> ${msg}`;
+        document.getElementById(`s${scenario}fb`).style.display = 'block';
     }
     function resetScenario(scenario) {
         document.getElementById(`s${scenario}fb`).style.display = 'none';
         document.querySelectorAll(`#s${scenario}opts .scenario-option`).forEach(o => o.classList.remove('selected'));
     }
-    function simulateMatch() {
-        document.getElementById('dragDropMsg').innerHTML = '✅ Lavender → cutting, Eucalypt → seed, Liriope → division. For assessment, demonstrate each technique under supervision.';
-    }
-    // initial ARIA
-    document.querySelectorAll('.tab-content:not(.active)').forEach(c => c.setAttribute('aria-hidden','true'));
 </script>
 </body>
 </html>
