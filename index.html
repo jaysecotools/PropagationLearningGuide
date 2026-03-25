@@ -1,4 +1,4 @@
-<!-- Comments and claims fact checked and changes made -->
+<!-- Comments and claims fact checked and changes made. Database now reviewed for accuracy. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -990,16 +990,16 @@ footer {
 // EXPANDED SPECIES DATABASE (65+ species for richness)
 const speciesDB = [
     // EUCALYPTS & MYRTACEAE (10 species)
-    { name: "Eucalyptus globulus (Tasmanian Blue Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; light cover; germinates 10-21 days", conservation: "Not Listed" },
-    { name: "Eucalyptus amygdalina (Black Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; tolerates poor soils", conservation: "Not Listed" },
-    { name: "Eucalyptus obliqua (Stringybark)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow fresh; well-drained media", conservation: "Not Listed" },
-    { name: "Eucalyptus regnans (Mountain Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; requires high light for germination", conservation: "Not Listed" },
-    { name: "Eucalyptus delegatensis (Alpine Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; cold tolerant; sow spring", conservation: "Not Listed" },
-    { name: "Eucalyptus coccifera (Snow Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; cold stratify 4 weeks for alpine provenance", conservation: "Not Listed" },
-    { name: "Eucalyptus pauciflora (Cabbage Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow spring; cold tolerant", conservation: "Not Listed" },
-    { name: "Eucalyptus pulchella (White Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; well-drained", conservation: "Not Listed" },
-    { name: "Eucalyptus viminalis (Manna Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow fresh; germinates 10-20 days", conservation: "Not Listed" },
-    { name: "Eucalyptus tenuiramis (Silver Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow autumn; requires full light", conservation: "Not Listed" },
+    { name: "Eucalyptus globulus (Tasmanian Blue Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; light dependent; optional smoke treatment may improve germination; 10–21 days", conservation: "Not Listed" },
+    { name: "Eucalyptus amygdalina (Black Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; light dependent", conservation: "Not Listed" },
+    { name: "Eucalyptus obliqua (Stringybark)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; sow fresh; surface sow; light required", conservation: "Not Listed" },
+    { name: "Eucalyptus regnans (Mountain Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; high light required; smoke may assist", conservation: "Not Listed" },
+    { name: "Eucalyptus delegatensis (Alpine Ash)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; cool conditions; optional smoke", conservation: "Not Listed" },
+    { name: "Eucalyptus coccifera (Snow Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; cold conditions; optional short stratification", conservation: "Not Listed" },
+    { name: "Eucalyptus pauciflora (Cabbage Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; cool conditions", conservation: "Not Listed" },
+    { name: "Eucalyptus pulchella (White Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; well-drained media", conservation: "Not Listed" },
+    { name: "Eucalyptus viminalis (Manna Gum)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; light required; 10–20 days", conservation: "Not Listed" },
+    { name: "Eucalyptus tenuiramis (Silver Peppermint)", family: "Myrtaceae", method: "Seed", treatment: "No pretreatment; surface sow; full light required", conservation: "Not Listed" },
     
     // ACACIAS & FABACEAE (8 species)
     { name: "Acacia melanoxylon (Blackwood)", family: "Fabaceae", method: "Seed", treatment: "Hot water scarification (90°C soak 12-24h); germinates 1-4 weeks", conservation: "Not Listed" },
@@ -1012,38 +1012,38 @@ const speciesDB = [
     { name: "Hardenbergia violacea (Purple Coral Pea)", family: "Fabaceae", method: "Seed/Cutting", treatment: "Hot water scarification; semi-hardwood cutting IBA 3000ppm", conservation: "Not Listed" },
     
     // BANKSIAS & PROTEACEAE (8 species)
-    { name: "Banksia marginata (Silver Banksia)", family: "Proteaceae", method: "Seed", treatment: "Extract from cones (heat 50°C), smoke water; sow in low-phos media", conservation: "Not Listed" },
-    { name: "Banksia serrata (Old Man Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke water; low-phos media; slow growing", conservation: "Not Listed" },
-    { name: "Banksia spinulosa (Hairpin Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke water; well-drained; tolerates coastal", conservation: "Not Listed" },
-    { name: "Grevillea australis (Southern Grevillea)", family: "Proteaceae", method: "Seed/Cutting", treatment: "Seed: smoke water; cutting: semi-hardwood IBA 4000ppm", conservation: "Not Listed" },
+    { name: "Banksia marginata (Silver Banksia)", family: "Proteaceae", method: "Seed", treatment: "Heat cones (60–100°C) to release seed; smoke treatment may improve germination; low-P media", conservation: "Not Listed" },
+    { name: "Banksia serrata (Old Man Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke treatment may assist; low-P media; slow growing", conservation: "Not Listed" },
+    { name: "Banksia spinulosa (Hairpin Banksia)", family: "Proteaceae", method: "Seed", treatment: "Smoke treatment may assist; well-drained media", conservation: "Not Listed" },
+    { name: "Grevillea australis (Southern Grevillea)", family: "Proteaceae", method: "Seed/Cutting", treatment: "Seed: smoke may assist; cutting: semi-hardwood IBA 4000ppm", conservation: "Not Listed" },
     { name: "Grevillea linearifolia (Linear-leaf Grevillea)", family: "Proteaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000-4000ppm; mist", conservation: "Not Listed" },
     { name: "Hakea lissosperma (Mountain Needlewood)", family: "Proteaceae", method: "Seed", treatment: "No pretreatment; well-drained", conservation: "Not Listed" },
-    { name: "Hakea epiglottis (Beaked Hakea)", family: "Proteaceae", method: "Seed", treatment: "No pretreatment; soak in smoke water", conservation: "Endemic" },
-    { name: "Telopea truncata (Tasmanian Waratah)", family: "Proteaceae", method: "Seed", treatment: "Smoke water, well-drained low-P media; 2-4 months to germinate", conservation: "Not Listed" },
+    { name: "Hakea epiglottis (Beaked Hakea)", family: "Proteaceae", method: "Seed", treatment: "No pretreatment; smoke may assist", conservation: "Not Listed (Endemic)" },
+    { name: "Telopea truncata (Tasmanian Waratah)", family: "Proteaceae", method: "Seed", treatment: "Smoke may assist; well-drained low-P media; slow (2–4 months)", conservation: "Not Listed" },
     
     // RAINFOREST & COOL TEMPERATE (7 species)
-    { name: "Nothofagus cunninghamii (Myrtle Beech)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT - sow fresh, cold stratify 8-12 weeks; shade required", conservation: "Not Listed" },
-    { name: "Nothofagus gunnii (Deciduous Beech/Fagus)", family: "Nothofagaceae", method: "Seed", treatment: "RECALCITRANT; cold stratify 12 weeks; very slow", conservation: "Endemic" },
-    { name: "Atherosperma moschatum (Southern Sassafras)", family: "Atherospermataceae", method: "Seed", treatment: "RECALCITRANT; sow fresh; shade; moist", conservation: "Not Listed" },
+    { name: "Nothofagus cunninghamii (Myrtle Beech)", family: "Nothofagaceae", method: "Seed", treatment: "Seed short-lived; sow fresh; cold stratification improves germination; shade required", conservation: "Not Listed" },
+    { name: "Nothofagus gunnii (Deciduous Beech/Fagus)", family: "Nothofagaceae", method: "Seed", treatment: "Seed short-lived; cold stratification improves germination; very slow", conservation: "Endemic" },
+    { name: "Atherosperma moschatum (Southern Sassafras)", family: "Atherospermataceae", method: "Seed", treatment: "Seed short-lived; sow fresh; moist shaded conditions", conservation: "Not Listed" },
     { name: "Phyllocladus aspleniifolius (Celery-top Pine)", family: "Podocarpaceae", method: "Seed", treatment: "Cold stratify 12 weeks; slow germination", conservation: "Not Listed" },
-    { name: "Lagarostrobos franklinii (Huon Pine)", family: "Podocarpaceae", method: "Cutting", treatment: "Hardwood cutting IBA 4000ppm; bottom heat; very slow", conservation: "Vulnerable" },
+    { name: "Lagarostrobos franklinii (Huon Pine)", family: "Podocarpaceae", method: "Cutting", treatment: "Cuttings very difficult; semi-hardwood with hormone; slow; often propagated from wild seedlings", conservation: "Vulnerable" },
     { name: "Pittosporum bicolor (Cheesewood)", family: "Pittosporaceae", method: "Seed/Cutting", treatment: "Sow fresh; remove pulp; semi-hardwood cutting IBA 3000ppm", conservation: "Not Listed" },
     { name: "Bedfordia arborescens (Blanket Leaf)", family: "Asteraceae", method: "Seed", treatment: "Sow fresh; light cover; moist", conservation: "Not Listed" },
     
     // HEATH & EPACRIDS (6 species)
-    { name: "Richea pandanifolia (Pandani)", family: "Ericaceae", method: "Seed", treatment: "Surface sow, smoke water, cool (15°C); slow growth", conservation: "Endemic" },
-    { name: "Richea scoparia (Scoparia)", family: "Ericaceae", method: "Seed", treatment: "Surface sow; smoke water; alpine species", conservation: "Endemic" },
+    { name: "Richea pandanifolia (Pandani)", family: "Ericaceae", method: "Seed", treatment: "Surface sow; smoke may assist; cool conditions (~15°C); slow", conservation: "Endemic" },
+    { name: "Richea scoparia (Scoparia)", family: "Ericaceae", method: "Seed", treatment: "Surface sow; smoke may assist; alpine species", conservation: "Endemic" },
     { name: "Epacris impressa (Common Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity; well-drained", conservation: "Not Listed" },
-    { name: "Epacris stuartii (Stuart's Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity; critically endangered", conservation: "Critically Endangered" },
+    { name: "Epacris stuartii (Stuart's Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; high humidity", conservation: "Critically Endangered" },
     { name: "Epacris serpyllifolia (Thyme Heath)", family: "Ericaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; alpine; well-drained", conservation: "Not Listed" },
-    { name: "Leucopogon hookeri (Mountain Beard-heath)", family: "Ericaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; requires mycorrhiza", conservation: "Not Listed" },
+    { name: "Leucopogon hookeri (Mountain Beard-heath)", family: "Ericaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; benefits from mycorrhizal association", conservation: "Not Listed" },
     
     // GRASSES, SEDGES & LILIES (8 species)
     { name: "Poa labillardierei (Silver Tussock)", family: "Poaceae", method: "Division/Seed", treatment: "Divide clumps early spring; seed no treatment", conservation: "Not Listed" },
     { name: "Poa poiformis (Coastal Tussock Grass)", family: "Poaceae", method: "Division", treatment: "Divide clumps; coastal dunes", conservation: "Not Listed" },
     { name: "Lomandra longifolia (Spiny-headed Mat-rush)", family: "Asparagaceae", method: "Division/Seed", treatment: "Divide clumps; seed soak in warm water 24h", conservation: "Not Listed" },
-    { name: "Dianella tasmanica (Tasman Flax-lily)", family: "Asphodelaceae", method: "Division/Seed", treatment: "Divide in spring; seed requires light", conservation: "Not Listed" },
-    { name: "Gahnia grandis (Saw Sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide large clumps; plant in tubes; keep moist", conservation: "Not Listed" },
+    { name: "Dianella tasmanica (Tasman Flax-lily)", family: "Asparagaceae", method: "Division/Seed", treatment: "Divide in spring; seed light dependent", conservation: "Not Listed" },
+    { name: "Gahnia grandis (Saw Sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide large clumps; keep moist", conservation: "Not Listed" },
     { name: "Gahnia trifida (Coast Saw-sedge)", family: "Cyperaceae", method: "Division", treatment: "Divide in spring; salt tolerant", conservation: "Not Listed" },
     { name: "Carex appressa (Tall Sedge)", family: "Cyperaceae", method: "Division/Seed", treatment: "Divide clumps; seed no treatment; riparian", conservation: "Not Listed" },
     { name: "Juncus kraussii (Sea Rush)", family: "Juncaceae", method: "Division/Seed", treatment: "Divide rhizomes; salt marsh species", conservation: "Not Listed" },
@@ -1057,13 +1057,13 @@ const speciesDB = [
     { name: "Leptospermum lanigerum (Woolly Teatree)", family: "Myrtaceae", method: "Seed/Cutting", treatment: "Softwood cutting IBA 3000ppm; seed surface sow", conservation: "Not Listed" },
     
     // SHRUBS & SMALL TREES (8 species)
-    { name: "Tasmannia lanceolata (Mountain Pepper)", family: "Winteraceae", method: "Seed/Cutting", treatment: "Seed: warm (20°C) then cold (4°C) strat; cutting: semi-hardwood IBA 3000ppm", conservation: "Not Listed" },
+    { name: "Tasmannia lanceolata (Mountain Pepper)", family: "Winteraceae", method: "Seed/Cutting", treatment: "Cold stratification improves germination; sow fresh preferred; semi-hardwood cuttings with hormone", conservation: "Not Listed" },
     { name: "Correa alba (White Correa)", family: "Rutaceae", method: "Cutting", treatment: "Softwood IBA 2000-3000ppm; mist", conservation: "Not Listed" },
     { name: "Correa reflexa (Common Correa)", family: "Rutaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; well-drained", conservation: "Not Listed" },
     { name: "Prostanthera lasianthos (Victorian Christmas Bush)", family: "Lamiaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; autumn", conservation: "Not Listed" },
     { name: "Prostanthera rotundifolia (Round-leaf Mintbush)", family: "Lamiaceae", method: "Cutting", treatment: "Softwood IBA 3000ppm; well-drained", conservation: "Not Listed" },
     { name: "Westringia brevifolia (Coast Westringia)", family: "Lamiaceae", method: "Cutting", treatment: "Semi-hardwood IBA 3000ppm; coastal", conservation: "Not Listed" },
-    { name: "Pomaderris apetala (Common Dogwood)", family: "Rhamnaceae", method: "Seed", treatment: "Cold stratify 8 weeks; slow germination", conservation: "Not Listed" },
+    { name: "Pomaderris apetala (Common Dogwood)", family: "Rhamnaceae", method: "Seed", treatment: "Heat or smoke treatment may improve germination; slow and variable", conservation: "Not Listed" },
     { name: "Olearia phlogopappa (Dusty Daisy-bush)", family: "Asteraceae", method: "Cutting/Seed", treatment: "Softwood cutting IBA 2000ppm; seed light dependent", conservation: "Not Listed" },
     
     // CONIFERS & GYMNOSPERMS (5 species)
@@ -1076,9 +1076,9 @@ const speciesDB = [
     // FERNS (5 species)
     { name: "Dicksonia antarctica (Soft Tree Fern)", family: "Dicksoniaceae", method: "Spore/Division", treatment: "Spore: sterile media, high humidity; division: remove pups with roots", conservation: "Not Listed" },
     { name: "Blechnum wattsii (Hard Water Fern)", family: "Blechnaceae", method: "Division", treatment: "Divide rhizomes in spring; keep moist", conservation: "Not Listed" },
-    { name: "Polystichum proliferum (Mother Shield Fern)", family: "Dryopteridaceae", method: "Spore/Division", treatment: "Divide pups; spore on peat/perlite", conservation: "Not Listed" },
-    { name: "Todea barbara (King Fern)", family: "Osmundaceae", method: "Spore", treatment: "Spore on sterile media; slow growing", conservation: "Not Listed" },
-    { name: "Asplenium bulbiferum (Mother Spleenwort)", family: "Aspleniaceae", method: "Division/Bulbil", treatment: "Plant bulbils; divide clumps", conservation: "Not Listed" }
+    { name: "Polystichum proliferum (Mother Shield Fern)", family: "Dryopteridaceae", method: "Spore/Division", treatment: "Divide plantlets; spores require sterile media, high humidity, slow gametophyte stage", conservation: "Not Listed" },
+{ name: "Todea barbara (King Fern)", family: "Osmundaceae", method: "Spore", treatment: "Spores require sterile media, high humidity, very slow growth", conservation: "Not Listed" },
+{ name: "Asplenium bulbiferum (Mother Spleenwort)", family: "Aspleniaceae", method: "Division/Bulbil", treatment: "Plant bulbils; divide clumps", conservation: "Not Listed" }
 ];
 
 function renderSpecies() {
