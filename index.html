@@ -1,4 +1,4 @@
-<!-- Comments and claims fact checked and changes made. Database now reviewed for accuracy. -->
+<!-- Species cards now collapsed and expand by selecting. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -511,6 +511,28 @@ footer {
   font-size: 0.75rem;
   display: inline-block;
   margin: 0.2rem;
+}
+
+.species-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.species-details {
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.species-card.open .species-details {
+    display: block;
+}
+
+.species-card:hover {
+    transform: scale(1.01);
+}
+
+#speciesGrid {
+    align-items: start;
 }
     </style>
 </head>
@@ -1086,7 +1108,28 @@ function renderSpecies() {
     if(!grid) return;
     const search = document.getElementById('speciesSearch')?.value.toLowerCase() || '';
     const filtered = speciesDB.filter(s => s.name.toLowerCase().includes(search) || s.family.toLowerCase().includes(search) || s.method.toLowerCase().includes(search));
-    grid.innerHTML = filtered.map(s => `<div class="species-card"><i class="fas fa-leaf"></i> <strong>${s.name}</strong><br><span style="font-size:0.85rem;">Family: ${s.family}<br>Method: ${s.method}<br>Treatment: ${s.treatment}<br>Conservation: ${s.conservation}</span></div>`).join('');
+    grid.innerHTML = filtered.map((s, i) => `
+    <div class="species-card" onclick="toggleSpeciesCard(this)">
+        <div class="species-title">
+            <i class="fas fa-leaf"></i> <strong>${s.name}</strong>
+        </div>
+        <div class="species-details">
+            <span style="font-size:0.85rem;">
+                Family: ${s.family}<br>
+                Method: ${s.method}<br>
+                Treatment: ${s.treatment}<br>
+                Conservation: ${s.conservation}
+            </span>
+        </div>
+    </div>
+`).join('');
+}
+
+function toggleSpeciesCard(card) {
+    document.querySelectorAll('.species-card').forEach(c => {
+        if (c !== card) c.classList.remove('open');
+    });
+    card.classList.toggle('open');
 }
 
 function switchTab(event, tabId) {
