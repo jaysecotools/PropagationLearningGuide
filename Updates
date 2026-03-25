@@ -1,24 +1,33 @@
-function resetQuizzesExpanded() {
-    // Reset all radio button selections
-    document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
-        input.checked = false;
-    });
-    
-    // Find and clear all feedback elements
-    // This targets any element with class 'quiz-feedback' that appears after each question
-    const allFeedbackDivs = document.querySelectorAll('.quiz-feedback');
-    allFeedbackDivs.forEach(fb => {
-        // Clear the HTML content
-        fb.innerHTML = '';
-        // Hide the feedback div
-        fb.style.display = 'none';
-        // Remove any styling classes that might have been added
-        fb.classList.remove('feedback-correct', 'feedback-incorrect');
-    });
-    
-    // Clear the overall score display
-    const scoreDiv = document.getElementById('quizScore');
-    if (scoreDiv) {
-        scoreDiv.innerHTML = '';
+function checkQuizzesExpanded() {
+    let score = 0, total = 10;
+    for(let i = 1; i <= total; i++) {
+        const radioGroup = document.querySelectorAll(`input[name="quiz${i}"]`);
+        if(!radioGroup.length) continue;
+        const selected = Array.from(radioGroup).find(r => r.checked);
+        const questionDiv = radioGroup[0]?.closest('.quiz-question');
+        if(!questionDiv) continue;
+        const fbDiv = questionDiv.querySelector('.quiz-feedback');
+        if(!fbDiv) continue;
+        const correct = questionDiv.dataset.correct;
+        
+        // Clear previous classes
+        fbDiv.classList.remove('feedback-correct', 'feedback-incorrect');
+        
+        if(selected && selected.value === correct) {
+            fbDiv.innerHTML = '✓ Correct!';
+            fbDiv.classList.add('feedback-correct');
+            score++;
+        } else if(selected) {
+            fbDiv.innerHTML = '✗ Incorrect. Review the material.';
+            fbDiv.classList.add('feedback-incorrect');
+        } else {
+            fbDiv.innerHTML = '⚠ Please select an answer.';
+            fbDiv.classList.add('feedback-incorrect');
+        }
+        fbDiv.style.display = 'block';
+    }
+    const scoreElement = document.getElementById('quizScore');
+    if (scoreElement) {
+        scoreElement.innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? 'Excellent! You are well prepared.' : 'Review and try again. Aim for 80%+.'}`;
     }
 }
