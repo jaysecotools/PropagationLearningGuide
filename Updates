@@ -1,29 +1,24 @@
-Yes, that's an easy fix! The issue is that the resetQuizzesExpanded() function is resetting the radio buttons and clearing the score display, but it's not clearing the individual question feedback messages.
-
-Here's the updated resetQuizzesExpanded() function that will clear both the selections AND the feedback messages:
-
-```javascript
 function resetQuizzesExpanded() {
     // Reset all radio button selections
-    document.querySelectorAll('.quiz-question input').forEach(i => i.checked = false);
+    document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
+        input.checked = false;
+    });
     
-    // Clear all feedback messages and hide them
-    document.querySelectorAll('.quiz-feedback').forEach(f => { 
-        f.style.display = 'none'; 
-        f.innerHTML = ''; 
-        // Also remove any styling classes
-        f.classList.remove('feedback-correct', 'feedback-incorrect');
+    // Find and clear all feedback elements
+    // This targets any element with class 'quiz-feedback' that appears after each question
+    const allFeedbackDivs = document.querySelectorAll('.quiz-feedback');
+    allFeedbackDivs.forEach(fb => {
+        // Clear the HTML content
+        fb.innerHTML = '';
+        // Hide the feedback div
+        fb.style.display = 'none';
+        // Remove any styling classes that might have been added
+        fb.classList.remove('feedback-correct', 'feedback-incorrect');
     });
     
     // Clear the overall score display
-    document.getElementById('quizScore').innerHTML = '';
+    const scoreDiv = document.getElementById('quizScore');
+    if (scoreDiv) {
+        scoreDiv.innerHTML = '';
+    }
 }
-```
-
-Just replace your existing resetQuizzesExpanded() function with this updated version. It does three things:
-
-1. Clears radio selections (same as before)
-2. Clears each question's feedback - removes the text content and hides the feedback div
-3. Clears the overall score display (same as before)
-
-Now when you click "Reset All", it will completely clear both the selected answers AND any feedback comments (like "Correct!" or "Incorrect. Review the material.") from each question.
