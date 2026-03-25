@@ -1,4 +1,4 @@
-<!-- Species cards now collapsed and expand by selecting. -->
+<!-- Species cards now collapsed and expand by selecting. Includes Expand All and Collapse All. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -828,13 +828,24 @@ footer {
             <div id="scen4fb" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px;"></div><button class="btn" onclick="resetScenario(4)">Reset</button></div>
     </div>
 
-    <!-- TAB 7: SPECIES DATABASE - EXPANDED with more species and details -->
-    <div id="tab7" class="tab-content">
-        <h2><i class="fas fa-database"></i> Tasmanian Native Plant Propagation Database</h2>
-        <p>Search and browse 65+ Tasmanian native species (expanding database) with specific propagation requirements.</p>
-        <input type="text" id="speciesSearch" placeholder="🔍 Search by species name, family, or method..." style="width:100%; padding:12px; margin:1rem 0; border-radius:60px; border:2px solid var(--border); font-size:1rem;">
-        <div id="speciesGrid" class="grid-3"></div>
+<!-- TAB 7: SPECIES DATABASE - EXPANDED -->
+<div id="tab7" class="tab-content">
+    <h2><i class="fas fa-database"></i> Tasmanian Native Plant Propagation Database</h2>
+    <p>Search and browse 65+ Tasmanian native species (expanding database) with specific propagation requirements.</p>
+    <input type="text" id="speciesSearch" placeholder="🔍 Search by species name, family, or method..." style="width:100%; padding:12px; margin:1rem 0; border-radius:60px; border:2px solid var(--border); font-size:1rem;">
+    
+    <!-- NEW: Expand/Collapse All buttons -->
+    <div style="display: flex; justify-content: flex-end; margin: 0.5rem 0 1rem 0;">
+        <button id="expandAllBtn" class="btn btn-outline" onclick="expandAllSpeciesCards()">
+            <i class="fas fa-expand-alt"></i> Expand All
+        </button>
+        <button id="collapseAllBtn" class="btn btn-outline" onclick="collapseAllSpeciesCards()" style="margin-left: 0.5rem;">
+            <i class="fas fa-compress-alt"></i> Collapse All
+        </button>
     </div>
+    
+    <div id="speciesGrid" class="grid-3"></div>
+</div>
 
 <!-- TAB 8: RECORDS & LOGS - Enhanced with localStorage, validation, search/filter -->
 <div id="tab8" class="tab-content">
@@ -1108,8 +1119,18 @@ function renderSpecies() {
     if(!grid) return;
     const search = document.getElementById('speciesSearch')?.value.toLowerCase() || '';
     const filtered = speciesDB.filter(s => s.name.toLowerCase().includes(search) || s.family.toLowerCase().includes(search) || s.method.toLowerCase().includes(search));
+    
+    // Store which cards were open before re-render (by species name)
+    const openSpecies = new Set();
+    document.querySelectorAll('.species-card.open').forEach(card => {
+        const titleElem = card.querySelector('.species-title strong');
+        if (titleElem) {
+            openSpecies.add(titleElem.innerText);
+        }
+    });
+    
     grid.innerHTML = filtered.map((s, i) => `
-    <div class="species-card" onclick="toggleSpeciesCard(this)">
+    <div class="species-card ${openSpecies.has(s.name) ? 'open' : ''}" onclick="toggleSpeciesCard(this)">
         <div class="species-title">
             <i class="fas fa-leaf"></i> <strong>${s.name}</strong>
         </div>
@@ -1126,9 +1147,8 @@ function renderSpecies() {
 }
 
 function toggleSpeciesCard(card) {
-    document.querySelectorAll('.species-card').forEach(c => {
-        if (c !== card) c.classList.remove('open');
-    });
+    // If we're clicking a card while holding Ctrl/Cmd, we can toggle individually without affecting others
+    // But standard behavior: just toggle this one
     card.classList.toggle('open');
 }
 
@@ -1575,6 +1595,22 @@ function exportData() {
     a.download = `propagation_records_${new Date().toISOString().slice(0,10)}.csv`;
     a.click();
     URL.revokeObjectURL(a.href);
+}
+
+// ============ EXPAND/COLLAPSE ALL SPECIES CARDS ============
+
+function expandAllSpeciesCards() {
+    const allCards = document.querySelectorAll('.species-card');
+    allCards.forEach(card => {
+        card.classList.add('open');
+    });
+}
+
+function collapseAllSpeciesCards() {
+    const allCards = document.querySelectorAll('.species-card');
+    allCards.forEach(card => {
+        card.classList.remove('open');
+    });
 }
 
 // ============ DOMContentLoaded ============
