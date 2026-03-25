@@ -71,7 +71,13 @@ This resource is intended as a learning aid and reference tool. While every effo
 
 ## License
 
-This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). You are free to share and adapt this material for non-commercial purposes, provided you give appropriate credit.
+© 2026 Jay Rowley. All Rights Reserved.
+
+This work is proprietary and confidential. Unauthorized copying, distribution, modification, public display, or reproduction of this material, in whole or in part, is strictly prohibited without the express written permission of the copyright holder.
+
+This resource is intended for personal educational reference only. No part of this application or its associated content may be used for commercial purposes, training delivery, or redistribution without prior authorization.
+
+For licensing inquiries, please contact the author.
 
 ---
 **Developed for the Tasmanian Conservation and Ecosystem Management Sector.**
