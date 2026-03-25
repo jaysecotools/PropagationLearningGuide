@@ -1,4 +1,4 @@
-<!-- Species cards now collapsed and expand by selecting. Includes Expand All and Collapse All. -->
+<!-- Quiz clearing function error now fixed. Reset all clears user responses and generated marking. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -1171,26 +1171,52 @@ function checkQuizzesExpanded() {
         const fbDiv = questionDiv.querySelector('.quiz-feedback');
         if(!fbDiv) continue;
         const correct = questionDiv.dataset.correct;
+        
+        // Clear previous classes
+        fbDiv.classList.remove('feedback-correct', 'feedback-incorrect');
+        
         if(selected && selected.value === correct) {
             fbDiv.innerHTML = '✓ Correct!';
-            fbDiv.className = 'feedback-correct';
+            fbDiv.classList.add('feedback-correct');
             score++;
         } else if(selected) {
             fbDiv.innerHTML = '✗ Incorrect. Review the material.';
-            fbDiv.className = 'feedback-incorrect';
+            fbDiv.classList.add('feedback-incorrect');
         } else {
             fbDiv.innerHTML = '⚠ Please select an answer.';
-            fbDiv.className = 'feedback-incorrect';
+            fbDiv.classList.add('feedback-incorrect');
         }
         fbDiv.style.display = 'block';
     }
-    document.getElementById('quizScore').innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? 'Excellent! You are well prepared.' : 'Review and try again. Aim for 80%+.'}`;
+    const scoreElement = document.getElementById('quizScore');
+    if (scoreElement) {
+        scoreElement.innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? 'Excellent! You are well prepared.' : 'Review and try again. Aim for 80%+.'}`;
+    }
 }
 
 function resetQuizzesExpanded() {
-    document.querySelectorAll('.quiz-question input').forEach(i => i.checked=false);
-    document.querySelectorAll('.quiz-feedback').forEach(f => { f.style.display='none'; f.innerHTML=''; });
-    document.getElementById('quizScore').innerHTML = '';
+    // Reset all radio button selections
+    document.querySelectorAll('.quiz-question input[type="radio"]').forEach(input => {
+        input.checked = false;
+    });
+    
+    // Find and clear all feedback elements
+    // This targets any element with class 'quiz-feedback' that appears after each question
+    const allFeedbackDivs = document.querySelectorAll('.quiz-feedback');
+    allFeedbackDivs.forEach(fb => {
+        // Clear the HTML content
+        fb.innerHTML = '';
+        // Hide the feedback div
+        fb.style.display = 'none';
+        // Remove any styling classes that might have been added
+        fb.classList.remove('feedback-correct', 'feedback-incorrect');
+    });
+    
+    // Clear the overall score display
+    const scoreDiv = document.getElementById('quizScore');
+    if (scoreDiv) {
+        scoreDiv.innerHTML = '';
+    }
 }
 
 function selectScenario(event, num, choice) {
