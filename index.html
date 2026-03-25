@@ -1,4 +1,4 @@
-<!-- CSS updated to provide better readability. -->
+<!-- CSS updated to provide better readability. Fixed visibility of expand/collapse buttons. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -559,6 +559,19 @@ footer {
 #speciesGrid {
     align-items: start;
 }
+
+/* Make outline buttons visible on light backgrounds */
+.btn-outline {
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary-dark);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
 </style>
 </head>
 <body>
@@ -859,15 +872,15 @@ footer {
     <p>Search and browse 65+ Tasmanian native species (expanding database) with specific propagation requirements.</p>
     <input type="text" id="speciesSearch" placeholder="🔍 Search by species name, family, or method..." style="width:100%; padding:12px; margin:1rem 0; border-radius:60px; border:2px solid var(--border); font-size:1rem;">
     
-    <!-- NEW: Expand/Collapse All buttons -->
-    <div style="display: flex; justify-content: flex-end; margin: 0.5rem 0 1rem 0;">
-        <button id="expandAllBtn" class="btn btn-outline" onclick="expandAllSpeciesCards()">
-            <i class="fas fa-expand-alt"></i> Expand All
-        </button>
-        <button id="collapseAllBtn" class="btn btn-outline" onclick="collapseAllSpeciesCards()" style="margin-left: 0.5rem;">
-            <i class="fas fa-compress-alt"></i> Collapse All
-        </button>
-    </div>
+<!-- EXPAND/COLLAPSE ALL BUTTONS - NOW VISIBLE -->
+<div style="display: flex; justify-content: flex-end; margin: 0.5rem 0 1rem 0;">
+    <button id="expandAllBtn" class="btn btn-primary" onclick="expandAllSpeciesCards()">
+        <i class="fas fa-expand-alt"></i> Expand All
+    </button>
+    <button id="collapseAllBtn" class="btn btn-primary" onclick="collapseAllSpeciesCards()" style="margin-left: 0.5rem;">
+        <i class="fas fa-compress-alt"></i> Collapse All
+    </button>
+</div>
     
     <div id="speciesGrid" class="grid-3"></div>
 </div>
