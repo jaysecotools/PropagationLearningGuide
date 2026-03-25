@@ -1,11 +1,4 @@
-I can see the issue. The error "153 Video player configuration error" typically occurs when YouTube videos are embedded with certain privacy or configuration restrictions, or when there's an issue with the embed URL format.
-
-The problem is likely that you're using https://www.youtube.com/embed/ with the full watch URL format. Let me give you a corrected version with the proper embed URLs:
-
-Replace your video card section with this corrected version:
-
-```html
-<!-- ========== NEW: VIDEO RESOURCES CARD (CORRECTED) ========== -->
+<!-- ========== NEW: VIDEO RESOURCES CARD ========== -->
 <div class="card" style="margin-top: 2rem;">
     <i class="fab fa-youtube" style="color: #ff0000;"></i>
     <div class="card-title" style="font-size: 1.4rem; font-weight: 700;">🎬 Video Resources: Propagation Techniques</div>
@@ -16,7 +9,7 @@ Replace your video card section with this corrected version:
         <div style="background: var(--bg-light); border-radius: 1rem; overflow: hidden; border: 1px solid var(--border);">
             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                        src="https://www.youtube-nocookie.com/embed/C_xGPKgO64s?rel=0" 
+                        src="https://www.youtube.com/embed/C_xGPKgO64s" 
                         title="Growing natives from seed" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -34,7 +27,7 @@ Replace your video card section with this corrected version:
         <div style="background: var(--bg-light); border-radius: 1rem; overflow: hidden; border: 1px solid var(--border);">
             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                        src="https://www.youtube-nocookie.com/embed/s63iGkn8dpY?rel=0" 
+                        src="https://www.youtube.com/embed/s63iGkn8dpY" 
                         title="How to take native cuttings" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -48,21 +41,6 @@ Replace your video card section with this corrected version:
             </div>
         </div>
     </div>
-    <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--text-light);"><i class="fas fa-info-circle"></i> These videos complement the written techniques above. Watch, then try the quizzes to test your knowledge.</p>
+    <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--text-light);"><i class="fas fa-info-circle"></i> These videos complement the written techniques in Tab 1. Watch, then try the quizzes to test your knowledge.</p>
 </div>
 <!-- ========== END VIDEO RESOURCES CARD ========== -->
-```
-
-Key changes made:
-
-1. Changed www.youtube.com to www.youtube-nocookie.com - this uses YouTube's privacy-enhanced mode and often resolves embed configuration errors
-2. Added ?rel=0 to prevent related videos from showing after playback (optional but recommended)
-3. Removed the referrerpolicy attribute which can sometimes cause issues with embeds
-
-If you still see the error, the videos might have embedding restrictions. You can also try this alternative format for just the iframe src (replace the entire src line):
-
-```html
-src="https://www.youtube.com/embed/C_xGPKgO64s?enablejsapi=1&origin=https://yourdomain.com" 
-```
-
-But since you're running locally, the youtube-nocookie.com version should work. If the error persists, the videos may have embedding disabled by the uploader, but these are standard educational videos that typically allow embedding.
