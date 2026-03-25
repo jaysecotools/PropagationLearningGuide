@@ -1,15 +1,110 @@
-<div class="card"><h4>🔗 Key Resources & Links</h4>
-    <ul style="list-style:none; padding-left:0;">
-        <li><i class="fas fa-tree"></i> <a href="https://www.understorey-network.org.au/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>Understorey Network Tasmania</strong></a> – propagation database for 1800+ Tasmanian species, comprehensive fact sheets</li>
-        <li><i class="fas fa-book"></i> <a href="https://www.anpc.asn.au/florabank/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>Florabank (ANPC)</strong></a> – best practice seed collection & propagation guidelines (Australian Network for Plant Conservation)</li>
-        <li><i class="fas fa-file-alt"></i> <a href="https://nre.tas.gov.au/conservation/forms-and-permits/scientific-permits-and-authorities-to-collect-native-flora" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>NRE Tas – Flora Permits</strong></a> – scientific permits for native collection, permit application forms</li>
-        <li><i class="fas fa-graduation-cap"></i> <a href="https://training.gov.au/Training/Details/AHCNSY207" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>training.gov.au/AHCNSY207</strong></a> – unit of competency details, assessment requirements</li>
-        <li><i class="fas fa-leaf"></i> <a href="https://www.greeningaustralia.org.au/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>Greening Australia</strong></a> – restoration propagation guides, technical resources</li>
-        <li><i class="fas fa-microscope"></i> <a href="https://nre.tas.gov.au/biosecurity-tasmania/plant-biosecurity" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>NRE – Plant Biosecurity</strong></a> – information on myrtle rust, Phytophthora management</li>
-        <li><i class="fas fa-hand-holding-heart"></i> <a href="https://www.landcaretas.org.au/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: none;"><strong>Landcare Tasmania</strong></a> – community nursery support, propagation workshops</li>
-    </ul>
-    <h4>📚 Recommended Reading</h4>
-    <ul><li>Wrigley, J.W. & Fagg, M. (2013). <em>Australian Native Plants</em>. 6th ed. Reed New Holland.</li>
-    <li>Ralph, M. (2003). <em>Growing Australian Native Plants from Seed</em>. Murray Ralph.</li>
-    <li>Tasmanian Seed Centre (NRE) – <em>Seed Collection and Propagation Notes</em> (online database)</li></ul>
+I understand — let's just add the "Expand All" button to your Species Database section without replacing the entire file.
+
+Here are the specific changes you need to make:
+
+1. Add this button HTML in the Species Database tab (Tab 7), just below the search input:
+
+```html
+<!-- Add this after the search input, before the speciesGrid -->
+<div style="display: flex; justify-content: flex-end; margin: 0.5rem 0 1rem 0;">
+    <button id="expandAllBtn" class="btn btn-outline" onclick="expandAllSpeciesCards()">
+        <i class="fas fa-expand-alt"></i> Expand All
+    </button>
+    <button id="collapseAllBtn" class="btn btn-outline" onclick="collapseAllSpeciesCards()" style="margin-left: 0.5rem;">
+        <i class="fas fa-compress-alt"></i> Collapse All
+    </button>
 </div>
+```
+
+So your Tab 7 section becomes:
+
+```html
+<!-- TAB 7: SPECIES DATABASE - EXPANDED -->
+<div id="tab7" class="tab-content">
+    <h2><i class="fas fa-database"></i> Tasmanian Native Plant Propagation Database</h2>
+    <p>Search and browse 65+ Tasmanian native species (expanding database) with specific propagation requirements.</p>
+    <input type="text" id="speciesSearch" placeholder="🔍 Search by species name, family, or method..." style="width:100%; padding:12px; margin:1rem 0; border-radius:60px; border:2px solid var(--border); font-size:1rem;">
+    
+    <!-- NEW: Expand/Collapse All buttons -->
+    <div style="display: flex; justify-content: flex-end; margin: 0.5rem 0 1rem 0;">
+        <button id="expandAllBtn" class="btn btn-outline" onclick="expandAllSpeciesCards()">
+            <i class="fas fa-expand-alt"></i> Expand All
+        </button>
+        <button id="collapseAllBtn" class="btn btn-outline" onclick="collapseAllSpeciesCards()" style="margin-left: 0.5rem;">
+            <i class="fas fa-compress-alt"></i> Collapse All
+        </button>
+    </div>
+    
+    <div id="speciesGrid" class="grid-3"></div>
+</div>
+```
+
+2. Add these JavaScript functions to your existing script (before the DOMContentLoaded event listener):
+
+```javascript
+// ============ EXPAND/COLLAPSE ALL SPECIES CARDS ============
+
+function expandAllSpeciesCards() {
+    const allCards = document.querySelectorAll('.species-card');
+    allCards.forEach(card => {
+        card.classList.add('open');
+    });
+}
+
+function collapseAllSpeciesCards() {
+    const allCards = document.querySelectorAll('.species-card');
+    allCards.forEach(card => {
+        card.classList.remove('open');
+    });
+}
+```
+
+3. Update your renderSpecies function to ensure that when you search/filter, the expand/collapse state is preserved or reset appropriately. Replace your existing renderSpecies function with this improved version:
+
+```javascript
+function renderSpecies() {
+    const grid = document.getElementById('speciesGrid');
+    if(!grid) return;
+    const search = document.getElementById('speciesSearch')?.value.toLowerCase() || '';
+    const filtered = speciesDB.filter(s => s.name.toLowerCase().includes(search) || s.family.toLowerCase().includes(search) || s.method.toLowerCase().includes(search));
+    
+    // Store which cards were open before re-render (by species name)
+    const openSpecies = new Set();
+    document.querySelectorAll('.species-card.open').forEach(card => {
+        const titleElem = card.querySelector('.species-title strong');
+        if (titleElem) {
+            openSpecies.add(titleElem.innerText);
+        }
+    });
+    
+    grid.innerHTML = filtered.map((s, i) => `
+    <div class="species-card ${openSpecies.has(s.name) ? 'open' : ''}" onclick="toggleSpeciesCard(this)">
+        <div class="species-title">
+            <i class="fas fa-leaf"></i> <strong>${s.name}</strong>
+        </div>
+        <div class="species-details">
+            <span style="font-size:0.85rem;">
+                Family: ${s.family}<br>
+                Method: ${s.method}<br>
+                Treatment: ${s.treatment}<br>
+                Conservation: ${s.conservation}
+            </span>
+        </div>
+    </div>
+`).join('');
+}
+
+function toggleSpeciesCard(card) {
+    // If we're clicking a card while holding Ctrl/Cmd, we can toggle individually without affecting others
+    // But standard behavior: just toggle this one
+    card.classList.toggle('open');
+}
+```
+
+Summary of changes:
+
+1. Add Expand/Collapse buttons - Two buttons in the Species Database tab that let users expand all or collapse all cards at once.
+2. Add JavaScript functions - expandAllSpeciesCards() and collapseAllSpeciesCards() to handle the bulk actions.
+3. Update renderSpecies() - This preserves the expand/collapse state when searching/filtering, so if you had some cards expanded and then search, those same cards remain expanded in the filtered results.
+
+The buttons will appear just below the search bar in the Species Database tab. Clicking "Expand All" will show all species details, and "Collapse All" will hide them. The existing click-to-expand individual cards still works exactly as before.
