@@ -1,33 +1,174 @@
-function checkQuizzesExpanded() {
-    let score = 0, total = 10;
-    for(let i = 1; i <= total; i++) {
-        const radioGroup = document.querySelectorAll(`input[name="quiz${i}"]`);
-        if(!radioGroup.length) continue;
-        const selected = Array.from(radioGroup).find(r => r.checked);
-        const questionDiv = radioGroup[0]?.closest('.quiz-question');
-        if(!questionDiv) continue;
-        const fbDiv = questionDiv.querySelector('.quiz-feedback');
-        if(!fbDiv) continue;
-        const correct = questionDiv.dataset.correct;
-        
-        // Clear previous classes
-        fbDiv.classList.remove('feedback-correct', 'feedback-incorrect');
-        
-        if(selected && selected.value === correct) {
-            fbDiv.innerHTML = '✓ Correct!';
-            fbDiv.classList.add('feedback-correct');
-            score++;
-        } else if(selected) {
-            fbDiv.innerHTML = '✗ Incorrect. Review the material.';
-            fbDiv.classList.add('feedback-incorrect');
-        } else {
-            fbDiv.innerHTML = '⚠ Please select an answer.';
-            fbDiv.classList.add('feedback-incorrect');
-        }
-        fbDiv.style.display = 'block';
-    }
-    const scoreElement = document.getElementById('quizScore');
-    if (scoreElement) {
-        scoreElement.innerHTML = `<strong>Score: ${score}/${total}</strong> ${score===total ? 'Excellent! You are well prepared.' : 'Review and try again. Aim for 80%+.'}`;
-    }
+Looking at your code, the issue with green text on dark green background appears in the quiz card and the reset all button. Here are the CSS changes you need to make to improve contrast and readability:
+
+1. Fix the Quiz Card Text Color (Propagation Methods & Techniques Quiz)
+
+Currently, the quiz card has dark green text on a dark green background. Change the .quiz-card styling:
+
+```css
+.quiz-card {
+  background: linear-gradient(135deg, #1e553b, #1a4a34);
+  border-radius: 1.5rem;
+  padding: 1.8rem;
+  color: #ffffff; /* Changed from white to ensure full opacity */
+  margin: 1.5rem 0;
 }
+
+/* Add this new rule for quiz card headings */
+.quiz-card h3 {
+  color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.3);
+}
+
+/* Add this for quiz question text */
+.quiz-question {
+  background: rgba(255,255,255,0.12);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  color: #ffffff;
+}
+
+/* Ensure all text in quiz card is white */
+.quiz-card .quiz-question-text,
+.quiz-card .quiz-option {
+  color: #ffffff;
+}
+
+.quiz-card .quiz-option:hover {
+  background: rgba(255,255,255,0.25);
+}
+```
+
+2. Fix the Reset All Button
+
+The reset button uses the .btn-outline class. Update its styling for better contrast:
+
+```css
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ffffff; /* Changed from var(--primary) */
+  color: #ffffff; /* Changed from var(--primary-dark) */
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+```
+
+3. Improve Quiz Option Radio Button Visibility
+
+Add this to make radio buttons more visible on dark background:
+
+```css
+.quiz-option input {
+  transform: scale(1.1);
+  margin-right: 8px;
+  accent-color: #f4a261; /* Makes radio buttons visible with accent color */
+}
+```
+
+4. Fix the Check Answers Button (Optional, for consistency)
+
+Update the .btn-primary to ensure good contrast:
+
+```css
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d6a43;
+  color: white;
+}
+```
+
+Complete CSS Replacement Section
+
+Find the existing .quiz-card, .btn-outline, and .quiz-question sections in your CSS and replace them with these updated versions:
+
+```css
+.quiz-card {
+  background: linear-gradient(135deg, #1e553b, #1a4a34);
+  border-radius: 1.5rem;
+  padding: 1.8rem;
+  color: #ffffff;
+  margin: 1.5rem 0;
+}
+
+.quiz-card h3 {
+  color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.3);
+}
+
+.quiz-question {
+  background: rgba(255,255,255,0.12);
+  border-radius: 1rem;
+  padding: 1.2rem;
+  margin: 1rem 0;
+  color: #ffffff;
+}
+
+.quiz-question .quiz-question-text,
+.quiz-question .quiz-option {
+  color: #ffffff;
+}
+
+.quiz-option {
+  background: rgba(255,255,255,0.15);
+  margin: 0.6rem 0;
+  padding: 0.7rem 1rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.quiz-option:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.quiz-option input {
+  transform: scale(1.1);
+  margin-right: 8px;
+  accent-color: #f4a261;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d6a43;
+  color: white;
+}
+```
+
+These changes will:
+
+· Make all text in the quiz card white for maximum contrast
+· Change the reset button to have white text and border
+· Make radio buttons more visible with an accent color
+· Ensure all interactive elements maintain good contrast on the dark green background
+
+The result will be much better readability and WCAG-compliant contrast ratios for both the quiz heading and the reset button.
