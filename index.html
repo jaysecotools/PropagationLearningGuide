@@ -1,4 +1,4 @@
-<!-- Quiz clearing function error now fixed. Reset all clears user responses and generated marking. -->
+<!-- CSS updated to provide better readability. -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -271,12 +271,24 @@ td {
 
 .btn-outline {
   background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary-dark);
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .btn-primary {
   background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #1d6a43;
   color: white;
 }
 
@@ -299,15 +311,26 @@ td {
   background: linear-gradient(135deg, #1e553b, #1a4a34);
   border-radius: 1.5rem;
   padding: 1.8rem;
-  color: white;
+  color: #ffffff;
   margin: 1.5rem 0;
 }
 
+.quiz-card h3 {
+  color: #ffffff !important;
+  border-bottom-color: rgba(255,255,255,0.3);
+}
+
 .quiz-question {
-  background: #2f7752;
+  background: rgba(255,255,255,0.12);
   border-radius: 1rem;
   padding: 1.2rem;
   margin: 1rem 0;
+  color: #ffffff;
+}
+
+.quiz-question .quiz-question-text,
+.quiz-question .quiz-option {
+  color: #ffffff;
 }
 
 .quiz-option {
@@ -320,6 +343,7 @@ td {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: #ffffff;
 }
 
 .quiz-option:hover {
@@ -329,6 +353,7 @@ td {
 .quiz-option input {
   transform: scale(1.1);
   margin-right: 8px;
+  accent-color: #f4a261;
 }
 
 .scenario {
@@ -534,7 +559,7 @@ footer {
 #speciesGrid {
     align-items: start;
 }
-    </style>
+</style>
 </head>
 <body>
 <div class="master">
