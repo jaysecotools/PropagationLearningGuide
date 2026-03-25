@@ -13,7 +13,7 @@ This application transforms the traditional training package into an engaging, s
 
 ### Key Features
 
-- **Contextualised Content:** Aligned with AHCNSY207 and the AHC31421 Certificate III in Conservation and Ecosystem Management, with a specific focus on Tasmanian biodiversity, endemism, and industry pathways.
+- **Contextualised Content:** Aligned with AHCNSY207 and the AHC31424 Certificate III in Conservation and Ecosystem Management, with a specific focus on Tasmanian biodiversity, endemism, and industry pathways.
 - **Interactive Learning:**
     - **Knowledge Checks:** A 10-question quiz with instant feedback to test understanding of propagation methods.
     - **Workplace Scenarios:** Real-world problem-solving exercises covering disease outbreaks, seed dormancy, and biosecurity (e.g., Phytophthora management).
@@ -50,7 +50,7 @@ The interface is divided into the following key sections:
 
 ## Intended Audience
 
-- Students undertaking **AHC31421 Certificate III in Conservation and Ecosystem Management** or related qualifications.
+- Students undertaking **AHC31424 Certificate III in Conservation and Ecosystem Management** or related qualifications.
 - TAFE and VET trainers and assessors seeking a contextualised learning resource.
 - Landcare, Bushcare, and community nursery volunteers.
 - Entry-level staff in native plant nurseries and restoration companies.
